@@ -128,19 +128,22 @@ function compare_ints(first,second) {
 }
 function rdiv(dvd,dvs) { // this is the function I need help on. 91 / 7 has never returned {"quotient":"13","modulo":"0"} The numbers need to be stored and divided as strings in order to accomodate large numbers.
     var dividend = dvd;
-    var tenpow = dvd.length - 1;
+    var tenpow = dvd.length - 1; // prepare to add zeros
     var divisor = dvs;
     var k = 0;
     while(k < tenpow) {
         divisor += "0";
         k += 1;
-    }
+    } // add zeros
     var divreturn = {"quotient":"0","modulo":"0"};
-    while(!compare_ints(dividend,divisor) != 2) {
-        dividend = subt(dividend,divisor);
-        k += 1;
-    }
-    divreturn.quotient += k.toString();
+    while(subt(dividend,dvs) != "NaN") {
+        k = 0;
+        while(subt(dividend,divisor) != "NaN") {
+            dividend = subt(dividend,divisor);
+            k += 1;
+        }
+        divisor = divisor.slice(0,divisor.length - 1); // remove the final zero
+        divreturn.quotient += k.toString(); // add the number to divreturn.quotient
     }
     alert(divreturn);
 }
