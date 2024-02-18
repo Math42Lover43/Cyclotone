@@ -1,0 +1,6 @@
+1. Rewrite function "rdiv":
+  If:
+    rdiv("99999999","17").quotient == 5882352
+    rdiv("91","7").quotient == 13
+    rdiv("281","29").quotient == 9
+  then the function was rewritten correctly.
