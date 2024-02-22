@@ -46,7 +46,7 @@ function add(x,y) { // x + y
     par1.push(0); document.getElementById("debugger").innerHTML += "par1 = " + par1 + "<br/>";
     var n = 0;
     while(n < par1.length) {
-        preturner[n] += (preturner[n] + par1[n] + par2[n]) % 10;
+        preturner[n] += par1[n] + par2[n];
         n += 1;
     }
     n = 0; document.getElementById("debugger").innerHTML += "preturner = " + preturner + "<br/>";
