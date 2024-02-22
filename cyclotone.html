@@ -18,7 +18,7 @@ function strtolist(num) { // convert a number string into a list of numbers
     var n = 0;
     var returner = [];
     while (n < num.length) {
-        returner.push(Number(num[n]));
+        returner.unshift(Number(num[n]));
 	    n += 1;
     }
     return returner;
