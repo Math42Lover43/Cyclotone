@@ -11,172 +11,52 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <button onclick="factorize(document.getElementById("config_exp").value);">Factorize</button>
 <script>
 var ints = [];
-function add(f,s) {
-    var a = f;
-    var b = s;
-    var l1 = [];
-    var l2 = [];
-    var sum = [];
-    var k = 0;
-    var len = 0;
-    var sumreturn = "";
-    while(a.length < b.length) {
-        a = "0" + a;
+// input numbers as strings for ease
+function strtolist(num) { // convert a number string into a list of numbers
+    var n = 0;
+    var returner = [];
+    while (n < num.length) {
+        returner.push(Number(num[n]));
+	    n += 1;
     }
-    while(b.length < a.length) {
-        b = "0" + b;
-    }
-    while(k < a.length) {
-        l1.push(a[k]);
-        k += 1;
-    }
-    len = k;
-    var k = 0;
-    while(k < b.length) {
-        l2.push(b[k]);
-        k += 1;
-    }
-    if (k > len) {
-        len = k;
-    }
-    var k = 0;
-    while(k < len) {
-        sum.push(Number(l1[k]) + Number(l2[k]));
-        k += 1;
-    }
-    sum.unshift(0);
-    var k = sum.length - 1;
-    while(k >= 0) {
-        sum[k - 1] += Math.floor(Math.round(sum[k]) / 10);
-        sum[k] = sum[k] % 10;
-        k -= 1;
-    }
-    k = 1;
-    if(!sum[0] == "0") { sumreturn += sum[0].toString(); }
-    while(k < sum.length) {
-        sumreturn += sum[k].toString();
-        k += 1;
-    }
-    return sumreturn;
+    return returner;
 }
-function subt(f,s) { // to-do: allow successful negative results
-    var a = f;
-    var b = s;
-    var l1 = [];
-    var l2 = [];
-    var sum = [];
-    var k = 0;
-    var len = 0;
-    var sumreturn = "";
-    while(a.length < b.length) {
-        a = "0" + a;
-    }
-    while(b.length < a.length) {
-        b = "0" + b;
-    }
-    while(k < a.length) {
-        l1.push(a[k]);
-        k += 1;
-    }
-    len = k;
-    var k = 0;
-    while(k < b.length) {
-        l2.push(b[k]);
-        k += 1;
-    }
-    if (k > len) {
-        len = k;
-    }
-    var k = 0;
-    while(k < len) {
-        sum.push(Number(l1[k]) - Number(l2[k]));
-        k += 1;
-    }
-    sum.unshift(0);
-    var k = sum.length - 1;
-    while(k >= 0) {
-        sum[k - 1] += Math.floor(Math.round(sum[k]) / 10);
-        sum[k] = sum[k] % 10;
-        k -= 1;
-    }
-    k = 1;
-    if(!sum[0] == "0") { sumreturn += sum[0].toString(); }
-    while(k < sum.length) {
-        sumreturn += sum[k].toString();
-        k += 1;
-    }
-    return sumreturn;
-}
-function compare_ints(first,second) {
-    var k = 0;
-    if(first.length > second.length) {
-        return 1;
-    }
-    if (second.length > first.length) {
-        return 2;
-    }
-    while (k <= first.length + 1) {
-    if(Number(first[k]) > Number(second[k])) {
-        return 1;
-    }
-    if (Number(second[k]) > Number(first[k])) {
-        return 2;
-    }
-        if (k > first.length) { return 0; }
-        k += 1;
-    }
-}
-function rdiv(dvd,dvs) { // this is the function I need help on. 91 / 7 has never returned {"quotient":"13","modulo":"0"} The numbers need to be stored and divided as strings in order to accomodate large numbers.
-    var dividend = dvd;
-    var tenpow = dvd.length - 1; // prepare to add zeros
-    var divisor = dvs;
-    var k = 0;
-    while(k < tenpow) {
-        divisor += "0";
-        k += 1;
-    } // add zeros
-    var divreturn = {"quotient":"0","modulo":"0"};
-    while(subt(dividend,dvs) != "NaN") {
-        k = 0;
-        while(subt(dividend,divisor) != "NaN") {
-            dividend = subt(dividend,divisor);
-            k += 1;
+function eqlength(l1,l2) {
+    if(l1.length < l2.length) {
+        while(l1.length < l2.length){
+            l1.push(0);
         }
-        divisor = divisor.slice(0,divisor.length - 1); // remove the final zero
-        divreturn.quotient += k.toString(); // add the number to divreturn.quotient
     }
-    alert(divreturn);
+    if(l2.length < l1.length) {
+        while(l2.length < l1.length){
+            l2.push(0);
+        }
+    }
 }
-function factor(int,period) {
-    var trialfactor = "";
-    var k = 0;
-    var trial_init;
-    while(k < 5 && Math.sqrt(Number(int)).toString()[k] != "e" && Math.sqrt(Number(int)).toString()[k]) {
-        trialfactor += Math.sqrt(Number(int)).toString()[k];
-        k += 1;
+function add(x,y) { // x + y
+    var par1 = strtolist(x);
+    var par2 = strtolist(y);
+    var preturner = [];
+    var returner = "";
+    eqlength(par1,par2);
+    eqlength(par2,preturner);
+    par2.push(0);
+    par1.push(0);
+    preturner.push(0);
+    var n = 0;
+    while(n < par1.length) {
+        preturner[n] = Math.mod(preturner[n] + par1[n] + par2[n],10);
+        preturner[n + 1] = Math.floor(preturner[n] + par1[n] + par2[n] / 10);
+        n += 1;
     }
-    if(Math.sqrt(Number(int)).toString().includes("e")) {
-        trial_init = Math.sqrt(Number(int)).toString().substring(Math.sqrt(Number(int)).toString().indexOf("e") + 1);
-    } else {
-        trial_init = Math.floor(Math.sqrt(Number(int)).toString().length / 2 - 3);
+    n = 0;
+    while(n < preturner.length) {
+        returner = preturner[n].toString() + returner;
+        n += 1;
     }
-    while(trialfactor.length < trial_init) {
-        trialfactor += "0";
-    }
-    trialfactor = Math.floor(trialfactor);
-    trialfactor = period * rdiv(trialfactor,period).quotient + 1;
-    alert(trialfactor);
+    return returner;
 }
-function factorize(factorize_inp) {
-    ints = [{"polynomial":[1],"periods":[]}]; // Start by factoring into cyclotonic polynomials
-    var k = 0;
-    while (k <= factorize_inp - 2) {
-         ints[0].polynomial.push(0);
-         k += 1;
-    }
-    ints[0].polynomial.push(-1);
-}
-alert(rdiv("91","7").quotient);
+alert(add("307693","417583")); // test if add() function is accurate
 </script>
 </body>
 </head>
