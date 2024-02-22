@@ -36,36 +36,16 @@ function eqlength(l1,l2) {
     }
 }
 function add(x, y) {
-    // Convert input strings to arrays of digits
-    const par1 = x.split('').map(Number);
-    const par2 = y.split('').map(Number);
-
-    // Ensure equal length
-    while (par1.length < par2.length) par1.unshift(0);
-    while (par2.length < par1.length) par2.unshift(0);
-
-    const preturner = [];
-    let carry = 0;
-
-    // Add corresponding digits
-    for (let i = par1.length - 1; i >= 0; i--) {
-        const sum = par1[i] + par2[i] + carry;
-        preturner.unshift(sum % 10);
-        carry = Math.floor(sum / 10);
-    }
-
-    // Handle any remaining carry
-    if (carry) preturner.unshift(carry);
-
-    // Convert result array to a string
-    const returner = preturner.join('');
-
-    // Display intermediate values (for debugging)
-    console.log('par1:', par1);
-    console.log('par2:', par2);
-    console.log('preturner:', preturner);
-
-    return returner;
+	var num1 = strtolist(x);
+	var num2 = strtolist(y);
+	var returner = [];
+	eqlength(num1,num2); // ensure same length
+	eqlength(num2,returner);
+	// add corresponding digits
+	var n = 0;
+	while(n < num1.length) {
+		// add corresponding digits
+	}
 }
 alert(add("19","17)); // test if add() function is accurate
 </script>
