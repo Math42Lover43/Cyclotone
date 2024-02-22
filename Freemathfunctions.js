@@ -43,3 +43,4 @@ function add(x,y) { // x + y
     }
     return returner;
 }
+alert(add("307693","417583")); // test if add() function is accurate
