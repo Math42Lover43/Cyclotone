@@ -26,12 +26,12 @@ function strtolist(num) { // convert a number string into a list of numbers
 function eqlength(l1,l2) {
     if(l1.length < l2.length) {
         while(l1.length < l2.length){
-            l1.push(0);
+            l1.unshift(0);
         }
     }
     if(l2.length < l1.length) {
         while(l2.length < l1.length){
-            l2.push(0);
+            l2.unshift(0);
         }
     }
 }
@@ -42,9 +42,9 @@ function add(x,y) { // x + y
     var returner = "";
     eqlength(par1,par2);
     eqlength(par2,preturner); document.getElementById("debugger").innerHTML += "List length: " + par2.length + "<br/>";
-    par2.push(0); document.getElementById("debugger").innerHTML += "par2 = " + par2 + "<br/>";
-    par1.push(0); document.getElementById("debugger").innerHTML += "par1 = " + par1 + "<br/>";
-    preturner.push(0);
+    par2.unshift(0); document.getElementById("debugger").innerHTML += "par2 = " + par2 + "<br/>";
+    par1.unshift(0); document.getElementById("debugger").innerHTML += "par1 = " + par1 + "<br/>";
+    preturner.unshift(0);
     var n = 0;
     while(n < par1.length) {
         preturner[n] = (preturner[n] + par1[n] + par2[n]) % 10;
