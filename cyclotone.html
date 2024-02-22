@@ -41,12 +41,11 @@ function add(x,y) { // x + y
     var preturner = [];
     var returner = "";
     eqlength(par1,par2);
-    eqlength(par2,preturner); document.getElementById("debugger").innerHTML += "List length: " + par2.length + "<br/>";
     par2.push(0); document.getElementById("debugger").innerHTML += "par2 = " + par2 + "<br/>";
     par1.push(0); document.getElementById("debugger").innerHTML += "par1 = " + par1 + "<br/>";
     var n = 0;
     while(n < par1.length) {
-        preturner[n] = par1[n] + par2[n];
+        preturner.push(par1[n] + par2[n]);
         n += 1;
     }
     n = 0; document.getElementById("debugger").innerHTML += "preturner = " + preturner + "<br/>";
