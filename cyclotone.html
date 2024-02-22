@@ -8,6 +8,8 @@ body,input,button { font-family: 'Roboto', 'Arial', sans-serif }
 </style>
 <body id="body">
 Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
+<div id="debugger">
+</div>
 <button onclick="factorize(document.getElementById("config_exp").value);">Factorize</button>
 <script>
 var ints = [];
@@ -39,21 +41,21 @@ function add(x,y) { // x + y
     var preturner = [];
     var returner = "";
     eqlength(par1,par2);
-    eqlength(par2,preturner);
-    par2.push(0);
-    par1.push(0);
+    eqlength(par2,preturner); document.getElementById("debugger").innerText += "List length: " + par2.length;
+    par2.push(0); document.getElementById("debugger").innerText += "par2 = " + par2;
+    par1.push(0); document.getElementById("debugger").innerText += "par1 = " + par1;
     preturner.push(0);
     var n = 0;
     while(n < par1.length) {
         preturner[n] = (preturner[n] + par1[n] + par2[n]) % 10;
-        preturner[n + 1] += Math.floor(preturner[n] + par1[n] + par2[n] / 10);
+        preturner[n + 1] = Math.floor(preturner[n] + par1[n] + par2[n] / 10);
         n += 1;
     }
-    n = 0;
+    n = 0; document.getElementById("debugger").innerText += "preturner = " + preturner;
     while(n < preturner.length) {
         returner = preturner[n].toString() + returner;
         n += 1;
-    }
+    } document.getElementById("debugger").innerText += "returner = " + returner;
     return returner;
 }
 alert(add("307693","417583")); // test if add() function is accurate
