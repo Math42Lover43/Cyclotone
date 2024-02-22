@@ -45,7 +45,7 @@ function add(x,y) { // x + y
     preturner.push(0);
     var n = 0;
     while(n < par1.length) {
-        preturner[n] = Math.Mod(preturner[n] + par1[n] + par2[n],10);
+        preturner[n] = (preturner[n] + par1[n] + par2[n]) % 10;
         preturner[n + 1] = Math.floor(preturner[n] + par1[n] + par2[n] / 10);
         n += 1;
     }
