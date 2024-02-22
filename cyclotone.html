@@ -51,7 +51,7 @@ function add(x,y) { // x + y
     var n = 0;
     while(n < par1.length) {
         preturner[n + 1] += Math.floor(preturner[n] / 10);
-	preturner[n] = Math.round(preturner[n] / 10);
+	preturner[n] = Math.round(preturner[n] % 10);
         n += 1;
     }
     n = 0; document.getElementById("debugger").innerHTML += "preturner = " + preturner + "<br/>";
