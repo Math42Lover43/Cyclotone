@@ -42,12 +42,11 @@ function add(x,y) { // x + y
     var returner = "";
     eqlength(par1,par2);
     eqlength(par2,preturner); document.getElementById("debugger").innerHTML += "List length: " + par2.length + "<br/>";
-    par2.unshift(0); document.getElementById("debugger").innerHTML += "par2 = " + par2 + "<br/>";
-    par1.unshift(0); document.getElementById("debugger").innerHTML += "par1 = " + par1 + "<br/>";
-    preturner.unshift(0);
+    par2.push(0); document.getElementById("debugger").innerHTML += "par2 = " + par2 + "<br/>";
+    par1.push(0); document.getElementById("debugger").innerHTML += "par1 = " + par1 + "<br/>";
     var n = 0;
     while(n < par1.length) {
-        preturner[n] = (preturner[n] + par1[n] + par2[n]) % 10;
+        preturner[n] += (preturner[n] + par1[n] + par2[n]) % 10;
         preturner[n + 1] = Math.floor(preturner[n] + par1[n] + par2[n] / 10);
         n += 1;
     }
