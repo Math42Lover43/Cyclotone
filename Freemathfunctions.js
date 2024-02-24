@@ -25,6 +25,7 @@ function add(x, y) {
 	var num2 = strtolist(y);
 	var preturner = [];
 	var returner = "";
+	num1.push(0);
 	eqlength(num1,num2); // ensure same length
 	eqlength(num2,preturner);
 	// add corresponding digits
@@ -46,6 +47,9 @@ function add(x, y) {
 	while(n < preturner.length) {
 		returner = preturner[n].toString() + returner;
 		n += 1;
+	}
+	if(returner[0] == "0") {
+		returner = returner.slice(1,returner.length); // remove trailing zero
 	}
 	return returner;
 }
