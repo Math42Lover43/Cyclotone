@@ -71,7 +71,41 @@ function add(x, y) {
 	}
 	return returner;
 }
-alert(add("19","17")); // test if add() function is accurate
+function subt(x, y) {
+	var num1 = strtolist(x);
+	var num2 = strtolist(y);
+	var preturner = [];
+	var returner = "";
+	num1.push(0);
+	eqlength(num1,num2); // ensure same length
+	eqlength(num2,preturner);
+	// subtract corresponding digits
+	var n = 0;
+	while(n < preturner.length) {
+		// add corresponding digits
+		preturner[n] = num1[n] - num2[n];
+		n += 1;
+	}
+	var n = 0; // push
+	while(n < preturner.length) {
+		while(preturner[n] >= 10) {
+			preturner[n] += 10;
+			preturner[n + 1] -= 1;
+		}
+		n += 1;
+	}
+	var n = 0; // finalize sum
+	while(n < preturner.length) {
+		returner = preturner[n].toString() + returner;
+		n += 1;
+	}
+	while(returner[0] == "0") {
+		returner = returner.slice(1,returner.length); // remove trailing zero
+	}
+	return returner;
+}
+alert("19 + 17 = " + add("19","17")); // test if add() function is accurate
+alert("9901 - 558 = " + subt("9901","558")); // test if subt() function is accurate
 </script>
 </body>
 </head>
