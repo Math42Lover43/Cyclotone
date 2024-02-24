@@ -88,7 +88,7 @@ function subt(x, y) {
 	}
 	var n = 0; // push
 	while(n < preturner.length) {
-		while(preturner[n] >= 10) {
+		while(preturner[n] < 0) {
 			preturner[n] += 10;
 			preturner[n + 1] -= 1;
 		}
