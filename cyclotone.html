@@ -67,7 +67,7 @@ function add(x, y) {
 		n += 1;
 	}
 	if(returner[0] == "0") {
-		returner[0] = ""; // remove trailing zero
+		returner = returner.slice(1,returner.length); // remove trailing zero
 	}
 	return returner;
 }
