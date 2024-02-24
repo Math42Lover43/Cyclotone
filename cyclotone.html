@@ -7,6 +7,9 @@
 body,input,button { font-family: 'Roboto', 'Arial', sans-serif }
 </style>
 <body id="body">
+<noscript>
+	Warning: The calculator will not work with JavaScript disabled.
+</noscript>
 Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <div id="debugger">
 </div>
@@ -36,16 +39,33 @@ function eqlength(l1,l2) {
     }
 }
 function add(x, y) {
-	var num1 = strtolist(x);
+	var num1 = strtolist("0" + x);
 	var num2 = strtolist(y);
-	var returner = [];
+	var preturner = [];
+	var returner = "";
 	eqlength(num1,num2); // ensure same length
-	eqlength(num2,returner);
+	eqlength(num2,preturner);
 	// add corresponding digits
 	var n = 0;
-	while(n < num1.length) {
+	while(n < preturner.length) {
 		// add corresponding digits
+		preturner[n] = num1[n] + num2[n];
+		n += 1;
 	}
+	var n = 0; // push
+	while(n < preturner.length) {
+		while(preturner[n] >= 10) {
+			preturner[n] -= 10;
+			preturner[n + 1] += 1;
+		}
+		n += 1;
+	}
+	var n = 0; // finalize sum
+	while(n < preturner.length) {
+		returner = preturner[n] + returner;
+		n += 1;
+	}
+	return returner;
 }
 alert(add("19","17)); // test if add() function is accurate
 </script>
