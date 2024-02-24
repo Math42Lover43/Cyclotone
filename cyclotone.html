@@ -15,6 +15,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </div>
 <button onclick="factorize(document.getElementById("config_exp").value);">Factorize</button>
 <script>
+var ints = [];
 // input numbers as strings for ease
 function strtolist(num) { // convert a number string into a list of numbers
     var n = 0;
@@ -70,7 +71,6 @@ function add(x, y) {
 	}
 	return returner;
 }
-var ints = [];
 alert(add("19","17")); // test if add() function is accurate
 </script>
 </body>
