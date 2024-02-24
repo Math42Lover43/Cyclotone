@@ -3,7 +3,7 @@ function strtolist(num) { // convert a number string into a list of numbers
     var n = 0;
     var returner = [];
     while (n < num.length) {
-        returner.push(Number(num[n]));
+        returner.unshift(Number(num[n]));
 	    n += 1;
     }
     return returner;
@@ -20,27 +20,32 @@ function eqlength(l1,l2) {
         }
     }
 }
-function add(x,y) { // x + y
-    var par1 = strtolist(x);
-    var par2 = strtolist(y);
-    var preturner = [];
-    var returner = "";
-    eqlength(par1,par2);
-    eqlength(par2,preturner);
-    par2.push(0);
-    par1.push(0);
-    preturner.push(0);
-    var n = 0;
-    while(n < par1.length) {
-        preturner[n] = (preturner[n] + par1[n] + par2[n]) % 10;
-        preturner[n + 1] = Math.floor(preturner[n] + par1[n] + par2[n] / 10);
-        n += 1;
-    }
-    n = 0;
-    while(n < preturner.length) {
-        returner = preturner[n].toString() + returner;
-        n += 1;
-    }
-    return returner;
+function add(x, y) {
+	var num1 = strtolist(x);
+	var num2 = strtolist(y);
+	var preturner = [];
+	var returner = "";
+	eqlength(num1,num2); // ensure same length
+	eqlength(num2,preturner);
+	// add corresponding digits
+	var n = 0;
+	while(n < preturner.length) {
+		// add corresponding digits
+		preturner[n] = num1[n] + num2[n];
+		n += 1;
+	}
+	var n = 0; // push
+	while(n < preturner.length) {
+		while(preturner[n] >= 10) {
+			preturner[n] -= 10;
+			preturner[n + 1] += 1;
+		}
+		n += 1;
+	}
+	var n = 0; // finalize sum
+	while(n < preturner.length) {
+		returner = preturner[n].toString() + returner;
+		n += 1;
+	}
+	return returner;
 }
-alert(add("307693","417583")); // test if add() function is accurate
