@@ -39,8 +39,8 @@ function eqlength(l1,l2) {
     }
 }
 function add(x, y) {
-	var num1 = strtolist("0" + x);
-	var num2 = strtolist("0" + y);
+	var num1 = strtolist(x);
+	var num2 = strtolist("00" + y);
 	var preturner = [];
 	var returner = "";
 	eqlength(num1,num2); // ensure same length
