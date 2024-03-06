@@ -17,11 +17,15 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <script>
 var ints = [];
 // input numbers as strings for ease
-function strtolist(num) { // convert a number string into a list of numbers
+function strtolist(num, rev) { // convert a number string into a list of numbers
     var n = 0;
     var returner = [];
     while (n < num.length) {
-        returner.unshift(Number(num[n]));
+        if (rev == true) {
+			returner.push(Number(num[n]));
+		} else {
+			returner.unshift(Number(num[n]));
+		}
 	    n += 1;
     }
     return returner;
@@ -39,8 +43,8 @@ function eqlength(l1,l2) {
     }
 }
 function add(x, y) {
-	var num1 = strtolist(x);
-	var num2 = strtolist(y);
+	var num1 = strtolist(x,false);
+	var num2 = strtolist(y,false);
 	var preturner = [];
 	var returner = "";
 	num1.push(0);
@@ -72,8 +76,8 @@ function add(x, y) {
 	return returner;
 }
 function subt(x, y) {
-	var num1 = strtolist(x);
-	var num2 = strtolist(y);
+	var num1 = strtolist(x,false);
+	var num2 = strtolist(y,false);
 	var preturner = [];
 	var returner = "";
 	num1.push(0);
@@ -104,8 +108,47 @@ function subt(x, y) {
 	}
 	return returner;
 }
+function comp(x,y) {
+	if (x.length > y.length) { return 1; }
+	if (x.length < y.length) { return 2; }
+	if (x.length == y.length) {
+		var n = 0;
+		while (Number(x[n]) == Number(y[n])) {
+			n += 1;
+			if (n = x.length) {
+				return 0;
+			}
+		}
+		if (Number(x[n]) > Number(y[n])) { return 1; }
+		if (Number(x[n]) < Number(y[n])) { return 2; }
+		if (Number(x[n]) == Number(y[n])) { return 0; }
+	}
+}
+function rdiv(x,y) {
+	var num1 = strtolist(x,true);
+	var num2 = y;
+	var preturner = [];
+	var returner = {"quotient":"","modulo":""};
+	eqlength(num1,num2); // ensure same length
+	eqlength(num2,preturner);
+	var n = 0;
+	var carry = "";
+	var k = 0;
+	while(n <= num1.length) {
+		k = 0;
+		carry += num1[n].toString();
+		while(comp(carry,num2) != 2) {
+			carry = subt(carry,num2);
+			k += 1;
+		}
+		returner.quotient += k.toString();
+		returner.modulo = carry;
+		n += 1;
+	}
+}
 alert("19 + 17 = " + add("19","17")); // test if add() function is accurate
 alert("9901 - 558 = " + subt("9901","558")); // test if subt() function is accurate
+alert("91 / 7 = " + rdiv("91","7"));
 </script>
 </body>
 </head>
