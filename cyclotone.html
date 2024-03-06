@@ -126,7 +126,7 @@ function comp(x,y) {
 }
 function rdiv(x,y) {
 	var num1 = strtolist(x,true);
-	var num2 = y;
+	var num2 = strtolist(y,true);
 	var returner = {"quotient":"","modulo":""};
 	eqlength(num1,num2); // ensure same length
 	var n = 0;
