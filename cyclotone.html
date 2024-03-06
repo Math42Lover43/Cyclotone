@@ -134,7 +134,7 @@ function rdiv(x,y) {
 	var k = 0;
 	while(n <= num1.length) {
 		k = 0;
-		carry += num1[n].toString();
+		carry = carry + num1[n].toString();
 		while(comp(carry,num2) != 2) {
 			carry = subt(carry,num2);
 			k += 1;
