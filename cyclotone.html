@@ -127,7 +127,7 @@ function comp(x,y) {
 function rdiv(x,y) {
 	var num1 = strtolist(x,true);
 	var num2 = strtolist(y,true);
-	var returner = {"quotient":"","modulo":""};
+	var returner = {"quotient":[],"modulo":""};
 	eqlength(num1,num2); // ensure same length
 	var n = 0;
 	var carry = "";
@@ -139,7 +139,7 @@ function rdiv(x,y) {
 			carry = subt(carry,num2);
 			k += 1;
 		}
-		returner.quotient += k.toString();
+		returner.quotient.push(k);
 		returner.modulo = carry;
 		n += 1;
 	}
