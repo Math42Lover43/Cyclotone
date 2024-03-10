@@ -130,23 +130,14 @@ function comp(x,y) {
 	}
 }
 function rdiv(x,y) {
-	var num1 = strtolist(x,false);
+	var num1 = x;
 	var num2 = y;
-	var returner = {"quotient":"","modulo":""};
-	var n = 0;
-	var k = 0;
-	while(n <= num1.length) {
-		k = 0;
-		num1[0] = num1[0].toString();
-		while(!subt(num1[0],num2).includes("-")) {
-			num1[0] = subt(num1[0],num2);
-			k += 1;
-		}
-		returner.quotient += k;
-		returner.modulo = num1[0];
-		num1[1] = num1[0] + num1[1].toString();
+	var k = "0";
+	while(comp(num1,num2) != "2") {
+		num1 = subt(num1,num2);
+		k = add(k,"1");
 	}
-	return returner;
+	return {"quotient":k,"modulo":num1};
 }
 alert("19 + 17 = " + add("19","17")); // test if add() function is accurate
 alert("9901 - 558 = " + subt("9901","558")); // test if subt() function is accurate
