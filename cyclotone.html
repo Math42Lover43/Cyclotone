@@ -34,10 +34,22 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function mod(x,y) {
 		return (BigInt(x) % BigInt(y)).toString();
 	}
+	function factor(x) {
+		var factorlist = [];
+		var divisor = "1";
+		while (mult(divisor.length.toString(),"2") <= x.length.toString()) {
+			if (mod(x,divisor) == "0" && !factorlist.includes(divisor)) {
+				factorlist.unshift(divisor);
+				factorlist.push(div(x,divisor));
+			}
+			divisor = add(divisor,"1");
+		}
+		return factorlist;
+	}
 	function cyclotomics(x) {
 		ints.push({"num":div("9","1"),"periods":[div("1","1")]});
 		if (x != "1") {
-			ints.push({"num":div(power("10",x),"9"),"periods":[div(x,"1")]});
+			ints.push({"num":div(power("10",x),"9"),"periods":factor(x.toString())});
 		}
 	}
 	function factorize(x) {
