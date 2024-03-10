@@ -37,7 +37,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function factor(x) {
 		var factorlist = [];
 		var divisor = "1";
-		while (mult(divisor.length.toString(),"2") <= x.length.toString()) {
+		while (!subt(x.length.toString(),mult(divisor.length.toString(),"2")).includes("-")) {
 			if (mod(x,divisor) == "0" && !factorlist.includes(divisor)) {
 				factorlist.unshift(divisor);
 				factorlist.push(div(x,divisor));
