@@ -31,14 +31,19 @@ function strtolist(num, rev) { // convert a number string into a list of numbers
     return returner;
 }
 function eqlength(l1,l2) {
+	var add = [];
     if(l1.length < l2.length) {
         while(l1.length < l2.length){
-            l1.push(0);
+            add = l1;
+			add.push(0);
+			l1 = add;
         }
     }
     if(l2.length < l1.length) {
         while(l2.length < l1.length){
-            l2.push(0);
+            add = l2;
+			add.push(0);
+			l2 = add;
         }
     }
 }
