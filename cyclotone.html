@@ -141,7 +141,7 @@ function rdiv(x,y) {
 	var num1 = x;
 	var num2 = y;
 	var k = "0";
-	while(comp(num1,num2) != "2") {
+	while(!subt(num1,num2).includes("N")) {
 		num1 = subt(num1,num2);
 		k = add(k,"1");
 	}
