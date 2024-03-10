@@ -126,7 +126,15 @@ function comp(x,y) {
 		}
 		if (Number(x[n]) > Number(y[n])) { return 1; }
 		if (Number(x[n]) < Number(y[n])) { return 2; }
-		if (Number(x[n]) == Number(y[n])) { return 0; }
+		if (Number(x[n]) == Number(y[n])) {
+			if(subt(Number(x[n]),Number(y[n])).includes("-")) {
+				return 2
+			}
+			if(subt(Number(x[n]),Number(y[n])) != "0" && !subt(Number(x[n]),Number(y[n])).includes("-")) {
+				return 1;
+			}
+			return 0;
+		}
 	}
 }
 function rdiv(x,y) {
