@@ -35,9 +35,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return (BigInt(x) % BigInt(y)).toString();
 	}
 	function cyclotomics(x) {
-		ints.push({"num":BigInt("9").toString(),"periods":[BigInt("1").toString()]});
+		ints.push({"num":div("9","1"),"periods":[div("1","1")]});
 		if (x != "1") {
-			ints.push({"num":div(power("10",x),"9"),"periods":[BigInt(x).toString()]});
+			ints.push({"num":div(power("10",x),"9"),"periods":[div(x,"1")]});
 		}
 	}
 	function factorize(x) {
