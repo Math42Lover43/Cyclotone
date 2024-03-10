@@ -125,28 +125,28 @@ function comp(x,y) {
 	}
 }
 function rdiv(x,y) {
-	var num1 = strtolist(x,true);
-	var num2 = strtolist(y,true);
-	var returner = {"quotient":[],"modulo":""};
+	var num1 = strtolist(x,false);
+	var num2 = y;
+	var returner = {"quotient":"","modulo":""};
 	eqlength(num1,num2); // ensure same length
 	var n = 0;
-	var carry = "";
 	var k = 0;
 	while(n <= num1.length) {
 		k = 0;
-		carry += num1[n];
-		while(comp(carry,num2) != 2) {
-			carry = subt(carry,num2);
+		num1[0] = num1[0].toString();
+		while(!subt(num1[0],num2).includes("-")) {
+			num1[0] = subt(num1[0],num2);
 			k += 1;
 		}
-		returner.quotient.push(k);
-		returner.modulo = carry;
-		n += 1;
+		returner.quotient += k;
+		returner.modulo = num1[0];
+		num1[1] = num1[0] + num1[1].toString();
 	}
 	return returner;
 }
 alert("19 + 17 = " + add("19","17")); // test if add() function is accurate
 alert("9901 - 558 = " + subt("9901","558")); // test if subt() function is accurate
+alert("91 / 7 = " + rdiv("91","7").quotient);
 </script>
 </body>
 </head>
