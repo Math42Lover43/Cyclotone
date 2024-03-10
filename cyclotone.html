@@ -14,11 +14,24 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <div id="debugger">
 </div>
 <button onclick="factorize(document.getElementById("config_exp").value);">Factorize</button>
-<script src="bigint.js"></script>
 <script>
-var ints = [];
-alert("19 + 17 = " + select({19,"+",17})); // test if add() function is accurate
-alert("9901 - 558 = " + select({9901,"-",558})); // test if subt() function is accurate
+	var ints = [];
+	function add(x,y) {
+		return (BigInt(x) + BigInt(y)).toString();
+	}
+	function subt(x,y) {
+		return (BigInt(x) - BigInt(y)).toString();
+	}
+	function mult(x,y) {
+		return (BigInt(x) * BigInt(y)).toString();
+	}
+	function div(x,y) {
+		return (BigInt(x) / BigInt(y)).toString();
+	}
+	function mod(x,y) {
+		return (BigInt(x) % BigInt(y)).toString();
+	}
+	alert(div("6369426751592356687898089171974522292993630573248407643312101910828025477707","6397")); // test if subt() function is accurate
 </script>
 </body>
 </head>
