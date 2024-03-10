@@ -17,8 +17,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <script src="bigint.js"></script>
 <script>
 var ints = [];
-alert("19 + 17 = " + add("19","17")); // test if add() function is accurate
-alert("9901 - 558 = " + subt("9901","558")); // test if subt() function is accurate
+alert("19 + 17 = " + select({19,"+",17})); // test if add() function is accurate
+alert("9901 - 558 = " + select({9901,"-",558})); // test if subt() function is accurate
 </script>
 </body>
 </head>
