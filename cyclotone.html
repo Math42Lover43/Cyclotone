@@ -36,15 +36,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function factor(x) {
 		var factorlist = [];
-		var divisor = "1";
-		while (!subt(x.length.toString(),mult(divisor.length.toString(),"2")).includes("-")) {
-			if (mod(x,divisor) == "0" && !factorlist.includes(divisor)) {
-				factorlist.unshift(divisor);
-				factorlist.push(div(x,divisor));
-			}
-			divisor = add(divisor,"1");
+		var i = "1";
+		while(i <= x) {
+    		if (mod(x,i) == "0") {
+     			factorlist.push(i);
+    		}
+			i = add(i,"1");
 		}
-		return factorlist;
 	}
 	function cyclotomics(x) {
 		ints.push({"num":div("9","1"),"periods":[div("1","1")]});
