@@ -34,10 +34,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function mod(x,y) {
 		return (BigInt(x) % BigInt(y)).toString();
 	}
+	function lt(x,y) {
+		return (BigInt(x) < BigInt(y)).toString();
+	}
 	function factor(x) {
 		var factorlist = [];
 		var i = "1";
-		while(i <= x) {
+		while(!(x < i)) {
     		if (mod(x,i) == "0") {
      			factorlist.push(i);
     		}
