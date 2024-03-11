@@ -41,7 +41,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var factorlist = [];
 		var i = 1;
 		while(i <= x) {
-     			factorlist.push([i,x%i]);
+			if(x % i == 0) {
+				factorlist.push(i);
+			}
 			i += 1;
 		}
 		return factorlist;
