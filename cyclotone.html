@@ -39,14 +39,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function factor(x) {
 		var factorlist = [];
-		var i = "1";
-		while(!lt(x,i)) {
-			alert(lt(x,i));
-			alert(mod(x,i));
-    		if (mod(x,i) == "0") {
-     			factorlist.push(i);
-    		}
-			i = add(i,"1");
+		var i = 1;
+		while(i < x) {
+    			if (x % i == 0) {
+     				factorlist.push(i);
+    			}
+			i += 1;
 		}
 	}
 	function cyclotomics(x) {
