@@ -41,8 +41,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var poly = "0";
 		var k = "0"
 		while(lt(k,n.length.toString())) {
-			poly = plus(poly,mult(n[k.toString()],power(t,k)));
-			k = plus(k,"1");
+			poly = add(poly,mult(n[k.toString()],power(t,k)));
+			k = add(k,"1");
 		}
 		return poly;
 	}
@@ -51,7 +51,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var i = "1";
 		while(!lt(x,i)) {
 			if(mod(x,i) == "0" && !factorlist.includes(i)) {
-				factorlist.push(mult(i,plus("1",mod(x,i))));
+				factorlist.push(mult(i,add("1",mod(x,i))));
 			}
 			i = add(i,"1");
 		}
@@ -72,13 +72,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(!lt(limit,xx)) {
 			n = "0";
 			while(lt(n,linears.length.toString())) {
-				while(mod(ints[Number(subt(ints.length().toString,"1"))],plus(mult(linears[Number(n)],xx),"1")) == "0") { // mitigates powers
-					ints[Number(subt(ints.length().toString,"1"))] = div(ints[Number(subt(ints.length().toString,"1"))],plus(mult(linears[n.toString()],xx),"1"));
-					ints.unshift(plus(mult(linears[Number(n)],xx),"1"));
+				while(mod(ints[Number(subt(ints.length().toString,"1"))],add(mult(linears[Number(n)],xx),"1")) == "0") { // mitigates powers
+					ints[Number(subt(ints.length().toString,"1"))] = div(ints[Number(subt(ints.length().toString,"1"))],add(mult(linears[n.toString()],xx),"1"));
+					ints.unshift(add(mult(linears[Number(n)],xx),"1"));
 				}
-				n = plus(n,"1");
+				n = add(n,"1");
 			}
-			xx = plus(xx,"1");
+			xx = add(xx,"1");
 		}
 	}
 	factorize(5);
