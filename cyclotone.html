@@ -70,11 +70,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var xx = "1";
 		var n = "0";
 		while(!lt(limit,xx)) {
-			n = "0"
+			n = "0";
 			while(lt(n,linears.length.toString())) {
-				while(mod(ints[subt(ints.length(),"1")],plus(mult(linears[n.toString()],xx),"1")) == "0") { // mitigates powers
-					ints[subt(ints.length(),"1")] = div(ints[subt(ints.length(),"1")],plus(mult(linears[n.toString()],xx),"1"));
-					ints.unshift(plus(mult(linears[n.toString()],xx),"1"));
+				while(mod(ints[Number(subt(ints.length().toString,"1"))],plus(mult(linears[Number(n)],xx),"1")) == "0") { // mitigates powers
+					ints[Number(subt(ints.length().toString,"1"))] = div(ints[Number(subt(ints.length().toString,"1"))],plus(mult(linears[n.toString()],xx),"1"));
+					ints.unshift(plus(mult(linears[Number(n)],xx),"1"));
 				}
 				n = plus(n,"1");
 			}
