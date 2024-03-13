@@ -37,12 +37,21 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function lt(x,y) {
 		return (BigInt(x) < BigInt(y));
 	}
-	function factor(x) {
+	function polysubst(n,t) {
+		var poly = "0";
+		var k = "0"
+		while(lt(k,n.length.toString()) {
+			poly = plus(poly,mult(n[k.toString()],power(t,k)));
+			k = plus(k,"1");
+		}
+		return poly;
+	}
+	function factord(x) {
 		var factorlist = [];
 		var i = "1";
 		while(!lt(x,i)) {
-			if(mod(x,i) == "0") {
-				factorlist.push(i);
+			if(mod(x,i) == "0" && !factorlist.includes(i)) {
+				factorlist.push(mult(i,plus("1",mod(x,i))));
 			}
 			i = add(i,"1");
 		}
@@ -55,7 +64,22 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function factorize(x) {
-		cyclotomics(x.toString());
+		ints = [subt(power("10",x.toString()),"1")];
+		var linears = factord(x.toString());
+		var limit = poly(["2","6","2","1"],x.toString());
+		var xx = "1";
+		var n = "0";
+		while(!lt(limit,xx)) {
+			n = "0"
+			while(lt(n,linears.length.toString())) {
+				while(mod(ints[subt(ints.length(),"1")],plus(mult(linears[n.toString()],xx),"1")) == "0") { // mitigates powers
+					ints[subt(ints.length(),"1")] = div(ints[subt(ints.length(),"1")],plus(mult(linears[n.toString()],xx),"1"));
+					ints.unshift(plus(mult(linears[n.toString()],xx),"1"));
+				}
+				n = plus(n,"1");
+			}
+			xx = plus(xx,"1");
+		}
 	}
 	factorize(5);
 </script>
