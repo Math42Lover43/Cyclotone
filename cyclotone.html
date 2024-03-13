@@ -40,7 +40,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function polysubst(n,t) {
 		var poly = "0";
 		var k = "0"
-		while(lt(k,n.length.toString()) {
+		while(lt(k,n.length.toString())) {
 			poly = plus(poly,mult(n[k.toString()],power(t,k)));
 			k = plus(k,"1");
 		}
@@ -66,7 +66,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function factorize(x) {
 		ints = [subt(power("10",x.toString()),"1")];
 		var linears = factord(x.toString());
-		var limit = poly(["2","6","2","1"],x.toString());
+		var limit = polysubst(["2","6","2","1"],x.toString());
 		var xx = "1";
 		var n = "0";
 		while(!lt(limit,xx)) {
