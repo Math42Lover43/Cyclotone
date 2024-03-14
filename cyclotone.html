@@ -16,6 +16,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <button onclick="factorize(document.getElementById("config_exp").value);">Factorize</button>
 <script>
 	var ints = [];
+	var numbers = "1";
 	function add(x,y) {
 		return (BigInt(x) + BigInt(y)).toString();
 	}
@@ -65,6 +66,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function factorize(x) {
 		ints = [subt(power("10",x.toString()),"1")];
+		numbers = "0";
 		var linears = factord(x.toString());
 		var limit = polysubst(["2","6","2","1"],x.toString());
 		var xx = "1";
@@ -72,9 +74,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(!lt(limit,xx)) {
 			n = "0";
 			while(lt(n,linears.length.toString())) {
-				while(mod(ints[Number(subt(ints.length().toString,"1"))],add(mult(linears[Number(n)],xx),"1")) == "0") { // mitigates powers
-					ints[Number(subt(ints.length().toString,"1"))] = div(ints[Number(subt(ints.length().toString,"1"))],add(mult(linears[n.toString()],xx),"1"));
+				while(mod(ints[Number(numbers)],add(mult(linears[Number(n)],xx),"1")) == "0") { // mitigates powers
+					ints[Number(subt(numbers.toString,"1"))] = div(ints[Number(subt(numbers.toString,"1"))],add(mult(linears[n.toString()],xx),"1"));
 					ints.unshift(add(mult(linears[Number(n)],xx),"1"));
+					numbers = add(numbers,"1");
 				}
 				n = add(n,"1");
 			}
