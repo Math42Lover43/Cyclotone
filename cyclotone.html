@@ -56,7 +56,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var factorlist = [];
 		var i = "1";
 		while(!lt(x,i)) {
-			if(mod(x,i) == "0" && !factorlist.includes(i)) {
+			if(BigInt(x) % BigInt(i) == 0 && !factorlist.includes(i)) {
 				factorlist.push(mult(i,add("1",mod(x,"2"))));
 			}
 			i = add(i,"1");
