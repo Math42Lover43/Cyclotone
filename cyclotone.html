@@ -38,7 +38,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return (BigInt(x) ** BigInt(y)).toString();
 	}
 	function mod(x,y) {
-		return (BigInt(x) - BigInt(x) / BigInt(y)).toString();
+		return (BigInt(x) % BigInt(y)).toString();
 	}
 	function lt(x,y) {
 		return (BigInt(x) < BigInt(y));
@@ -57,7 +57,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var i = "1";
 		while(!lt(x,i)) {
 			if(mod(x,i) == "0" && !factorlist.includes(i)) {
-				factorlist.push(mult(i,add("1",mod(x,i))));
+				factorlist.push(mult(i,add("1",mod(x,"2"))));
 			}
 			i = add(i,"1");
 		}
