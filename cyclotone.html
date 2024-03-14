@@ -38,12 +38,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return (BigInt(x) ** BigInt(y)).toString();
 	}
 	function mod(x,y) {
-		if(y == "0") {
-			return BigInt(x).toString();
-		}
-		else {
-			return (BigInt(x) % BigInt(y)).toString();
-		}
+		return (BigInt(x) - BigInt(x) / BigInt(y)).toString();
 	}
 	function lt(x,y) {
 		return (BigInt(x) < BigInt(y));
