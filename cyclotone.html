@@ -27,7 +27,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return (BigInt(x) * BigInt(y)).toString();
 	}
 	function div(x,y) {
-		return (BigInt(x) / BigInt(y)).toString();
+		return (BigInt(x) / BigInt(y + y == "0")).toString();
 	}
 	function power(x,y) {
 		return (BigInt(x) ** BigInt(y)).toString();
