@@ -11,7 +11,7 @@ body,input,button { font-family: 'Roboto', 'Arial', sans-serif }
 	Warning: The calculator will not work with JavaScript disabled.
 </noscript>
 Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
-<div id="debugger">
+<div id="factorization">
 </div>
 <button onclick="factorize(document.getElementById("config_exp").value);">Factorize</button>
 <script>
@@ -69,9 +69,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			ints.push({"num":div(power("10",x),"9"),"periods":factor(x.toString())});
 		}
 	}
+	function update() {
+		var factorization = ""
+		document.getElementById("factorization") = 
+	}
 	function factorize(x) {
 		var midtrialfactor = [];
-		var midfactorintcount = "0";
+		var midfactorintcount = BigInt(0);
 		ints = [BigInt(10 ** x - 1).toString()];
 		numbers = BigInt(0);
 		var lastmidmanip = false;
@@ -81,10 +85,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		var limit = polysubst(["2","6","2","1"],x.toString());
 		var xx = BigInt(1);
-		var n = 0;
+		var n = BigInt(0);
 		while(!lt(limit,xx)) {
 			n = BigInt(0);
-			while(lt(n,linears.length.toString())) {
+			while(n < BigInt(linears.length))) {
 				while((BigInt(ints[Number(numbers)]) % BigInt(BigInt(linears[Number(n)]) * xx + BigInt(1))).toString() == "0") { // mitigates powers
 					ints[Number(numbers)] = BigInt((BigInt(ints[Number(numbers)]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)))).toString();
 					ints.unshift((BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)).toString());
