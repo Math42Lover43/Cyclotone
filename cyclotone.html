@@ -57,7 +57,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var i = BigInt(1);
 		while(i <= BigInt(x)) {
 			if(BigInt(x) % i == BigInt(0) && !factorlist.includes(BigInt(i))) {
-				factorlist.push(i * (BigInt(1) + i % BigInt(2)));
+				factorlist.push(BigInt(i * (BigInt(1) + i % BigInt(2))));
 			}
 			i += BigInt(1);
 		}
@@ -72,7 +72,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function factorize(x) {
 		var midtrialfactor = [];
 		var midfactorintcount = "0";
-		ints = [BigInt(10 ** x - 1)];
+		ints = [BigInt(10 ** x - 1).toString()];
 		numbers = BigInt(1);
 		var lastmidmanip = false;
 		var linears = factord(BigInt(x));
@@ -85,14 +85,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(!lt(limit,xx)) {
 			n = BigInt(0);
 			while(lt(n,linears.length.toString())) {
-				while((ints[Number(numbers)] % (linears[Number(n)] * xx + BigInt(1))).toString() == "0") { // mitigates powers
-					ints[Number(numbers)] = (BigInt(ints[Number(numbers)]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1))).toString();
+				while((BigInt(ints[Number(numbers)]) % BigInt(BigInt(linears[Number(n)]) * xx + BigInt(1))).toString() == "0") { // mitigates powers
+					ints[Number(numbers)] = BigInt((BigInt(ints[Number(numbers)]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)))).toString();
 					ints.unshift((BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)).toString());
 					numbers += BigInt(1);
 				}
 				n += BigInt(1);
 			}
-			xx = BigInt(1);
+			xx += BigInt(1);
 		}
 	}
 	factorize(5);
