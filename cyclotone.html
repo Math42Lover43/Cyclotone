@@ -55,8 +55,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function factord(x) {
 		var factorlist = [];
 		var i = BigInt(1);
-		while(i <= x) {
-			if(BigInt(x % i) == BigInt(0) && !factorlist.includes(BigInt(i))) {
+		while(i <= BigInt(x)) {
+			if(BigInt(x) % i == BigInt(0) && !factorlist.includes(BigInt(i))) {
 				factorlist.push(i * (BigInt(1) + i % BigInt(2)));
 			}
 			i += BigInt(1);
