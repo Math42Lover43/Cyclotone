@@ -34,6 +34,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			return (BigInt(x) / BigInt(y)).toString();
 		}
 	}
+	function mod(x,y) {
+		return BigInt(x) % BigInt(y);
+	}
 	function power(x,y) {
 		return (BigInt(x) ** BigInt(y)).toString();
 	}
@@ -53,8 +56,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var factorlist = [];
 		var i = "1";
 		while(!lt(x,i)) {
-			if(BigInt(x) % BigInt(i) == 0 && !factorlist.includes(i)) {
-				factorlist.push(mult(i,add("1",(BigInt(x) % BigInt(2)).toString())));
+			if(mod(x,i) == 0 && !factorlist.includes(i)) {
+				factorlist.push(mult(i,add("1",mod(x,"2").toString())));
 			}
 			i = add(i,"1");
 		}
@@ -83,7 +86,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			n = "0";
 			
 			while(lt(n,linears.length.toString())) {
-				while(mod(ints[Number(numbers)],add(mult(linears[Number(n)],xx),"1")) == "0") { // mitigates powers
+				while(ints[Number(numbers)] % add(mult(linears[Number(n)],xx),"1") == 0) { // mitigates powers
 					ints[Number(numbers)] = div(ints[Number(numbers)],add(mult(linears[n.toString()],xx),"1"));
 					ints.unshift(add(mult(linears[Number(n)],xx),"1"));
 					numbers = add(numbers,"1");
