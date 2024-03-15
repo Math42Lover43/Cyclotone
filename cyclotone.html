@@ -73,27 +73,26 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var midtrialfactor = [];
 		var midfactorintcount = "0";
 		ints = [subt(power("10",x.toString()),"1")];
-		numbers = "1";
+		numbers = BigInt(1);
 		var lastmidmanip = false;
 		var linears = factord(x.toString());
 		while(midtrialfactor.length < linears.length) {
 			midtrialfactor.push(subt(power("10",x.toString()),"1"));
 		}
 		var limit = polysubst(["2","6","2","1"],x.toString());
-		var xx = "1";
+		var xx = BigInt(1);
 		var n = 0;
 		while(!lt(limit,xx)) {
-			n = "0";
-			
+			n = BigInt(0);
 			while(lt(n,linears.length.toString())) {
 				while((BigInt(ints[Number(numbers)]) % (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1))).toString() == "0") { // mitigates powers
-					ints[Number(numbers)] = div(ints[Number(numbers)],add(mult(linears[n.toString()],xx),"1"));
-					ints.unshift(add(mult(linears[Number(n)],xx),"1"));
-					numbers = add(numbers,"1");
+					ints[Number(numbers)] = (BigInt(ints[Number(numbers)]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1))).toString();
+					ints.unshift((BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)).toString());
+					numbers += BigInt(1);
 				}
-				n = add(n,"1");
+				n += BigInt(1);
 			}
-			xx = add(xx,"1");
+			xx = BigInt(1);
 		}
 	}
 	factorize(5);
