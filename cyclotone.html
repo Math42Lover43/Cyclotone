@@ -54,12 +54,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function factord(x) {
 		var factorlist = [];
-		var i = "1";
-		while(!lt(x,i)) {
-			if(mod(x,i) == 0 && !factorlist.includes(i)) {
-				factorlist.push(mult(i,add("1",mod(x,"2").toString())));
+		var i = BigInt(1);
+		while(i <= x) {
+			if(BigInt(x % i) == BigInt(0) && !factorlist.includes(BigInt(i))) {
+				factorlist.push(i * (BigInt(1) + i % BigInt(2)));
 			}
-			i = add(i,"1");
+			i += BigInt(1);
 		}
 		return factorlist;
 	}
