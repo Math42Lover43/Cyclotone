@@ -86,7 +86,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			n = "0";
 			
 			while(lt(n,linears.length.toString())) {
-				while((ints[Number(numbers)] % add(mult(linears[Number(n)],xx),"1")).toString() == "0") { // mitigates powers
+				while((BigInt(ints[Number(numbers)]) % (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1))).toString() == "0") { // mitigates powers
 					ints[Number(numbers)] = div(ints[Number(numbers)],add(mult(linears[n.toString()],xx),"1"));
 					ints.unshift(add(mult(linears[Number(n)],xx),"1"));
 					numbers = add(numbers,"1");
