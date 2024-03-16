@@ -96,7 +96,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				while((BigInt(ints[ints.length - 1]) % BigInt(BigInt(linears[Number(n)]) * xx + BigInt(1))).toString() == "0") { // mitigates powers
 					ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)))).toString();
 					ints.unshift((BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)).toString());
-					ints.length += BigInt(1);
 				}
 				n += BigInt(1);
 			}
