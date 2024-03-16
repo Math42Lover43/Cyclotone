@@ -93,7 +93,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(!lt(limit,xx)) {
 			n = BigInt(0);
 			while(n < BigInt(linears.length)) {
-				while((BigInt(ints[Number(ints.length)]) % BigInt(BigInt(linears[Number(n)]) * xx + BigInt(1))).toString() == "0") { // mitigates powers
+				while((BigInt(ints[ints.length - 1]) % BigInt(BigInt(linears[Number(n)]) * xx + BigInt(1))).toString() == "0") { // mitigates powers
 					ints[Number(ints.length)] = BigInt((BigInt(ints[Number(ints.length)]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)))).toString();
 					ints.unshift((BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)).toString());
 					ints.length += BigInt(1);
