@@ -16,7 +16,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <button onclick="factorize(document.getElementById("config_exp").value);">Factorize</button>
 <script>
 	var ints = [];
-	var numbers = "1";
 	function add(x,y) {
 		return (BigInt(x) + BigInt(y));
 	}
@@ -73,7 +72,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function updatemidfactor(t) {
 		var n = BigInt(1);
 		var roots = [BigInt(t)];
-		while(n <= Math.ceil(Math.sqrt(BigInt(t.length)))) {
+		while(n <= Math.ceil(Math.sqrt(t.length))) {
 			n += BigInt(1);
 			roots.push(BigInt(Math.sqrt(roots[roots.length])).toString());
 		}
@@ -81,8 +80,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function factorize(x) {
 		ints = [(BigInt(10) ** BigInt(x.toString()) - BigInt(1)).toString()];
-		numbers = BigInt(0);
-		var midtrialfactor = updatemidfactor(ints[numbers]);
+		var midtrialfactor = updatemidfactor(ints[ints.length]);
 		var midfactorintcount = BigInt(0);
 		var lastmidmanip = false;
 		var linears = factord(BigInt(x));
@@ -95,10 +93,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(!lt(limit,xx)) {
 			n = BigInt(0);
 			while(n < BigInt(linears.length)) {
-				while((BigInt(ints[Number(numbers)]) % BigInt(BigInt(linears[Number(n)]) * xx + BigInt(1))).toString() == "0") { // mitigates powers
-					ints[Number(numbers)] = BigInt((BigInt(ints[Number(numbers)]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)))).toString();
+				while((BigInt(ints[Number(ints.length)]) % BigInt(BigInt(linears[Number(n)]) * xx + BigInt(1))).toString() == "0") { // mitigates powers
+					ints[Number(ints.length)] = BigInt((BigInt(ints[Number(ints.length)]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)))).toString();
 					ints.unshift((BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)).toString());
-					numbers += BigInt(1);
+					ints.length += BigInt(1);
 				}
 				n += BigInt(1);
 			}
