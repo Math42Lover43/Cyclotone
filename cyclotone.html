@@ -58,6 +58,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(i <= BigInt(x)) {
 			if(BigInt(x) % i == BigInt(0) && !factorlist.includes(BigInt(i))) {
 				factorlist.push(BigInt(i * (BigInt(1) + i % BigInt(2))));
+				
 			}
 			i += BigInt(1);
 		}
@@ -67,6 +68,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		ints.push({"num":div("9","1"),"periods":[div("1","1")]});
 		if (x != "1") {
 			ints.push({"num":div(power("10",x),"9"),"periods":factor(x.toString())});
+		}
+	}
+	function update midfactor(t) {
+		var n = BigInt(1);
+		var roots = [];
+		while(n <= Math.ceil(sqrt(BigInt(t.length())))) {
+			n += BigInt(1);
+			roots.push(BigIntRoot(t,n).toString());
 		}
 	}
 	function factorize(x) {
