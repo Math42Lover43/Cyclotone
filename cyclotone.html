@@ -80,7 +80,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function factorize(x) {
 		ints = [(BigInt(10) ** BigInt(x.toString()) - BigInt(1)).toString()];
-		var midtrialfactor = updatemidfactor(ints[ints.length]);
+		var midtrialfactor = updatemidfactor(ints[ints.length - 1]);
 		var midfactorintcount = BigInt(0);
 		var lastmidmanip = false;
 		var linears = factord(BigInt(x));
