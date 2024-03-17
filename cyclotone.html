@@ -73,7 +73,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var roots = [BigInt(t).toString()];
 		var n = BigInt(0);
 		while(n < BigInt(t.toString().length)) {
-			roots.push((Math.floor(BigInt(roots[roots.length - 1]) / 2 / dis) * dis + 1).toString());
+			roots.push((Math.floor(roots[roots.length - 1] / 2 / dis) * dis + 1).toString());
 			n += BigInt(1);
 		}
 		return roots;
