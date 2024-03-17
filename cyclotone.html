@@ -72,7 +72,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function updatemidfactor(t,dis) {
 		var roots = [BigInt(t).toString()];
 		while(roots[roots.length - 1].length > 1) {
-			roots.push(BigInt(BigInt(roots[roots.length - 1]) / BigInt(2) / BigInt(dis) * BigInt(dis) + BigInt(1)).toString());
+			roots.push(BigInt(BigInt(roots[roots.length - 1]) / BigInt(2) / dis * dis + BigInt(1)).toString());
 		}
 		return roots;
 	}
