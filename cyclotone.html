@@ -91,8 +91,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var factored = false;
 		while(!factored) { // By period
 			while((BigInt(ints[ints.length - 1]) % BigInt(BigInt(x) * xx + BigInt(1))).toString() == "0") { // mitigates powers
-				ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / (BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)))).toString();
-				ints.unshift((BigInt(linears[Number(n)]) * BigInt(xx) + BigInt(1)).toString());
+				ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / (BigInt(x) * BigInt(xx) + BigInt(1)))).toString();
+				ints.unshift((BigInt(x) * BigInt(xx) + BigInt(1)).toString());
 				factored = true;
 			}
 			xx += BigInt(1);
