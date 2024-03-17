@@ -69,25 +69,24 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			ints.push({"num":div(power("10",x),"9"),"periods":factor(x.toString())});
 		}
 	}
-	function updatemidfactor(t) {
+	function updatemidfactor(t,dis) {
 		var roots = [BigInt(t).toString()];
 		while(roots[roots.length - 1].length > 1) {
-			roots.push(((BigInt(roots[roots.length - 1]) / BigInt(2) - BigInt(1) + (BigInt(roots[roots.length - 1]) / BigInt(2)) % BigInt(2) - BigInt(2) * BigInt(["1","3"].includes((roots[roots.length - 1].toString())[roots[roots.length - 1].toString().length - 1])))).toString());
+			roots.push(BigInt((roots[roots.length - 1] / BigInt(2)) / BigInt(dis) * BigInt(dis) + BigInt(1)).toString());
 		}
 		return roots;
 	}
 	function factorize(x) {
 		ints = [(BigInt(BigInt(10) ** BigInt(x.toString())) - BigInt(1)).toString()];
-		var midtrialfactor = updatemidfactor(BigInt(ints[ints.length - 1]));
-		var midfactorintcount = BigInt(0);
+		var midtrialfactor = updatemidfactor(BigInt(ints[ints.length - 1],BigInt(x)));
 		var lastmidmanip = false;
 		var linears = factord(BigInt(x));
-		var linear = BigInt(0);
+		var linear = BigInt(0); // mid number
 		while(midtrialfactor.length < linears.length) {
 			midtrialfactor.push(subt(power("10",x.toString()),"1"));
 		}
 		var xx = BigInt(1);
-		var n = BigInt(0);
+		var n = BigInt(0); // subtraction from mid
 		var factored = false;
 		while(!factored) { // By period
 			while((BigInt(ints[ints.length - 1]) % BigInt(BigInt(x) * xx + BigInt(1))).toString() == "0") { // mitigates powers
@@ -95,6 +94,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				ints.unshift((BigInt(x) * BigInt(xx) + BigInt(1)).toString());
 				factored = true;
 			}
+			linear = BigInt(0); // linears
 			xx += BigInt(1);
 		}
 	}
