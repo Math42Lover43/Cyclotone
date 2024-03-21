@@ -73,7 +73,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var roots = [BigInt(ints[BigInt(ints.length) - k])];
 		var n = BigInt(0);
 		var bypassparam = BigInt(ints[BigInt(ints.length) - k]);
-		while(n < BigInt(t.toString().length)) {
+		while(n < BigInt(k.toString().length)) {
 			roots.push(Math.floor(roots[roots.length - 1] / BigInt(2) / bypassparam) * bypassparam + BigInt(1));
 			roots[roots.length - 2] = roots[roots.length - 2].toString();
 			n += BigInt(1);
