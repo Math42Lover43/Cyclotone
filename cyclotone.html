@@ -69,10 +69,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			ints.push({"num":div(power("10",x),"9"),"periods":factor(x.toString())});
 		}
 	}
-	function updatemidfactor() {
-		var roots = [BigInt(ints[BigInt(ints.length) - last])];
+	function updatemidfactor(k) {
+		var roots = [BigInt(ints[BigInt(ints.length) - k])];
 		var n = BigInt(0);
-		var bypassparam = BigInt(ints[BigInt(ints.length) - last]);
+		var bypassparam = BigInt(ints[BigInt(ints.length) - k]);
 		while(n < BigInt(t.toString().length)) {
 			roots.push(Math.floor(roots[roots.length - 1] / BigInt(2) / bypassparam) * bypassparam + BigInt(1));
 			roots[roots.length - 2] = roots[roots.length - 2].toString();
@@ -84,7 +84,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		ints = [(BigInt(BigInt(10) ** BigInt(x.toString())) - BigInt(1)).toString()];
 		var lastmidmanip = false;
 		var last = BigInt(1);
-		var midtrialfactor = updatemidfactor();
+		var midtrialfactor = updatemidfactor(last);
 		var linears = factord(BigInt(x));
 		var linear = BigInt(0); // mid number
 		while(midtrialfactor.length < linears.length) {
