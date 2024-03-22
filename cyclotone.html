@@ -82,7 +82,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return roots;
 	}
 	function factor_out(int) {
-		if((BigInt(ints[ints.length - 1]) % int).toString() == "0") { 
+		while((BigInt(ints[ints.length - 1]) % int).toString() == "0") { 
 			ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / int)).toString();
 			ints.unshift(int.toString());
 			factored = true;
@@ -105,7 +105,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			factor_out(BigInt(BigInt(x) * xx + BigInt(1)));
 			var ii = 0;
 			while(ii < midtrialfactor.length) {
-				factor_out(BigInt(midtrialfactor[i]) - BigInt(xx * n));
+				factor_out(BigInt(midtrialfactor[ii]) - BigInt(xx * n));
 				ii += 1;
 			}
 			linear = BigInt(0); // linears
