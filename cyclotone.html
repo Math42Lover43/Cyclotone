@@ -94,17 +94,18 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var limit = BigInt(x);
 		ints = [(BigInt(BigInt(10) ** BigInt(x.toString())) - BigInt(1)).toString()];
 		var linears = factord(BigInt(x));
-		while(midtrialfactor.length < linears.length) {
-			midtrialfactor.push(subt(power("10",x.toString()),"1"));
-		}
 		var xx = BigInt(1);
 		var n = BigInt(0); // subtraction from mid
 		var lastmidmanip = false;
 		var newprimes = false;
 		var last = BigInt(1);
 		var linear = BigInt(0); // mid number
+		var midtrialfactor = updatemidfactor(last,BigInt(x));
+		while(midtrialfactor.length < linears.length) {
+			midtrialfactor.push(subt(power("10",x.toString()),"1"));
+		}
 		while(xx < limit) { // By period
-			var midtrialfactor = updatemidfactor(last,BigInt(x));
+			midtrialfactor = updatemidfactor(last,BigInt(x));
 			factor_out(BigInt(BigInt(x) * xx + BigInt(1)),false);
 			linear = BigInt(0); // linears
 			while(linear < BigInt(midtrialfactor.length)) {
