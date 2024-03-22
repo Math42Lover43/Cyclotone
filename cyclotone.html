@@ -82,11 +82,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return roots;
 	}
 	function factor_out(int,frommid) {
-		if((BigInt(ints[ints.length - 1]) % int).toString() == "0") { 
-			ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / int)).toString();
-			ints.unshift(int.toString());
-			if(frommid = true) {
-				lastmidmanip = true;
+		if(int.toString = "0") {
+			if((BigInt(ints[ints.length - 1]) % int).toString() == "0") { 
+				ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / int)).toString();
+				ints.unshift(int.toString());
+				if(frommid = true) {
+					lastmidmanip = true;
+				}
 			}
 		}
 	}
