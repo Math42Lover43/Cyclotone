@@ -105,7 +105,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			factor_out(BigInt(BigInt(x) * xx + BigInt(1)));
 			var i = 0;
 			while(i < midtrialfactor.length) {
-				factor_out(BigInt(midtrialfactor[i] - xx * n));
+				factor_out(BigInt(midtrialfactor[i] - BigInt(xx * n)));
 			}
 			linear = BigInt(0); // linears
 			xx += BigInt(1);
