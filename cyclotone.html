@@ -100,8 +100,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		var xx = BigInt(1);
 		var n = BigInt(0); // subtraction from mid
-		var factored = false;
-		while(!factored) { // By period
+		var limit = BigInt(x);
+		while(xx < limit) { // By period
 			factor_out(BigInt(BigInt(x) * xx + BigInt(1)));
 			linear = BigInt(0); // linears
 			xx += BigInt(1);
