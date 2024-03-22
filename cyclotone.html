@@ -82,7 +82,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return roots;
 	}
 	function factor_out(int) {
-		while((BigInt(ints[ints.length - 1]) % int).toString() == "0") { // mitigates powers
+		if((BigInt(ints[ints.length - 1]) % int).toString() == "0") { 
 			ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / int)).toString();
 			ints.unshift(int.toString());
 			factored = true;
