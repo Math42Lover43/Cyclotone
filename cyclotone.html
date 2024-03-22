@@ -103,11 +103,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var factored = false;
 		while(!factored) { // By period
 			factor_out(BigInt(BigInt(x) * xx + BigInt(1)));
-			var ii = 0;
-			while(ii < 1) {
-				factor_out(BigInt(midtrialfactor[ii]) - BigInt(xx * n));
-				ii += 1;
-			}
+			factor_out(BigInt(midtrialfactor[0]) - BigInt(xx * n));
 			linear = BigInt(0); // linears
 			xx += BigInt(1);
 			n += BigInt(1);
