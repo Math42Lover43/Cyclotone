@@ -82,13 +82,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return roots;
 	}
 	function factor_out(int,frommid) {
-		if(int.toString = "0") {
-			if((BigInt(ints[ints.length - 1]) % int).toString() == "0") { 
-				ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / int)).toString();
-				ints.unshift(int.toString());
-				if(frommid = true) {
-					lastmidmanip = true;
-				}
+		if((BigInt(ints[ints.length - 1]) % int).toString() == "0") { 
+			ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / int)).toString();
+			ints.unshift(int.toString());
+			if(frommid = true) {
+				lastmidmanip = true;
 			}
 		}
 	}
@@ -111,7 +109,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			factor_out(BigInt(BigInt(x) * xx + BigInt(1)),false);
 			linear = BigInt(0); // linears
 			while(linear < BigInt(midtrialfactor.length)) {
-				factor_out(BigInt(midtrialfactor[linear]) - n ** xx,true);
+				if(!(BigInt(midtrialfactor[linear]) - n ** xx).toString() == "0") {
+					factor_out(BigInt(midtrialfactor[linear]) - n ** xx,true);
+				}
 				linear += BigInt(1);
 			}
 			xx += BigInt(1);
