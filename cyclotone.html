@@ -101,7 +101,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var last = BigInt(1);
 		var linear = BigInt(0); // mid number
 		var midtrialfactor = updatemidfactor(last,BigInt(x));
-		while(midtrialfactor.length < linears.length) {
+		while(midtrialfactor.length < x) {
 			midtrialfactor.push(subt(power("10",x.toString()),"1"));
 		}
 		while(xx < limit) { // By period
