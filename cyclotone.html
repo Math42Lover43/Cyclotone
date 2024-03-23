@@ -109,7 +109,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			factor_out(BigInt(BigInt(x) * xx * (BigInt(1) + BigInt(x) % BigInt(2)) + BigInt(1)),false);
 			linear = BigInt(0); // linears
 			while(linear < BigInt(midtrialfactor.length) && !(BigInt(midtrialfactor[linear]) - n ** xx).toString() == "0") {
-				factor_out(BigInt(midtrialfactor[linear]) - n ** xx * (BigInt(1) + BigInt(x % BigInt(2))),true);
+				factor_out(BigInt(midtrialfactor[linear]) - n ** xx * (BigInt(1) + BigInt(x) % BigInt(2)),true);
 				linear += BigInt(1);
 			}
 			xx += BigInt(1);
