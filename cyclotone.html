@@ -83,7 +83,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return roots;
 	}
 	function factor_out(int,frommid) {
-		if(BigInt(ints[ints.length - 1]) == BigInt(ints[ints.length - 1]) / (BigInt(int) + BigInt(BigInt(int) == BigInt(0))) * BigInt(int)) { 
+		if(BigInt(ints[ints.length - 1]) == BigInt(ints[ints.length - 1]) / (BigInt(int) + BigInt(BigInt(int) == BigInt(0))) * BigInt(int) && int > BigInt(0)) { 
 			ints[ints.length - 1] = BigInt((BigInt(ints[ints.length - 1]) / int)).toString();
 			ints.unshift(int.toString());
 			if(frommid = true) {
@@ -121,9 +121,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function fullfactorize(x) {
-		fullints = [];
+		fullints = [(BigInt(10) ** BigInt(x) - BigInt(1)).toString()];
+		ints = [];
 		var periods = factor(x);
-		alert(periods);
+		var factorization = BigInt(0);
+		while(factorization < BigInt(periods.length)) {
+			factorize(x);
+		}
 	}
 	factorize(5);
 </script>
