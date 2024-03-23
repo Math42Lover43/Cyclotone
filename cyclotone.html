@@ -16,6 +16,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <button onclick="factorize(document.getElementById("config_exp").value);">Factorize</button>
 <script>
 	var ints = [];
+	var fullints = [];
 	function add(x,y) {
 		return (BigInt(x) + BigInt(y));
 	}
@@ -51,12 +52,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		return poly;
 	}
-	function factord(x) {
+	function factor(x) {
 		var factorlist = [];
 		var i = BigInt(1);
 		while(i <= BigInt(x)) {
 			if(BigInt(x) % i == BigInt(0) && !factorlist.includes(BigInt(i))) {
-				factorlist.push(BigInt(i * (BigInt(1) + i % BigInt(2))));
+				factorlist.push(BigInt(i));
 				
 			}
 			i += BigInt(1);
@@ -93,7 +94,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function factorize(x) {
 		var limit = BigInt(x) * BigInt(2);
 		ints = [(BigInt(BigInt(10) ** BigInt(x.toString())) - BigInt(1)).toString()];
-		var linears = factord(BigInt(x));
 		var xx = BigInt(1);
 		var n = BigInt(0); // subtraction from mid
 		var lastmidmanip = false;
@@ -121,7 +121,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function fullfactorize(x) {
-
+		fullints = [];
+		var periods = factor(x);
+		alert(periods);
 	}
 	factorize(5);
 </script>
