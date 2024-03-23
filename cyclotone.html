@@ -93,7 +93,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function factorize(x) {
 		var limit = BigInt(x) * BigInt(2);
 		ints = [(BigInt(BigInt(10) ** BigInt(x.toString())) - BigInt(1)).toString()];
-		var linears = factor(BigInt(x));
+		var linears = factord(BigInt(x));
 		var xx = BigInt(1);
 		var n = BigInt(0); // subtraction from mid
 		var lastmidmanip = false;
