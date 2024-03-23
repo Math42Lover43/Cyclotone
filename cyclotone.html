@@ -91,9 +91,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function factorize(x) {
-		var limit = BigInt(x);
+		var limit = BigInt(x) * BigInt(2);
 		ints = [(BigInt(BigInt(10) ** BigInt(x.toString())) - BigInt(1)).toString()];
-		var linears = factord(BigInt(x));
+		var linears = factor(BigInt(x));
 		var xx = BigInt(1);
 		var n = BigInt(0); // subtraction from mid
 		var lastmidmanip = false;
@@ -106,10 +106,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		while(xx < limit) { // By period
 			midtrialfactor = updatemidfactor(last,BigInt(x));
-			factor_out(BigInt(BigInt(x) * xx + BigInt(1)),false);
+			factor_out(BigInt(BigInt(x) * xx * (BigInt(1) + BigInt(x % BigInt(2))) + BigInt(1)),false);
 			linear = BigInt(0); // linears
 			while(linear < BigInt(midtrialfactor.length) && !(BigInt(midtrialfactor[linear]) - n ** xx).toString() == "0") {
-				factor_out(BigInt(midtrialfactor[linear]) - n ** xx,true);
+				factor_out(BigInt(midtrialfactor[linear]) - n ** xx * (BigInt(1) + BigInt(x % BigInt(2))),true);
 				linear += BigInt(1);
 			}
 			xx += BigInt(1);
@@ -119,6 +119,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				lastmidmanip = false;
 			}
 		}
+	}
+	function fullfactorize(x) {
+
 	}
 	factorize(5);
 </script>
