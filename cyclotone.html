@@ -91,9 +91,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		}
 	}
-	function factorize(x) {
+	function factorize(x,y) {
 		var limit = BigInt(x) * BigInt(2);
-		ints = [(BigInt(BigInt(10) ** BigInt(x.toString())) - BigInt(1)).toString()];
+		ints = [y.toString()];
 		var xx = BigInt(1);
 		var n = BigInt(0); // subtraction from mid
 		var lastmidmanip = false;
@@ -126,10 +126,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var periods = factor(x);
 		var factorization = BigInt(0);
 		while(factorization < BigInt(periods.length)) {
-			factorize(x);
+			factorize(periods[factorization],fullints[fullints.length]);
+			factorization += 1n;
 		}
 	}
-	factorize(5);
+	factorize(5,BigInt(99999));
 </script>
 </body>
 </head>
