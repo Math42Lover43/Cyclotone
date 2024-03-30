@@ -126,7 +126,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var periods = factor(x);
 		var factorization = BigInt(0);
 		while(factorization < BigInt(periods.length)) {
-			factorize(periods[factorization],fullints[fullints.length]);
+			factorize(periods[factorization],fullints[fullints.length - 1]);
 			factorization += 1n;
 		}
 	}
