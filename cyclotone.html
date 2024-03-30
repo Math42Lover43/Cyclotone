@@ -130,7 +130,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			factorization += 1n;
 			fullints = ints.concat(fullints);
 			var i = 0n;
-			while(i < BigInt(fullints.length) - 1n) {
+			while(i < BigInt(fullints.length) - 2n) {
 				fullints[fullints.length - 1] = fullints[fullints.length - 1] / fullints[i]
 				i += 1n;
 			}
