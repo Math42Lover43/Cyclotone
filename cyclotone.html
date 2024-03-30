@@ -128,7 +128,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(factorization < BigInt(periods.length)) {
 			factorize(periods[factorization],fullints[fullints.length - 1]);
 			factorization += 1n;
-			fullints = fullints.slice(0,fullints.length - 1).concat(ints);
+			fullints = fullints.slice(0,fullints.length - 1).concat(ints.slice(0,ints.length - 1));
 		}
 	}
 	factorize(5,BigInt(99999));
