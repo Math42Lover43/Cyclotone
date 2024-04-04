@@ -91,6 +91,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		}
 	}
+	function cyclotomic(x) {
+		var cycl;
+		if (BigInt(x) % 2n == 0n) {
+			cycl = 10n ** (BigInt(x) / 2n) + 1n;
+		} else {
+			cycl = 10n ** BigInt(x) - 1n;
+		}
+	}
 	function factorize(x,y) {
 		var limit = BigInt(x) * BigInt(2);
 		ints = [y.toString()];
