@@ -91,12 +91,22 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		}
 	}
+	function isPrime(num) {
+    if (BigInt(num) <= 1n) { return false; } // 1 is not prime
+    for (let i = 2n; i * i <= num; i++) {
+        if (BigInt(num) % i === 0n) { return false; }
+    }
+    return true;
+}
 	function cyclotomic(x) {
 		var cycl;
+		var structure;
 		if (BigInt(x) % 2n == 0n) {
-			cycl = 10n ** (BigInt(x) / 2n) + 1n;
+			structure = BigInt(x) / 2n;
+			cycl = 10n ** structure + 1n;
 		} else {
-			cycl = 10n ** BigInt(x) - 1n;
+			structure = BigInt(x);
+			cycl = 10n ** structure - 1n;
 		}
 	}
 	function factorize(x,y) {
