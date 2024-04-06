@@ -117,7 +117,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		for (let n = 3n; n <= x; n++) {
 			if(x % n == 0n && isPrime(n)) {
 				var oldlength = structure.length;
-				for (let k = 0n; k < oldlength) {
+				for (let k = 0n; k < oldlength; k++) {
 					structure.push(structure[k] / n);
 				}
 			}
