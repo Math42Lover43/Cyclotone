@@ -98,16 +98,29 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
     }
     return true;
 }
+	function divan(array,number) {
+		var arr = [];
+		if(typeof array == "number") { return array / number; }
+		for(let n = 0n; n < array.length; n++) {
+			arr.push(array[n] / number);
+		}
+		return arr;
+	}
 	function cyclotomic(x) {
 		var cycl;
 		var structure;
 		if (BigInt(x) % 2n == 0n) {
 			structure = BigInt(x) / 2n;
-			cycl = 10n ** structure + 1n;
+			for (let n = 3n; n ** 2n <= x; n++) {
+				if(x % n == 0 && isPrime(n)) { structure = [structure, divan(structure,n)]; }
+			}
 		} else {
 			structure = BigInt(x);
-			cycl = 10n ** structure - 1n;
+			for (let n = 3n; n ** 2n <= x; n++) {
+				if(x % n == 0 && isPrime(n)) { structure = [structure, divan(structure,n)]; }
+			}
 		}
+		alert(structure);
 	}
 	function factorize(x,y) {
 		var limit = BigInt(x) * BigInt(2);
