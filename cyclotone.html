@@ -100,7 +100,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 }
 	function divan(array,number) {
 		var arr = [];
-		if(typeof array == "number") { return array / number; }
+		if(typeof array == "bigint") { return array / number; }
 		for(let n = 0n; n < array.length; n++) {
 			arr.push(array[n] / BigInt(number));
 		}
