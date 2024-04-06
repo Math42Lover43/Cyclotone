@@ -111,14 +111,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var structure;
 		if (BigInt(x) % 2n == 0n) {
 			structure = BigInt(x) / 2n;
-			for (let n = 3n; n <= x; n++) {
-				if(x % n == 0n && isPrime(n)) { structure = [structure, divan(structure,n)]; }
-			}
 		} else {
 			structure = BigInt(x);
-			for (let n = 3n; n <= x; n++) {
-				if(x % n == 0n && isPrime(n)) { structure = [structure, divan(structure,n)]; }
-			}
+		}
+		for (let n = 3n; n <= x; n++) {
+			if(x % n == 0n && isPrime(n)) { structure.push(x / n); }
 		}
 		alert(structure);
 		return structure;
