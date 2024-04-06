@@ -110,9 +110,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var cycl;
 		var structure;
 		if (BigInt(x) % 2n == 0n) {
-			structure = BigInt(x) / 2n;
+			structure = [BigInt(x) / 2n];
 		} else {
-			structure = BigInt(x);
+			structure = [BigInt(x)];
 		}
 		for (let n = 3n; n <= x; n++) {
 			if(x % n == 0n && isPrime(n)) { structure.push(x / n); }
