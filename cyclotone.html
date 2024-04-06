@@ -112,12 +112,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		if (BigInt(x) % 2n == 0n) {
 			structure = BigInt(x) / 2n;
 			for (let n = 3n; n ** 2n <= x; n++) {
-				if(x % n == 0 && isPrime(n)) { structure = [structure, divan(structure,n)]; }
+				if(x % n == 0n && isPrime(n)) { structure = [structure, divan(structure,n)]; }
 			}
 		} else {
 			structure = BigInt(x);
 			for (let n = 3n; n ** 2n <= x; n++) {
-				if(x % n == 0 && isPrime(n)) { structure = [structure, divan(structure,n)]; }
+				if(x % n == 0n && isPrime(n)) { structure = [structure, divan(structure,n)]; }
 			}
 		}
 		alert(structure);
