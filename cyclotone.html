@@ -115,7 +115,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			structure = [BigInt(x)];
 		}
 		for (let n = 3n; n <= x; n++) {
-			if(x % n == 0n && isPrime(n)) { structure.push(structure[0] / n); }
+			if(x % n == 0n && isPrime(n)) {
+				var oldlength = structure.length;
+				for (let k = 0n; k < oldlength) {
+					structure.push(structure[k] / n);
+				}
+			}
 		}
 		alert(structure);
 		return structure;
