@@ -124,11 +124,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		for (let n = 0n; n <= structure.length; n++) {
 			if (BigInt(x) % 2n == 0n) {
-				structure[n] = 10n ** structure[n] + 1n;
+				structure[n] = 10n ** BigInt(structure[n]) + 1n;
 			} else {
-				structure[n] = 10n ** structure[n] - 1n;
+				structure[n] = 10n ** BigInt(structure[n]) - 1n;
 			}
-			structure[n] = 10n ** structure[n] + 1n;
 		}
 		alert(structure);
 		return structure;
