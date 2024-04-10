@@ -136,7 +136,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				structure[n] = null;
 			}
 		}
-		structure = structure.filter((number) => number === null);
+		structure = structure.filter((number) => number != null);
 		alert(structure);
 		return structure;
 	}
