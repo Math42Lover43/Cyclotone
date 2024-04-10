@@ -141,8 +141,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 			structure = structure.filter((number) => number != null);
 		}
-		alert(structure);
-		return structure;
+		return structure[0];
 	}
 	function factorize(x,y) {
 		var limit = BigInt(x) * BigInt(2);
