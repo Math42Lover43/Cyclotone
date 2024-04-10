@@ -129,16 +129,18 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				structure[n] = 10n ** BigInt(structure[n]) - 1n;
 			}
 		}
-		for (let n = 0n; n < structure.length; n++) {
-			if (n % 2n == 0n) {
-				if(BigInt(structure.length) - n > 1n) {
-					structure[n] = structure[n] / BigInt(structure[n + 1n]);
+		while(structure.length > 1) {
+			for (let n = 0n; n < structure.length; n++) {
+				if (n % 2n == 0n) {
+					if(BigInt(structure.length) - n > 1n) {
+						structure[n] = structure[n] / BigInt(structure[n + 1n]);
+					}
+				} else {
+					structure[n] = null;
 				}
-			} else {
-				structure[n] = null;
 			}
+			structure = structure.filter((number) => number != null);
 		}
-		structure = structure.filter((number) => number != null);
 		alert(structure);
 		return structure;
 	}
