@@ -117,8 +117,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		for (let n = 3n; n <= BigInt(x); n++) {
 			if(BigInt(x) % n == 0n && isPrime(n)) {
 				var oldlength = structure.length;
-				for (let k = 0n; k < oldlength; k++) {
-					structure.push(structure[k] / n);
+				for (let i = 0n; i < oldlength; i++) {
+					structure.push(structure[i] / n);
 				}
 			}
 		}
