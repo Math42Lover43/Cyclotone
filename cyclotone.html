@@ -176,8 +176,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		fullints = [];
 		ints = [];
 		var periods = factor(x);
-		for(let k = 0n, k < periods.length, k++) {
-			fullints.push({"number":cyclotomic(periods[k]),"period_cov":periods[k]});
+		for(let j = 0n, j < periods.length, j++) {
+			fullints.push({"number":cyclotomic(periods[j]),"period_cov":periods[j]});
 		}
 	}
 	factorize(5,BigInt(99999));
