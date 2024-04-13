@@ -178,7 +178,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		ints = [];
 		var periods = factor(x); console.log("periods: " + periods);
 		for(let n = 0n; n < periods.length; n++) {
-			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n]}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length].number);
+			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n]}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
 		}
 	}
 	fullfactorize(5);
