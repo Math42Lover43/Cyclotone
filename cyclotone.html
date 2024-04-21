@@ -17,6 +17,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <script>
 	var ints = [];
 	var fullints = [];
+	var factorizing = false;
 	function add(x,y) {
 		return (BigInt(x) + BigInt(y));
 	}
@@ -180,10 +181,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function realwork() {
 		setInterval(() => {
-			updatestatus();
+			if(factorizing) { updatestatus(); }
 		}, 0)
 	}
 	function fullfactorize(x) {
+		factorizing = true;
 		realwork();
 		console.log("Factorizing 10^" + x.toString() + " - 1:")
 		fullints = [];
