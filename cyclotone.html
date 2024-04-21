@@ -172,7 +172,19 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		}
 	}
+	function updatestatus() {
+		document.getElementById("factors") = fullints[0].number;
+		for(let j = 1n; j < fullints.length; j++) {
+			document.getElementById("factors") += " × " + fullints[j].number;
+		}
+	}
+	function realwork() {
+		setInterval(() => {
+			updatestatus();
+		}, 0)
+	}
 	function fullfactorize(x) {
+		realwork();
 		console.log("Factorizing 10^" + x.toString() + " - 1:")
 		fullints = [];
 		ints = [];
