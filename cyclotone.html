@@ -173,24 +173,38 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		}
 	}
+	function ord(int) {
+		if (int.toString()[int.toString().length - 2] == "1") {
+			return "th";
+		}
+		else if (int.toString()[int.toString().length - 1] == "1") {
+			return "st";
+		}
+		else if (int.toString()[int.toString().length - 1] == "2") {
+			return "nd";
+		}
+		else if (int.toString()[int.toString().length - 1] == "3") {
+			return "rd";
+		}
+		else {
+			return "th";
+		}
+	}
 	function updatestatus() {
 		document.getElementById("factorization").innerHTML = fullints[0].number;
 		for(let j = 1n; j < fullints.length; j++) {
 			document.getElementById("factorization").innerHTML += " × " + fullints[j].number;
 		}
-	}
-	function actual() {
-		
+		document.getElementById("factorization").innerHTML += "<br/><br/><b>Factorizing " + cpolynomial + ord(cpolynomial) + " cyclotomic polynomial</b>";
 	}
 	function realwork() {
 		setInterval(() => {
 			if(factorizing) { updatestatus(); }
 		}, 1000)
-		setInterval(() => {
-			if(factorizing) { actual(); }
-		}, 0)
 	}
+	var cpolynomial;
 	function fullfactorize(x) {
+		cpolynomial = 0;
 		factorizing = true;
 		realwork();
 		console.log("Factorizing 10^" + x.toString() + " - 1:")
@@ -200,6 +214,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		for(let n = 0n; n < periods.length; n++) {
 			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n]}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
 		}
+		var archives = fullints;
 	}
 	fullfactorize(5);
 </script>
