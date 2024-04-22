@@ -199,7 +199,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			document.getElementById("factorization").innerHTML += " × " + fullints[j].number;
 		}
 		document.getElementById("factorization").innerHTML += "<br/><br/><b>Factorizing " + (BigInt(cpolynomial) + 1n).toString() + ord(BigInt(cpolynomial) + 1n) + " cyclotomic polynomial</b>";
-		document.getElementById("factorization").innerHTML += "<br/>Factoring " + graphx + "x<sup>2</sup> + (" + alfa(archives[cpolynomial].period_cov) + " - " + (archives[cpolynomial].period_cov * graphx).toString() + ")x + 1";
+		document.getElementById("factorization").innerHTML += "<br/>Factoring " + graphx + "x<sup>2</sup> + " + (alfa(archives[cpolynomial].period_cov) - archives[cpolynomial].period_cov * graphx).toString() + "x + 1";
 	}
 	function realwork() {
 		setInterval(() => {
