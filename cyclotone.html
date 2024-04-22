@@ -196,7 +196,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			document.getElementById("factorization").innerHTML += " × " + fullints[j].number;
 		}
 		document.getElementById("factorization").innerHTML += "<br/><br/><b>Factorizing " + (BigInt(cpolynomial) + 1n).toString() + ord(BigInt(cpolynomial) + 1n) + " cyclotomic polynomial</b>";
-		document.getElementById("factorization").innerHTML += "<br/>Factoring x<sup>2</sup> + ";
+		document.getElementById("factorization").innerHTML += "<br/>Factoring " + graphx + "x<sup>2</sup> + (" + alfa(archives[cpolynomial].period_cov[0]) + " - " + (archives[cpolynomial].period_cov[0] * graphx).toString() + ")x + 1";
 	}
 	function realwork() {
 		setInterval(() => {
@@ -222,7 +222,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		var archives = fullints;
 		for(let c = 0; c < 1; c++) {
-			graphx = (alfa(archives[cpolynomial].number) - 1n) / (archives[cpolynomial].period_cov + 1n); console.log("x: " + graphx);
+			graphx = (alfa(archives[cpolynomial].period_cov[0]) - 1n) / (archives[cpolynomial].period_cov[0] + 1n); console.log("x: " + graphx);
 		}
 	}
 	fullfactorize(5);
