@@ -190,6 +190,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			return "th";
 		}
 	}
+	function alfa(n) {
+		return (cyclotomic(n) - 1n) / BigInt(n);
+	}
 	function updatestatus() {
 		document.getElementById("factorization").innerHTML = fullints[0].number;
 		for(let j = 1n; j < fullints.length; j++) {
@@ -202,9 +205,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		setInterval(() => {
 			if(factorizing) { updatestatus(); }
 		}, 1000)
-	}
-	function alfa(n) {
-		return (cyclotomic(n) - 1n) / BigInt(n);
 	}
 	var cpolynomial;
 	var graphx;
