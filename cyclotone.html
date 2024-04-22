@@ -208,6 +208,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	var cpolynomial;
 	var graphx;
+	var archives;
 	function fullfactorize(x) {
 		cpolynomial = 0;
 		graphx = 0;
@@ -220,7 +221,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		for(let n = 0n; n < periods.length; n++) {
 			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n]}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
 		}
-		var archives = fullints;
+		archives = fullints;
 		for(let c = 0; c < 1; c++) {
 			graphx = (alfa(archives[cpolynomial].period_cov[0]) - 1n) / (archives[cpolynomial].period_cov[0] + 1n); console.log("x: " + graphx);
 		}
