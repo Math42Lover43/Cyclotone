@@ -224,7 +224,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		archives = fullints;
 		for(let c = 1; c < periods.length; c++) {
-			graphx = (alfa(archives[cpolynomial].period_cov) - 1n) / (archives[cpolynomial].period_cov + 1n); console.log("x: " + graphx);
+			graphx = (alfa(archives[cpolynomial - 1].period_cov) - 1n) / (archives[cpolynomial - 1].period_cov + 1n); console.log("x: " + graphx);
 			cpolynomial += 1;
 		}
 	}
