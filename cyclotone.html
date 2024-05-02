@@ -18,21 +18,31 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var ints = [];
 	var fullints = [];
 	var factorizing = false;
+	var status = null;
 	function bigsqrt(x,t) {
+		status = "Estimating square root of " + x;
 		var radicand = x.toString();
 		var targetlist = [];
+		var root = [];
 		for(let it = 0; it < radicand.length; it++) {
-			targetlist.push(BigInt(radicand[it]));
+			targetlist.push(Number(radicand[it]));
 		}
 		if(targetlist.length % 2 == 0) { // ensure odd length
-			targetlist.unshift(BigInt(1));
-			targetlist[1] -= 10n;
+			targetlist.unshift(1);
+			targetlist[1] -= 10;
 		}
-		while(!targetlist[0] == 1n) { // ensure starting 1
-			targetlist[0] -= 1n;
-			targetlist[1] += 10n;
+		while(!targetlist[0] == 1) { // ensure starting 1
+			targetlist[0] -= 1;
+			targetlist[1] += 10;
 		}
-		return targetlist;
+		var diagonalsum = 0;
+		var ijsum = 2;
+		var initpow = BigInt(Math.floor(radicand.length / 2));
+		for(let u = 0; u < t; u++) {
+			status = "Solving " (u + 1) " × " + (u + 1) + " matrix";
+			root.push()
+		}
+		return root;
 	}
 	function add(x,y) {
 		return (BigInt(x) + BigInt(y));
@@ -214,8 +224,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		for(let j = 1n; j < fullints.length; j++) {
 			document.getElementById("factorization").innerHTML += " × " + fullints[j].number;
 		}
-		document.getElementById("factorization").innerHTML += "<br/><br/><b>Factorizing " + (archives[cpolynomial].period_cov).toString() + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial</b>";
-		document.getElementById("factorization").innerHTML += "<br/>Factoring " + graphx + "x<sup>2</sup> + " + (alfa(archives[cpolynomial].period_cov) - archives[cpolynomial].period_cov * BigInt(graphx)).toString() + "x + 1";
+		document.getElementById("factorization").innerHTML += status;
 	}
 	function realwork() {
 		setInterval(() => {
@@ -243,6 +252,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			graphx = (alfa(archives[cpolynomial - 1].period_cov) - 1n) / (archives[cpolynomial - 1].period_cov + 1n); console.log("x: " + graphx);
 			while(graphx <= (1n - 2n * cyclotomic(periods[c]) - bigsqrt(4n * cyclotomic(periods[c]) - 3)) / (2n * periods[c] ** 2n)) {
 				graphx += 1n;
+				status = "Factoring " + graphx + "x<sup>2</sup> + " + (alfa(archives[cpolynomial].period_cov) - archives[cpolynomial].period_cov * BigInt(graphx)).toString() + "x + 1";
 			}
 			cpolynomial += 1n;
 		}
