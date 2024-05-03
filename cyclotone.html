@@ -254,7 +254,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		archives = fullints;
 		for(let c = 2; c < periods.length; c++) {
 			graphx = (alfa(archives[cpolynomial - 1].period_cov) - 1n) / (archives[cpolynomial - 1].period_cov + 1n); console.log("x: " + graphx);
-			while(graphx <= (1n - 2n * cyclotomic(periods[c]) - bigsqrt(4n * cyclotomic(periods[c]) - 3)) / (2n * periods[c] ** 2n)) {
+			while(graphx <= (1n - 2n * cyclotomic(periods[c]) - bigsqrt(4n * cyclotomic(periods[c]) - 3n)) / (2n * periods[c] ** 2n)) {
 				graphx += 1n;
 				status = "Factoring " + graphx + "x<sup>2</sup> + " + (alfa(archives[cpolynomial].period_cov) - archives[cpolynomial].period_cov * BigInt(graphx)).toString() + "x + 1";
 			}
