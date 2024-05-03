@@ -39,8 +39,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var ijsum = 2;
 		var initpow = BigInt(Math.floor(radicand.length / 2));
 		for(let u = 0; u < t; u++) {
-			status = "Solving " (u + 1) " × " + (u + 1) + " matrix";
-			root.push()
+			status = "Solving " + (u + 1).toString() + " × " + (u + 1).toString() + " matrix";
+			diagonalsum = 0;
+			for(let j = ijsum - 1; j > 0; j--) {
+				diagonalsum += targetlist[j] * targetlist[ijsum - j];
+			}
+			root.push();
 		}
 		return root;
 	}
