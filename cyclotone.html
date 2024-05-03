@@ -228,7 +228,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		for(let j = 1n; j < fullints.length; j++) {
 			document.getElementById("factorization").innerHTML += " × " + fullints[j].number;
 		}
-		document.getElementById("factorization").innerHTML += status;
+		document.getElementById("factorization").innerHTML += "<br/><br/>" + status;
 	}
 	function realwork() {
 		setInterval(() => {
