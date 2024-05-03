@@ -44,7 +44,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			for(let j = ijsum - 1; j > 0; j--) {
 				diagonalsum += targetlist[j] * targetlist[ijsum - j];
 			}
-			root.push();
+			root.push((targetlist[u] - diagsum) / 2);
+			ijsum += 1;
 		}
 		return root;
 	}
