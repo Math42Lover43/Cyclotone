@@ -243,7 +243,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		archives = fullints;
 		for(let c = 2; c < periods.length; c++) {
 			graphx = 1;
-			while(graphx <= 100n) / (2n * periods[c] ** 2n)) {
+			while(graphx <= 100n) {
 				graphx += 1n;
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic";
 				if((alfa(archives[cpolynomial].period_cov) - graphx) % (archives[cpolynomial].period_cov * graphx + 1) == 0n) {
