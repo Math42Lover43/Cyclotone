@@ -246,8 +246,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			while(graphx <= 100n) / (2n * periods[c] ** 2n)) {
 				graphx += 1n;
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic";
-				if((alfa(archives[cpolynomial].period_cov) - graphx) % (archives[cpolynomial].period_cov * graphx + 1) == 0) {
-					console.log((alfa(archives[cpolynomial].period_cov) - graphx) / (archives[cpolynomial].period_cov * graphx + 1) * BigInt(archives[cpolynomial].period_cov) + 1n);
+				if((alfa(archives[cpolynomial].period_cov) - graphx) % (archives[cpolynomial].period_cov * graphx + 1) == 0n) {
+					console.log((alfa(archives[cpolynomial].period_cov) - graphx) / (archives[cpolynomial].period_cov * graphx + 1n) * BigInt(archives[cpolynomial].period_cov) + 1n);
 				}
 			}
 			cpolynomial += 1;
