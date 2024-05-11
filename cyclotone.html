@@ -244,9 +244,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		archives = fullints;
 		for(let c = 2; c < periods.length; c++) {
 			graphx = 0n;
-			while((alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1) >= periods[cpolynomial]) {
+			while((alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n) >= periods[cpolynomial]) {
 				graphx += 1n;
-				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1);
+				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic";
 				if(alfa(periods[cpolynomial]) % (periods[cpolynomial] * modsolution + 1n) == 0n) {
 					console.log(alfa(periods[cpolynomial]) / (periods[cpolynomial] * modsolution + 1n));
