@@ -227,6 +227,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var cpolynomial;
 	var graphx;
 	var archives;
+	var modsolution;
 	function fullfactorize(x) {
 		cpolynomial = 1;
 		graphx = 0;
@@ -242,12 +243,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		archives = fullints;
 		for(let c = 2; c < periods.length; c++) {
-			graphx = (BigInt(-periods[cpolynomial]) + alfa(periods[cpolynomial])) / (1n + periods[cpolynomial] ** 2n);
-			while(graphx >= 1n) {
-				graphx -= 1n;
+			graphx = 0n;
+			while((alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1) >= periods[cpolynomial]) {
+				graphx += 1n;
+				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1);
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic";
-				if(alfa(periods[cpolynomial]) % (periods[cpolynomial] * graphx + 1n) == 0n) {
-					console.log(alfa(periods[cpolynomial]) / (periods[cpolynomial] * graphx + 1n));
+				if(alfa(periods[cpolynomial]) % (periods[cpolynomial] * modsolution + 1n) == 0n) {
+					console.log(alfa(periods[cpolynomial]) / (periods[cpolynomial] * modsolution + 1n));
 				}
 			}
 			cpolynomial += 1;
