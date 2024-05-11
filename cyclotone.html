@@ -219,11 +219,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		document.getElementById("factorization").innerHTML += "<br/><br/>" + status;
 	}
-	function realwork() {
-		setInterval(() => {
-			if(factorizing) { updatestatus(); }
-		}, 1000)
-	}
+	setInterval(() => {
+		if(factorizing) { updatestatus(); }
+	}, 1000)
 	var cpolynomial;
 	var graphx;
 	var archives;
@@ -232,7 +230,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		cpolynomial = 1;
 		graphx = 0;
 		factorizing = true;
-		realwork();
 		console.log("Factorizing 10^" + x.toString() + " - 1:")
 		fullints = [];
 		ints = [];
