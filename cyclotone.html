@@ -212,15 +212,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function alfa(n) {
 		return (cyclotomic(n) - 1n) / BigInt(n);
 	}
-	function updatestatus() {
-		document.getElementById("factorization").innerHTML = fullints[0].number;
-		for(let j = 1n; j < fullints.length; j++) {
-			document.getElementById("factorization").innerHTML += " × " + fullints[j].number;
+	function updatestatus(r) {
+		if(r) {
+			document.getElementById("factorization").innerHTML = fullints[0].number;
+			for(let j = 1n; j < fullints.length; j++) {
+				document.getElementById("factorization").innerHTML += " × " + fullints[j].number;
+			}
+			document.getElementById("factorization").innerHTML += "<br/><br/>" + status + "<br/>" + graphx;
 		}
-		document.getElementById("factorization").innerHTML += "<br/><br/>" + status + "<br/>" + graphx;
 	}
 	setInterval(() => {
-		updatestatus();
+		updatestatus(factorizing);
 	}, 1000)
 	var cpolynomial;
 	var graphx;
