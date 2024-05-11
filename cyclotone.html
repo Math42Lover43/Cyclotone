@@ -239,7 +239,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n],"prime":false}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
 		}
 		archives = fullints;
-		for(let c = 2; c < periods.length; c++) {
+		for(let c = 1; c < periods.length; c++) {
 			graphx = 0n;
 			while((alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n) >= periods[cpolynomial]) {
 				graphx += 1n;
