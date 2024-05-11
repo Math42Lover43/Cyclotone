@@ -241,13 +241,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n],"prime":false}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
 		}
 		archives = fullints;
-		for(let c = 2; c <= periods.length; c++) {
-			graphx = (BigInt(-archives[cpolynomial].period_cov) + alfa(archives[cpolynomial].period_cov)) / (1n + archives[cpolynomial].period_cov ** 2n);
+		for(let c = 2; c < periods.length; c++) {
+			graphx = (BigInt(-periods[cpolynomial]) + alfa(periods[cpolynomial])) / (1n + periods[cpolynomial] ** 2n);
 			while(graphx >= 1n) {
 				graphx -= 1n;
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic";
-				if((alfa(archives[cpolynomial].period_cov) - graphx) % (archives[cpolynomial].period_cov * graphx + 1n) == 0n) {
-					console.log((alfa(archives[cpolynomial].period_cov) - graphx) / (archives[cpolynomial].period_cov * graphx + 1n) * BigInt(archives[cpolynomial].period_cov) + 1n);
+				if((alfa(periods[cpolynomial]) - graphx) % (periods[cpolynomial] * graphx + 1n) == 0n) {
+					console.log((alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n) * BigInt(periods[cpolynomial]) + 1n);
 				}
 			}
 			cpolynomial += 1;
