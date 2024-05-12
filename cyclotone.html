@@ -251,8 +251,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic";
 				console.log(modsolution.toString().length);
 				if(cyclotomic(periods[cpolynomial]) % (periods[cpolynomial] * modsolution + 1n) == 0n) {
-					console.log(cyclotomic(periods[cpolynomial]) / (periods[cpolynomial] * modsolution + 1n));
-					targetnum = targetnum / (cyclotomic(periods[cpolynomial]) / (periods[cpolynomial] * modsolution + 1n));
+					console.log(targetnum / (periods[cpolynomial] * modsolution + 1n));
+					targetnum = targetnum / (targetnum / (periods[cpolynomial] * modsolution + 1n));
 				}
 			}
 			cpolynomial += 1;
