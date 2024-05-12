@@ -248,12 +248,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			targetnum = cyclotomic(periods[cpolynomial]);
 			while((alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n) >= (sqrt(targetnum) / periods[cpolynomial]) + 1n) {
 				graphx += 1n;
-				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
+				modsolution = (targetnum - graphx) / (periods[cpolynomial] * graphx + 1n);
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic";
 				console.log(modsolution.toString().length);
 				if(targetnum % (periods[cpolynomial] * modsolution + 1n) == 0n) {
 					console.log(targetnum / (periods[cpolynomial] * modsolution + 1n));
 					targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
+					graphx = 0n;
 				}
 			}
 			cpolynomial += 1;
