@@ -249,7 +249,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			targetnum = cyclotomic(periods[cpolynomial]);
 			minlength = targetnum.toString().length / 2;
 			modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
-			while((alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n) >= (sqrt(targetnum) / periods[cpolynomial]) + 1n && modsolution.toString().length >= minlength) {
+			while(((alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n)).toString().length >= minlength) {
 				graphx += 1n;
 				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic";
@@ -257,6 +257,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(targetnum % (periods[cpolynomial] * modsolution + 1n) == 0n && modsolution % 1n == 0n) {
 					console.log(targetnum / (periods[cpolynomial] * modsolution + 1n));
 					targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
+					minlength = targetnum.toString().length / 2;
 				}
 			}
 			cpolynomial += 1;
