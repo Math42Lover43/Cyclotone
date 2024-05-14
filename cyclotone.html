@@ -248,7 +248,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		for(let c = 1; c < periods.length; c++) {
 			graphx = 0n;
 			targetnum = cyclotomic(periods[cpolynomial]);
-			minlength = targetnum.toString().length / 2;
+			minlength = Math.floor(targetnum.toString().length / 2);
 			modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
 			while((periods[cpolynomial] * modsolution + 1n) >= sqrt(targetnum) && targetnum != 1n) {
 				graphx += 1n;
@@ -259,7 +259,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
 					minlength = targetnum.toString().length / 2;
 				}
-				updatestatus(factorizing && graphx % (10n ** (BigInt(BigInt(Math.floor(minlength)) / 3n)) == 0n));
+				updatestatus(factorizing && graphx % (10n ** BigInt(minlength / 3n)) == 0n));
 			}
 			cpolynomial += 1;
 		}
