@@ -257,6 +257,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(cyclotomic(periods[cpolynomial]) % (periods[cpolynomial] * modsolution + 1n) == 0n && modsolution % 1n == 0n && isPrime(periods[cpolynomial] * modsolution + 1n)) {
 					console.log((periods[cpolynomial] * modsolution + 1n));
 					targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
+					console.log(targetnum);
 					if(periods[cpolynomial] * modsolution + 1n >= targetnum) {
 						graphx = 0n;
 					}
