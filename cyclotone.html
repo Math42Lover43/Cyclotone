@@ -234,6 +234,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var minlength;
 	var oldsolution;
 	var iterator;
+	var switched;
 	function fullfactorize(x) {
 		cpolynomial = 1;
 		graphx = 0;
@@ -248,22 +249,25 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		archives = fullints;
 		for(let c = 1; c < periods.length; c++) {
-			iterator = 1n;
+			switched = false;
 			graphx = 0n;
 			targetnum = cyclotomic(periods[cpolynomial]);
 			minlength = BigInt(targetnum.toString().length) / 2n;
 			modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
-			while((periods[cpolynomial] * modsolution + 1n) >= sqrt(targetnum) && targetnum != 1n) {
-				graphx += iterator;
+			while((periods[cpolynomial] * modsolution + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution != 1n) {
+				graphx += 1n;
 				oldsolution = modsolution;
-				while(oldsolution == (alfa(periods[cpolynomial]) - (graphx + iterator)) / (periods[cpolynomial] * (graphx + iterator) + 1n)) {
-					iterator += 1n;
-					console.log(iterator);
+				if(switched) {
+					modsolution -= 1n;
+				} else {
+					modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
+				}
+				if(oldsolution == modsolution) {
+					switched = true;
 				}
 				graphx += iterator;
-				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)";
-				if(targetnum % (periods[cpolynomial] * modsolution + 1n) == 0n && modsolution % 1n == 0n && isPrime(periods[cpolynomial] * modsolution + 1n)) {
+				if(targetnum % (periods[cpolynomial] * modsolution + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution + 1n)) {
 					console.log((periods[cpolynomial] * modsolution + 1n));
 					targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
 					console.log(targetnum);
