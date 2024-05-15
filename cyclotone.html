@@ -260,7 +260,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					if(periods[cpolynomial] * modsolution + 1n >= targetnum) {
 						graphx = (targetnum / periods[cpolynomial] - modsolution) / modsolution / periods[cpolynomial] / (1n + 1n / modsolution / periods[cpolynomial]) - 1n;
 					}
-					minlength = targetnum.toString().length / 2;
+					minlength = BigInt(targetnum.toString().length) / 2n;
 				}
 				updatestatus(factorizing && graphx % (10n ** (BigInt(minlength) / 2n)) == 0n);
 			}
