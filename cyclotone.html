@@ -258,6 +258,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				oldsolution = modsolution;
 				while(oldsolution == (alfa(periods[cpolynomial]) - (graphx + iterator)) / (periods[cpolynomial] * (graphx + iterator) + 1n)) {
 					iterator += 1n;
+					console.log(iterator);
 				}
 				graphx += iterator;
 				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
