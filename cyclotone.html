@@ -265,7 +265,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(oldsolution == modsolution) {
 					switched = true;
 				}
-				graphx += iterator;
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)";
 				if(targetnum % (periods[cpolynomial] * modsolution + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution + 1n)) {
 					console.log((periods[cpolynomial] * modsolution + 1n));
