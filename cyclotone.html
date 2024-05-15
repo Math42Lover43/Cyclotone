@@ -256,9 +256,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)";
 				if(cyclotomic(periods[cpolynomial]) % (periods[cpolynomial] * modsolution + 1n) == 0n && modsolution % 1n == 0n && isPrime(periods[cpolynomial] * modsolution + 1n)) {
 					console.log((periods[cpolynomial] * modsolution + 1n));
-					targetnum = (periods[cpolynomial] * modsolution + 1n);
+					targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
 					if(periods[cpolynomial] * modsolution + 1n >= targetnum) {
-						graphx = (targetnum / periods[cpolynomial] - modsolution) / modsolution / periods[cpolynomial] / (1n + 1n / modsolution / periods[cpolynomial]) - 1n;
+						graphx = 0n;
 					}
 					minlength = BigInt(targetnum.toString().length) / 2n;
 				}
