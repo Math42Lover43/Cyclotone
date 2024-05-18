@@ -257,6 +257,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				targetnum = cyclotomic(periods[cpolynomial]);
 				minlength = BigInt(targetnum.toString().length) / 2n;
 				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
+				graphx += 1n;
 				if(cpolynomial >= periods.length) {
 					step = -1;
 				} else {
@@ -265,7 +266,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 		if(step == 2) {
-					graphx += 1n;
 					oldsolution = modsolution;
 					if(switched) {
 						modsolution -= 1n;
