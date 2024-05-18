@@ -254,7 +254,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		if(step == 1) {
 			for(let c = 1; c < periods.length; c++) {
 				switched = false;
-				graphx = 0n;
 				targetnum = cyclotomic(periods[cpolynomial]);
 				minlength = BigInt(targetnum.toString().length) / 2n;
 				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
