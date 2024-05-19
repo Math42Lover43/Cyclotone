@@ -287,17 +287,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			if(!periods[cpolynomial]) { // Checks if periods[cpolynomial] exists
 				step = -1;	
 			} else if((BigInt(periods[cpolynomial]) * modsolution + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution != 1n && cpolynomial < periods.length) {
-				step = 3;
+				step = 1;
 			}
-		}
-		if(step == 3) {
-			graphx = graphx + 1n;
-			step = 1;
 		}
 	}
 	setInterval(() => {
 		if(factorizing) {
 			fullfactorize(the_x);
+			if(step == 2) {
+				graphx += 1n;
+			}
 		}
 		updatestatus(factorizing);
 	}, 0)
