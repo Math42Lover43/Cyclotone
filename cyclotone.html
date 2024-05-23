@@ -294,7 +294,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	setInterval(() => {
 		if(factorizing) {
+			graphx += 1n;
 			fullfactorize(the_x);
+		} else {
+			graphx = 0n;
 		}
 		updatestatus(factorizing);
 	}, 0)
