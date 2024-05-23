@@ -285,9 +285,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 					updatestatus(factorizing && graphx % (10n ** (BigInt(minlength))) == 0n);
 			cpolynomial += 1;
-			if(!periods[cpolynomial]) { // Checks if periods[cpolynomial] exists
+			if(!periods[cpolynomial + 1n]) { // Checks if periods[cpolynomial] exists
 				step = -1;	
-			} else if((BigInt(periods[cpolynomial]) * modsolution + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution != 1n && cpolynomial < periods.length) {
+			} else if(((BigInt(periods[cpolynomial]) * modsolution + 1n) >= sqrt(targetnum) || targetnum == 1n || modsolution == 1n) && cpolynomial < periods.length) {
 				step = 1;
 			}
 		}
