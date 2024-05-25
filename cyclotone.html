@@ -283,7 +283,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	setInterval(() => {
-		if(factorizing && periods[cpolynomial]) {
+		if(factorizing && cpolynomial >= periods.length) {
 			graphx += 1n;
 			oldsolution = modsolution;
 			if(switched) {
