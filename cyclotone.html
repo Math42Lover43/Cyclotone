@@ -11,7 +11,7 @@ body,input,button { font-family: 'Roboto', 'Arial', sans-serif }
 	Warning: The calculator will not work with JavaScript disabled.
 </noscript>
 Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
-<button onclick="step = 0; the_x = document.getElementById('config_exp').value; factorizing = true;">Factorize</button>
+<button onclick="fullfactorize(document.getElementById("config_exp").value);">Factorize</button>
 <div id="factorization">
 </div>
 <script>
@@ -222,10 +222,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			console.log(status);
 		}
 	}
-	var step;
-	var the_x;
+	setInterval(() => {
+		updatestatus(factorizing);
+	}, 1000)
 	var cpolynomial;
-	var graphx = 0n;
+	var graphx;
 	var archives;
 	var modsolution;
 	var targetnum;
@@ -234,73 +235,49 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var oldsolution;
 	var iterator;
 	var switched;
-	var periods = [];
 	function fullfactorize(x) {
-		if(step == 0) {
-			cpolynomial = 1;
-			graphx = 0n;
-			factorizing = true;
-			console.log("Factorizing 10^" + x.toString() + " - 1:")
-			fullints = [];
-			ints = [];
-			periods = factor(x); console.log("periods: " + periods);
-			fullints.push({"number":3n,"period_cov":1n,"prime":true}); fullints.push({"number":3n,"period_cov":1n,"prime":true});
-			for(let n = 1n; n < BigInt(periods.length); n++) {
-				fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n],"prime":false}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
-			}
-			archives = fullints;
-			step = 1;
+		cpolynomial = 1;
+		graphx = 0;
+		factorizing = true;
+		console.log("Factorizing 10^" + x.toString() + " - 1:")
+		fullints = [];
+		ints = [];
+		var periods = factor(x); console.log("periods: " + periods);
+		fullints.push({"number":3n,"period_cov":1n,"prime":true}); fullints.push({"number":3n,"period_cov":1n,"prime":true});
+		for(let n = 1n; n < BigInt(periods.length); n++) {
+			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n],"prime":false}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
 		}
-		if(step == 1) {
-			for(let c = 1; c < periods.length; c++) {
-				switched = false;
-				targetnum = cyclotomic(periods[cpolynomial]);
-				minlength = BigInt(targetnum.toString().length) / 2n;
-				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
-				if(cpolynomial >= periods.length) {
-					step = -1;
+		archives = fullints;
+		for(let c = 1; c < periods.length; c++) {
+			switched = false;
+			graphx = 0n;
+			targetnum = cyclotomic(periods[cpolynomial]);
+			minlength = BigInt(targetnum.toString().length) / 2n;
+			modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
+			while((periods[cpolynomial] * modsolution + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution != 1n) {
+				graphx += 1n;
+				oldsolution = modsolution;
+				if(switched) {
+					modsolution -= 1n;
 				} else {
-					step = 2;
-					graphx += 1n;
+					modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
 				}
-		}
-	}
-		if(step == 2) {
-					status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)";
-					if(targetnum % (periods[cpolynomial] * modsolution + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution + 1n)) {
-						console.log((periods[cpolynomial] * modsolution + 1n));
-						targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
-						console.log(targetnum);
-						minlength = BigInt(targetnum.toString().length) / 2n;
-					}
-					updatestatus(factorizing && graphx % (10n ** (BigInt(minlength))) == 0n);
+				if(oldsolution == modsolution) {
+					switched = true;
+					console.log("switched");
+				}
+				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)";
+				if(targetnum % (periods[cpolynomial] * modsolution + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution + 1n)) {
+					console.log((periods[cpolynomial] * modsolution + 1n));
+					targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
+					console.log(targetnum);
+					minlength = BigInt(targetnum.toString().length) / 2n;
+				}
+				updatestatus(factorizing && graphx % (10n ** (BigInt(minlength))) == 0n);
+			}
 			cpolynomial += 1;
-			if(!periods[cpolynomial + 1]) { // Checks if periods[cpolynomial] exists
-				step = -1;	
-			} else if(((BigInt(periods[cpolynomial]) * modsolution + 1n) >= sqrt(targetnum) || targetnum == 1n || modsolution == 1n) && cpolynomial < periods.length) {
-				step = 1;
-			}
 		}
 	}
-	setInterval(() => {
-		if(factorizing && cpolynomial >= periods.length) {
-			graphx += 1n;
-			oldsolution = modsolution;
-			if(switched) {
-				modsolution -= 1n;
-			} else {
-				modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
-			}
-			if(oldsolution == modsolution) {
-				switched = true;
-				console.log("switched");
-			}
-			fullfactorize(the_x);
-		} else {
-			graphx = 0n;
-		}
-		updatestatus(factorizing);
-	}, 0)
 </script>
 </body>
 </head>
