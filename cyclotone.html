@@ -285,6 +285,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					minlength = BigInt(targetnum.toString().length) / 2n;
 					primecheckreq = true;
 				}
+				if(targetnum == 1n) {
+					modsolution[0] = 1n;
+				}
 				if(primecheckreq && targetnum != 1n) {
 					status = "Testing primality of " + targetnum;
 					console.log(status);
