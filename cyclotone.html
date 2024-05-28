@@ -248,28 +248,36 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n],"prime":false}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
 		}
 		archives = fullints;
+		modsolution = [0n,0n];
 		for(let c = 1; c < periods.length; c++) {
 			switched = false;
 			graphx = 0n;
 			targetnum = cyclotomic(periods[cpolynomial]);
 			minlength = BigInt(targetnum.toString().length) / 2n;
-			modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
-			while((periods[cpolynomial] * modsolution + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution != 1n) {
+			modsolution = [(alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n),0n];
+			while((periods[cpolynomial] * modsolution[0] + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution[0] != 1n) {
 				graphx += 1n;
-				oldsolution = modsolution;
+				oldsolution = modsolution[0];
 				if(switched) {
-					modsolution -= 1n;
+					modsolution[0] -= 1n;
 				} else {
-					modsolution = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
+					modsolution[0] = (alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n);
 				}
-				if(oldsolution == modsolution) {
+				modsolution[1] += 1n;
+				if(oldsolution == modsolution[0]) {
 					switched = true;
 					console.log("switched");
 				}
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)";
-				if(targetnum % (periods[cpolynomial] * modsolution + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution + 1n)) {
-					console.log((periods[cpolynomial] * modsolution + 1n));
-					targetnum = targetnum / (periods[cpolynomial] * modsolution + 1n);
+				if(targetnum % (periods[cpolynomial] * modsolution[0] + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution[0] + 1n)) {
+					console.log((periods[cpolynomial] * modsolution[0] + 1n));
+					targetnum = targetnum / (periods[cpolynomial] * modsolution[0] + 1n);
+					console.log(targetnum);
+					minlength = BigInt(targetnum.toString().length) / 2n;
+				}
+				if(targetnum % (periods[cpolynomial] * modsolution[1] + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution[1] + 1n)) {
+					console.log((periods[cpolynomial] * modsolution[1] + 1n));
+					targetnum = targetnum / (periods[cpolynomial] * modsolution[1] + 1n);
 					console.log(targetnum);
 					minlength = BigInt(targetnum.toString().length) / 2n;
 				}
