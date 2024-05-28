@@ -235,6 +235,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var oldsolution;
 	var iterator;
 	var switched;
+	var primecheckreq;
 	function fullfactorize(x) {
 		cpolynomial = 1;
 		graphx = 0;
@@ -256,6 +257,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			minlength = BigInt(targetnum.toString().length) / 2n;
 			modsolution = [(alfa(periods[cpolynomial]) - graphx) / (periods[cpolynomial] * graphx + 1n),0n];
 			while((periods[cpolynomial] * modsolution[0] + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution[0] != 1n) {
+				primecheckreq = false;
 				graphx += 1n;
 				oldsolution = modsolution[0];
 				if(switched) {
@@ -274,15 +276,21 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					targetnum = targetnum / (periods[cpolynomial] * modsolution[0] + 1n);
 					console.log(targetnum);
 					minlength = BigInt(targetnum.toString().length) / 2n;
+					primecheckreq = true;
 				}
 				if(targetnum % (periods[cpolynomial] * modsolution[1] + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution[1] + 1n)) {
 					console.log((periods[cpolynomial] * modsolution[1] + 1n));
 					targetnum = targetnum / (periods[cpolynomial] * modsolution[1] + 1n);
 					console.log(targetnum);
 					minlength = BigInt(targetnum.toString().length) / 2n;
+					primecheckreq = true;
 				}
-				if(isPrime(targetnum)) {
-					modsolution[0] = 1n;
+				if(primecheckreq) {
+					status = "Testing primality of " + targetnum;
+					console.log(status);
+					if(isPrime(targetnum)) {
+						modsolution[0] = 1n;
+					}
 				}
 				updatestatus(factorizing && graphx % (10n ** (BigInt(minlength))) == 0n);
 			}
