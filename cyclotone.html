@@ -112,7 +112,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function isPrime(num) {
-    if (BigInt(num) <= 1n) { return false; } // 1 is not prime
+    if (BigInt(num) <= 1n) { return true; } // to avoid blocking
     for (let i = 2n; i * i <= num; i++) {
         if (BigInt(num) % i === 0n) { return false; }
     }
