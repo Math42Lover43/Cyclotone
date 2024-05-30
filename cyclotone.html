@@ -280,7 +280,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					switched[1] = true;
 					console.log("2 switched");
 				}
-				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)";
+				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)<br/>Trial numbers: " + graphx;
 				for(let value = 0n; value < modsolution.length; value++) {
 					if(targetnum % (periods[cpolynomial] * modsolution[value] + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution[value] + 1n)) {
 						console.log((periods[cpolynomial] * modsolution[value] + 1n));
