@@ -297,7 +297,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						targetnum = targetnum / (periods[cpolynomial] * modsolution[value] + 1n);
 						console.log(targetnum);
 						minlength = BigInt(targetnum.toString().length) / 2n;
-						graphx[1] = sqrt(targetnum);
+						graphx = [targetnum,sqrt(targetnum),sqrt(sqrt(targetnum))];
 						primecheckreq = true;
 					}
 				}
