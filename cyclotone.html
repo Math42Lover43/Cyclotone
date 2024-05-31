@@ -115,7 +115,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function isPrime(num) {
     if (BigInt(num) <= 1n) { return true; } // to avoid blocking
     for (let i = 2n; i * i <= num; i++) {
-        if (BigInt(num) % i === 0n || !primetests) { return false; }
+        if (BigInt(num) % i === 0n) { return false; }
     }
     return true;
 }
@@ -299,7 +299,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						console.log(targetnum);
 						minlength = BigInt(targetnum.toString().length) / 2n;
 						graphx[1] = sqrt(targetnum);
-						primecheckreq = true;
+						primecheckreq = primetests;
 					}
 				}
 				if(targetnum == 1n) {
