@@ -272,11 +272,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					modsolution[2] = (alfa(periods[cpolynomial]) - graphx[1]) / (periods[cpolynomial] * graphx[1] + 1n);
 				}
 				modsolution[1] += 1n;
-				if(oldsolution == modsolution[0]) {
+				if(oldsolution[0] == modsolution[0]) {
 					switched[0] = true;
 					console.log("0 switched");
 				}
-				if(oldsolution == modsolution[2]) {
+				if(oldsolution[1] == modsolution[2]) {
 					switched[1] = true;
 					console.log("2 switched");
 				}
