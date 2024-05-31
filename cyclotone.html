@@ -113,7 +113,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function isPrime(num) {
     if (BigInt(num) <= 1n) { return true; } // to avoid blocking
-    for (let i = 1n; (i * periods[cpolynomial] + 1n) ** 2 <= num; i++) {
+    for (let i = 1n; (i * periods[cpolynomial] + 1n) ** 2n <= num; i++) {
         if (BigInt(num) % (i * periods[cpolynomial] + 1n) === 0n) { return false; }
     }
     return true;
