@@ -113,8 +113,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function isPrime(num) {
     if (BigInt(num) <= 1n) { return true; } // to avoid blocking
-    for (let i = 1n; (i * periods[cpolynomial] + 1n) ** 2n <= num; i++) {
-        if (BigInt(num) % (i * periods[cpolynomial] + 1n) === 0n) { return false; }
+    for (let i = 2n; i * i <= num; i++) {
+        if (BigInt(num) % i === 0n) { return false; }
     }
     return true;
 }
@@ -236,7 +236,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var iterator;
 	var switched;
 	var primecheckreq;
-	var periods;
 	function fullfactorize(x) {
 		cpolynomial = 1;
 		graphx = 0;
@@ -244,7 +243,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		console.log("Factorizing 10^" + x.toString() + " - 1:")
 		fullints = [];
 		ints = [];
-		periods = factor(x); console.log("periods: " + periods);
+		var periods = factor(x); console.log("periods: " + periods);
 		fullints.push({"number":3n,"period_cov":1n,"prime":true}); fullints.push({"number":3n,"period_cov":1n,"prime":true});
 		for(let n = 1n; n < BigInt(periods.length); n++) {
 			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n],"prime":false}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
