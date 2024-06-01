@@ -252,46 +252,50 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		archives = fullints;
 		modsolution = [0n,0n,0n];
 		for(let c = 1; c < periods.length; c++) {
-			switched = [false,false];
+			switched = [false];
+			for(pbv = 0n; pbv < sqrt(periods[cpolynomial]); pbv++) {
+				switched.push(false);
+			}
 			targetnum = cyclotomic(periods[cpolynomial]);
-			graphx = [0n,sqrt(targetnum),sqrt(sqrt(targetnum))];
+			graphx = [0n,sqrt(targetnum)];
+			for(pbv = 0n; pbv < sqrt(periods[cpolynomial]); pbv++) {
+				graphx.push(sqrt(graphx[graphx.length - 1]));
+			}
 			minlength = BigInt(targetnum.toString().length) / 2n;
-			modsolution = [(alfa(periods[cpolynomial]) - graphx[0]) / (periods[cpolynomial] * graphx[0] + 1n),0n,(alfa(periods[cpolynomial]) - graphx[1]) / (periods[cpolynomial] * graphx[1] + 1n),(alfa(periods[cpolynomial]) - graphx[2]) / (periods[cpolynomial] * graphx[2] + 1n)];
+			modsolution = [(alfa(periods[cpolynomial]) - graphx[0]) / (periods[cpolynomial] * graphx[0] + 1n),0n];
+			for(pbv = 1n; pbv < graphx.length; pbv++) {
+				graphx.push((alfa(periods[cpolynomial]) - graphx[pbv]) / (periods[cpolynomial] * graphx[pbv] + 1n));
+			}
 			while((periods[cpolynomial] * modsolution[0] + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution[0] != 1n) {
 				primecheckreq = false;
-				graphx[0] += 1n;
-				graphx[1] += 1n;
-				graphx[2] += 1n;
+				for(pbv = 1n; pbv < graphx.length; pbv++) {
+					graphx[pbv] += 1n;
+				}
 				oldsolution = [modsolution[0],modsolution[2],modsolution[3]];
 				if(switched[0]) {
 					modsolution[0] -= 1n;
 				} else {
 					modsolution[0] = (alfa(periods[cpolynomial]) - graphx[0]) / (periods[cpolynomial] * graphx[0] + 1n);
 				}
-				if(switched[1]) {
-					modsolution[2] -= 1n;
-				} else {
-					modsolution[2] = (alfa(periods[cpolynomial]) - graphx[1]) / (periods[cpolynomial] * graphx[1] + 1n);
-				}
-				if(switched[2]) {
-					modsolution[3] -= 1n;
-				} else {
-					modsolution[3] = (alfa(periods[cpolynomial]) - graphx[2]) / (periods[cpolynomial] * graphx[2] + 1n);
+				for(pbv = 1n; pbv <= graphx.length; pbv++) {
+					if(switched[pbv]) {
+						modsolution[pbv + 1] -= 1n;
+					} else {
+						modsolution[pbv + 1] = (alfa(periods[cpolynomial]) - graphx[pbv]) / (periods[cpolynomial] * graphx[pbv] + 1n);
+					}
 				}
 				modsolution[1] += 1n;
 				if(oldsolution[0] == modsolution[0]) {
 					switched[0] = true;
 					console.log("0 switched");
 				}
-				if(oldsolution[1] == modsolution[2]) {
-					switched[1] = true;
-					console.log("2 switched");
+				for(pbv = 1n; pbv < oldsolution.length; pbv++) {
+					if(oldsolution[pbv] == modsolution[pbv + 1]) {
+						switched[pbv] = true;
+						console.log((pbv + 1) + " switched");
+					}
 				}
-				if(oldsolution[2] == modsolution[3]) {
-					switched[2] = true;
-					console.log("3 switched");
-				}
-				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing solutions with " + modsolution.toString().length + " digit(s)<br/>Trial numbers: " + modsolution;
+				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing " + modsolution.length + " numbers<br/>Trial numbers: " + modsolution;
 				for(let value = 0n; value < modsolution.length; value++) {
 					if(targetnum % (periods[cpolynomial] * modsolution[value] + 1n) == 0n && isPrime(periods[cpolynomial] * modsolution[value] + 1n)) {
 						console.log((periods[cpolynomial] * modsolution[value] + 1n));
