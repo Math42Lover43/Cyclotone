@@ -267,6 +267,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				graphx.push((alfa(periods[cpolynomial]) - graphx[pbv]) / (periods[cpolynomial] * graphx[pbv] + 1n));
 			}
 			while((periods[cpolynomial] * modsolution[0] + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution[0] != 1n) {
+				console.log(modsolution);
 				primecheckreq = false;
 				for(pbv = 1n; pbv < graphx.length; pbv++) {
 					graphx[pbv] += 1n;
