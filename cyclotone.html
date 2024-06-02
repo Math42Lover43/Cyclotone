@@ -282,7 +282,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				} else {
 					modsolution[0] = (alfa(periods[cpolynomial]) - graphx[0]) / (periods[cpolynomial] * graphx[0] + 1n);
 				}
-				for(pbv = 1n; pbv <= graphx.length; pbv++) {
+				for(pbv = 1n; pbv < graphx.length; pbv++) {
 					if(switched[pbv]) {
 						modsolution[pbv + 1n] -= 1n;
 					} else {
