@@ -250,7 +250,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			fullints.push({"number":cyclotomic(periods[n]),"period_cov":periods[n],"prime":false}); console.log("fullints[" + fullints.length - 1 + "]: " + fullints[fullints.length - 1].number);
 		}
 		archives = fullints;
-		modsolution = [0n,0n,0n];
+		modsolution = [0n,0n];
+		for(pbv = 0n; pbv < sqrt(periods[cpolynomial]); pbv++) {
+			modsolution.push(0n);
+		}
+		console.log(modsolution);
 		for(let c = 1; c < periods.length; c++) {
 			switched = [false];
 			for(pbv = 0n; pbv < sqrt(periods[cpolynomial]); pbv++) {
