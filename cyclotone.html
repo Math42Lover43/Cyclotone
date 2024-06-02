@@ -284,9 +284,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				for(pbv = 1n; pbv <= graphx.length; pbv++) {
 					if(switched[pbv]) {
-						modsolution[pbv + 1] -= 1n;
+						modsolution[pbv + 1n] -= 1n;
 					} else {
-						modsolution[pbv + 1] = (alfa(periods[cpolynomial]) - graphx[pbv]) / (periods[cpolynomial] * graphx[pbv] + 1n);
+						modsolution[pbv + 1n] = (alfa(periods[cpolynomial]) - graphx[pbv]) / (periods[cpolynomial] * graphx[pbv] + 1n);
 					}
 				}
 				modsolution[1] += 1n;
@@ -295,9 +295,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					console.log("0 switched");
 				}
 				for(pbv = 1n; pbv < oldsolution.length; pbv++) {
-					if(oldsolution[pbv] == modsolution[pbv + 1]) {
+					if(oldsolution[pbv] == modsolution[pbv + 1n]) {
 						switched[pbv] = true;
-						console.log((pbv + 1) + " switched");
+						console.log((pbv + 1n) + " switched");
 					}
 				}
 				status = "Factoring " + archives[cpolynomial].period_cov + ord(archives[cpolynomial].period_cov) + " cyclotomic polynomial using modular arithmetic<br/>Modular arithmetic progress: Testing " + modsolution.length + " numbers<br/>Trial numbers: " + modsolution;
