@@ -237,6 +237,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var iterator;
 	var switched;
 	var primecheckreq;
+	var appenditem;
 	function fullfactorize(x) {
 		cpolynomial = 1;
 		graphx = 0;
@@ -261,8 +262,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 			targetnum = cyclotomic(periods[cpolynomial]);
 			graphx = [0n,sqrt(targetnum)];
+			appenditem = sqrt(sqrt(targetnum));
 			for(pbv = 0n; pbv < sqrt(periods[cpolynomial]); pbv++) {
-				graphx.push(sqrt(graphx[graphx.length - 1]));
+				graphx.push(appenditem);
+				appenditem = sqrt(appenditem);
 			}
 			minlength = BigInt(targetnum.toString().length) / 2n;
 			modsolution = [(alfa(periods[cpolynomial]) - graphx[0]) / (periods[cpolynomial] * graphx[0] + 1n),0n];
