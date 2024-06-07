@@ -262,19 +262,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 			targetnum = cyclotomic(periods[cpolynomial]);
 			graphx = [0n,sqrt(targetnum)];
-			appenditem = sqrt(sqrt(targetnum));
-			for(pbv = 0n; pbv < sqrt(periods[cpolynomial]); pbv++) {
-				graphx.push(appenditem);
-				appenditem = sqrt(appenditem);
-			}
 			minlength = BigInt(targetnum.toString().length) / 2n;
-			modsolution = [(alfa(periods[cpolynomial]) - graphx[0]) / (periods[cpolynomial] * graphx[0] + 1n),0n];
+			modsolution = [(alfa(periods[cpolynomial]) - graphx[0]) / (periods[cpolynomial] * graphx[0] + 1n),0n,sqrt(targetnum)];
 			for(pbv = 1n; pbv < graphx.length; pbv++) {
-				modsolution.push((alfa(periods[cpolynomial]) - graphx[pbv]) / (periods[cpolynomial] * graphx[pbv] + 1n));
+				modsolution.push(sqrt(modsolution[modsolution.length - 1]));
 			}
 			while((periods[cpolynomial] * modsolution[0] + 1n) >= sqrt(targetnum) && targetnum != 1n && modsolution[0] != 1n) {
 				primecheckreq = false;
-				for(pbv = 0n; pbv < graphx.length; pbv++) {
+				for(pbv = 0n; pbv < graphx.length && pbv != 1n; pbv++) {
 					graphx[pbv] += 1n;
 				}
 				oldsolution = [modsolution[0],modsolution[2],modsolution[3]];
