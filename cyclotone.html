@@ -127,9 +127,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		return arr;
 	}
-	function cyclotomic(x) {
+	function cyclotomic(x,b) {
 		var cycl;
 		var structure;
+		if(b) {
+			var base = BigInt(b);
+		} else {
+			var base = 10n;
+		}
 		if (BigInt(x) % 2n == 0n) {
 			structure = [BigInt(x) / 2n];
 		} else {
@@ -145,9 +150,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		for (let n = 0n; n < structure.length; n++) {
 			if (BigInt(x) % 2n == 0n) {
-				structure[n] = 10n ** BigInt(structure[n]) + 1n;
+				structure[n] = base ** BigInt(structure[n]) + 1n;
 			} else {
-				structure[n] = 10n ** BigInt(structure[n]) - 1n;
+				structure[n] = base ** BigInt(structure[n]) - 1n;
 			}
 		}
 		while(structure.length > 1) {
