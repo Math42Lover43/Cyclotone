@@ -242,6 +242,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var switched;
 	var primecheckreq;
 	var appenditem;
+	function quaditerfact(x,p) {
+		var limit = 0n;
+		while(-(p ** 2n) * (limit / 2n) ** 2n + (p ** 2n * limit) * (limit / 2n) + p * limit + 1n - x < 0n) { // finds a starting point
+			limit += 1n;
+		}
+	}
 	function fullfactorize(x) {
 		cpolynomial = 1;
 		graphx = 0;
