@@ -249,6 +249,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(-(p ** 2n) * (limit / 2n) ** 2n + (p ** 2n * limit) * (limit / 2n) + p * limit + 1n - number < 0n) { // finds a starting point
 			limit += 1n;
 		}
+		discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
 		console.log(limit);
 		var factor_found = false;
 		while(!factor_found && (-(p ** 2n * limit) - discriminant) / 2n / -(p ** 2n) > 0n) {
