@@ -245,10 +245,19 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function quaditerfact(x,p) {
 		var number = x;
 		var limit = 0n;
+		var discriminant;
 		while(-(p ** 2n) * (limit / 2n) ** 2n + (p ** 2n * limit) * (limit / 2n) + p * limit + 1n - number < 0n) { // finds a starting point
 			limit += 1n;
 		}
 		console.log(limit);
+		var factor_found = false;
+		while(!factor_found && (-(p ** 2n * limit) - discriminant) / 2 / -(p ** 2n) > 0n) {
+			discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
+			if(discriminant == sqrt(discriminant) ** 2n) { // checks whether the number is a perfect square
+				console.log((-(p ** 2n * limit) - discriminant) / 2 / -(p ** 2n) * p + 1n);
+			}
+			limit += 1n;
+		}
 	}
 	function fullfactorize(x) {
 		cpolynomial = 1;
