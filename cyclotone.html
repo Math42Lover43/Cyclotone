@@ -253,12 +253,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		console.log(limit);
 		var factor_found = false;
 		while(!factor_found && (-(p ** 2n * limit) - discriminant) / 2n / -(p ** 2n) > 0n) {
-			discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
 			if(discriminant == sqrt(discriminant) ** 2n) { // checks whether the number is a perfect square
 				console.log((-(p ** 2n * limit) - discriminant) / 2n / -(p ** 2n) * p + 1n);
 				factor_found = true;
 			}
 			limit += 1n;
+			discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
 		}
 	}
 	function fullfactorize(x) {
