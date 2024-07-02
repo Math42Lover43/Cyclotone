@@ -246,7 +246,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var number = x;
 		var limit = 0n;
 		var discriminant;
-		while(-(p ** 2n) * (limit / 2n) ** 2n + (p ** 2n * limit) * (limit / 2n) + p * limit + 1n - number < 0n) { // finds a starting point
+		limit = (-p + sqrt(p ** 2n + 4n * (p ** 2n * 3n / 2n) * (1n - number))) / (p ** 2n * 3n);
+		if(-(p ** 2n * 3n / 2n) * limit**2n + p * limit + 1n - number < 0n) { // finds a starting point
 			limit += 1n;
 		}
 		discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
