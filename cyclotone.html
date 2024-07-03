@@ -246,7 +246,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var number = x;
 		var limit = 1n;
 		var discriminant;
-		while(((limit / 2) * p + 1n) ** 2n < number) { // using exponentiation, find a starting point
+		while(((limit / 2n) * p + 1n) ** 2n < number) { // using exponentiation, find a starting point
 			limit = limit * 10n;
 		}
 		console.log(limit);
