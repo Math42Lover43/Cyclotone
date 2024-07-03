@@ -244,23 +244,27 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var appenditem;
 	function quaditerfact(x,p) {
 		var number = x;
-		var limit = 0n;
+		var limit = 1n;
 		var discriminant;
-		limit = (-p + sqrt(p ** 2n + 4n * (p ** 2n * 3n / 2n) * (1n - number))) / (p ** 2n * 3n);
-		if(-(p ** 2n * 3n / 2n) * limit**2n + p * limit + 1n - number < 0n) { // finds a starting point
-			limit += 1n;
+		while(((limit / 2) * p + 1n) ** 2n < number) { // using exponentiation, find a starting point
+			limit = limit * 10n;
 		}
-		discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
 		console.log(limit);
-		var factor_found = false;
-		while(!factor_found && (-(p ** 2n * limit) - discriminant) / 2n / -(p ** 2n) > 0n) {
-			if(discriminant == sqrt(discriminant) ** 2n) { // checks whether the number is a perfect square
-				console.log((-(p ** 2n * limit) - discriminant) / 2n / -(p ** 2n) * p + 1n);
-				factor_found = true;
-			}
-			limit += 1n;
-			discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
-		}
+		// limit = (-p + sqrt(p ** 2n + 4n * (p ** 2n * 3n / 2n) * (1n - number))) / (p ** 2n * 3n);
+		// if(-(p ** 2n * 3n / 2n) * limit**2n + p * limit + 1n - number < 0n) { // finds a starting point
+		// 	limit += 1n;
+		// }
+		// discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
+		// console.log(limit);
+		// var factor_found = false;
+		// while(!factor_found && (-(p ** 2n * limit) - discriminant) / 2n / -(p ** 2n) > 0n) {
+		// 	if(discriminant == sqrt(discriminant) ** 2n) { // checks whether the number is a perfect square
+		// 		console.log((-(p ** 2n * limit) - discriminant) / 2n / -(p ** 2n) * p + 1n);
+		// 		factor_found = true;
+		// 	}
+		// 	limit += 1n;
+		// 	discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
+		// }
 	}
 	function fullfactorize(x) {
 		cpolynomial = 1;
