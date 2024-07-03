@@ -246,8 +246,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var number = x;
 		var limit = 1n;
 		var discriminant;
-		while(((limit / 2n) * p + 1n) ** 2n < number) { // using exponentiation, find a starting point
+		var pow = 0n;
+		while(((limit / 2n) * p + 1n) ** 2n < number) { // using exponentiation, find a rough starting point
 			limit = limit * 10n;
+			pow++;
+		}
+		while(pow >= 0n) {
+			while(((limit / 2n) * p + 1n) ** 2n > number) { // using exponentiation, find a clear starting point
+				limit -= 10n ** pow;
+			}
+			limit += 10n ** pow;
+			pow -= 1n;
 		}
 		console.log(limit);
 		// limit = (-p + sqrt(p ** 2n + 4n * (p ** 2n * 3n / 2n) * (1n - number))) / (p ** 2n * 3n);
