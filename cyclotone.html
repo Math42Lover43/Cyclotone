@@ -55,6 +55,15 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			return (BigInt(x) / BigInt(y))
 		}
 	}
+	function baseconv(val,base) {
+		var number = val;
+		var list = [val];
+		while(list[list.length - 1] != 0n) {
+			list.push(list[list.length - 1] / base);
+			list[list.length - 2] = list[list.length - 2] % base;
+		}
+		return list;
+	}
 	function mod(x,y) {
 		return BigInt(x) % BigInt(y);
 	}
