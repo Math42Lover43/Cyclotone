@@ -64,6 +64,18 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		return list;
 	}
+	function quickfact(val) {
+		var list = [];
+		var quot = [];
+		var div = 1n;
+		while(!quot.includes(val / div)) {
+			quot.push(val / div);
+			if(num % div == 0n) {
+				list.push(val / div);
+			}
+			div += 1n;
+		}
+	}
 	function mod(x,y) {
 		return BigInt(x) % BigInt(y);
 	}
