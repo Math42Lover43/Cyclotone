@@ -72,6 +72,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			quot.push(val / div);
 			if(val % div == 0n) {
 				list.push(val / div);
+				list.push(div);
 			}
 			div += 1n;
 		}
