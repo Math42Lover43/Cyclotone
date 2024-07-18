@@ -294,6 +294,39 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
 		}
 	}
+	function bmifact(num,obv) {
+		var t = num; // best5
+		var n = 0n;
+		var num;
+		var accel = 1n;
+		var old = baseconv(t,obv)[baseconv(t,obv).length - 2];
+		var long;
+		var min = 0n;
+		var int1 = setInterval(function(){
+		    n += accel;
+		    num = baseconv(t,obv * n);
+		    if(t % (num[num.length - 2] * obv + 1n) == 0n) {
+		        t = t / (obv * num[num.length - 2] + 1n);
+		        console.log((obv * num[num.length - 2] + 1n).toString());
+		        console.log(t.toString());
+		    }
+		    if(num[num.length - 2] - old == 1n) {
+		        min += 1n;
+		        console.log("Min: " + min);
+		    }
+		    if(old == num[num.length - 2] || old - num[num.length - 2] == 1n || num[num.length - 2] < min || num[num.length - 2] - min == 1n) {
+		        accel += 1n;
+		        console.log(accel);
+		    } else {
+		        accel = 1n;
+		    }
+		    long = n + ". Highest term: " + num[num.length - 2] + "; Length: " + num.length;
+		    old = num[num.length - 2];
+		},0)
+		var int2 = setInterval(function(){
+		    document.getElementById("body").innerHTML = long + "<hr/>Minimum: " + min + "<hr/>" + t;
+		},1000)
+	}
 	function fullfactorize(x) {
 		cpolynomial = 1;
 		graphx = 0;
