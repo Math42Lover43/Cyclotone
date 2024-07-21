@@ -322,11 +322,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		    } else {
 		        accel = 1n;
 		    }
-		    long = n + ". Highest term: " + prec + num[num.length - 2] + "; Length: " + num.length;
+		    long = n + ". Highest term: " + num[num.length - 2] + "; Length: " + num.length;
 		    old = num[num.length - 2];
 		},0)
 		var int2 = setInterval(function(){
-		    document.getElementById("body").innerHTML = long + "<hr/>Minimum: " + min + "<hr/>" + t;
+		    document.getElementById("body").innerHTML = long + "<hr/>Minimum: " + min + "<hr/>" + prec + t;
 		},1000)
 	}
 	function fullfactorize(x) {
