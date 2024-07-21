@@ -302,13 +302,15 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var old = baseconv(t,obv)[baseconv(t,obv).length - 2];
 		var long;
 		var min = 0n;
+		var prec = "";
 		var int1 = setInterval(function(){
 		    n += accel;
 		    num = baseconv(t,obv * n);
-		    if(t % (num[num.length - 2] * obv + 1n) == 0n) {
-		        t = t / (obv * num[num.length - 2] + 1n);
-		        console.log((obv * num[num.length - 2] + 1n).toString());
+		    if(t % (num[num.length - 2] * n * obv + 1n) == 0n) {
+		        t = t / (obv * n * num[num.length - 2] + 1n);
+		        console.log((obv * n * num[num.length - 2] + 1n).toString());
 		        console.log(t.toString());
+			prec += (obv * n * num[num.length - 2] + 1n) + " &times; ";
 		    }
 		    if(num[num.length - 2] - old == 1n) {
 		        min += 1n;
@@ -320,7 +322,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		    } else {
 		        accel = 1n;
 		    }
-		    long = n + ". Highest term: " + num[num.length - 2] + "; Length: " + num.length;
+		    long = n + ". Highest term: " + prec + num[num.length - 2] + "; Length: " + num.length;
 		    old = num[num.length - 2];
 		},0)
 		var int2 = setInterval(function(){
