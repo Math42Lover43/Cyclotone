@@ -305,14 +305,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var int1 = setInterval(function(){
 		    n += accel;
 			for(let obfact = 0n; obfact < obv.length; obfact++) {
-				num = baseconv(t,obv[obfact] * n);
-			    if(t % (num[num.length - 2] * obv[obfact] + 1n) == 0n) {
-			        t = t / (obv[obfact] * num[num.length - 2] + 1n);
-			        console.log((obv[obfact] * num[num.length - 2] + 1n).toString());
-			        console.log(t.toString());
-					prec += (obv[obfact] * num[num.length - 2] + 1n) + " &times; ";
-			    }
-			    long = n + ". Highest term: " + num[num.length - 2] + "; Length: " + num.length;
+			    if(obv[obfact] > 1n) {
+					num = baseconv(t,obv[obfact] * n);
+				    if(t % (num[num.length - 2] * obv[obfact] + 1n) == 0n) {
+				        t = t / (obv[obfact] * num[num.length - 2] + 1n);
+				        console.log((obv[obfact] * num[num.length - 2] + 1n).toString());
+				        console.log(t.toString());
+						prec += (obv[obfact] * num[num.length - 2] + 1n) + " &times; ";
+				    }
+				    long = n + ". Highest term: " + num[num.length - 2] + "; Length: " + num.length;
+				}
 			}
 		},0)
 		var int2 = setInterval(function(){
