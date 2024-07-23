@@ -298,7 +298,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var t = num; // best5
 		var n = 0n;
 		var num;
-		var accel = 1n;
 		var long;
 		var min = 0n;
 		var prec = "";
@@ -306,7 +305,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var allones = false;
 		var checked = [];
 		var int1 = setInterval(function(){
-		    n += accel;
+		    n += 1n;
 			allones = true;
 			for(let obfact = 0n; obfact < list.length; obfact++) {
 			    if(list[obfact] > 1n) {
