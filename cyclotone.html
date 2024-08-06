@@ -338,12 +338,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var t = x;
 		var base = sqrt(t) / obv * obv;
 		var poly;
-		var proc;
+		var fact = t;
 		var int1 = setInterval(function(){
-			base += obv;
-			proc = t;
-			poly = [];
-			
+			base -= obv;
+			poly = baseconv(t,base);
+			if(poly[0] == 1n) {
+				console.log(poly);
+			}
+			document.getElementById("factorization").innerHTML = long + "<hr/>Minimum: " + min + "<hr/>" + prec + t;
 		},0);
 	}
 	function fullfactorize(x) {
