@@ -331,8 +331,20 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		},0)
 		var int2 = setInterval(function(){
-		    document.getElementById("body").innerHTML = long + "<hr/>Minimum: " + min + "<hr/>" + prec + t;
+		    document.getElementById("factorization").innerHTML = long + "<hr/>Minimum: " + min + "<hr/>" + prec + t;
 		},1000)
+	}
+	function txmfact(x,obv) {
+		var t = x;
+		var base = sqrt(t) / obv * obv;
+		var poly;
+		var proc;
+		var int1 = setInterval(function(){
+			base += obv;
+			proc = t;
+			poly = [];
+			
+		},0);
 	}
 	function fullfactorize(x) {
 		cpolynomial = 1;
