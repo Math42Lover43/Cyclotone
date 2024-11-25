@@ -90,7 +90,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function polysubst(n,t) {
 		var k = 0n;
 		var poly = 0n;
-		while(k <= n.length) {
+		while(k < n.length) {
 			poly += n[k] * t ** k;
 			k++;
 		}
