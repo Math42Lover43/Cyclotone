@@ -88,11 +88,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return (BigInt(x) < BigInt(y));
 	}
 	function polysubst(n,t) {
-		var poly = "0";
-		var k = "0"
-		while(lt(k,n.length.toString())) {
-			poly = add(poly,mult(n[k.toString()],power(t,k)));
-			k = add(k,"1");
+		var k = 0;
+		var poly = 0n;
+		while(k <= n.length) {
+			poly += n[k] * t ** k;
+			k++;
 		}
 		return poly;
 	}
