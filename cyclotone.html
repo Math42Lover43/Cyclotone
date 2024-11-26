@@ -302,11 +302,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var min = 0n;
 		var prec = "";
 		var list = obv;
-		var allones = false;
 		var checked = [];
 		var int1 = setInterval(function(){
 		    n += 1n;
-			allones = true;
 			for(let obfact = 0n; obfact < list.length; obfact++) {
 			    if(list[obfact] > 1n) {
 					num = baseconv(t,list[obfact] * n);
@@ -314,20 +312,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						t = t / (list[obfact] * num[num.length - 2] + 1n);
 						console.log((list[obfact] * num[num.length - 2] + 1n).toString());
 						console.log(t.toString());
-						prec += (list[obfact] * num[num.length - 2] + 1n) + " &times; ";
 				    }
 				    long = n + ". Highest term: " + num[num.length - 2] + "; Length: " + num.length;
-				    if(!checked.includes(num[num.length - 2])) {
-					checked.push(num[num.length - 2]);
-				    }
-				    if(num[num.length - 2] != 1n){
-					allones = false;
-				    }
 				}
-			}
-			if(allones) {
-				list.push(list[0] * (BigInt(list.length) + 1n));
-				console.log(list);
 			}
 		},0)
 		var int2 = setInterval(function(){
