@@ -59,8 +59,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var number = val;
 		var list = [val];
 		while(list[list.length - 1] != 0n) {
-			list.push(list[list.length - 1] / base);
-			list[list.length - 2] = list[list.length - 2] % base;
+			list.push(list[list.length - 1] / BigInt(base));
+			list[list.length - 2] = list[list.length - 2] % BigInt(base);
 		}
 		return list;
 	}
