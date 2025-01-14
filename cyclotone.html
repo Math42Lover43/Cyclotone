@@ -312,6 +312,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				    num = baseconv(quot,list[obfact] * n);
 				    if(quot % (num[num.length - 2] * list[obfact] + 1n) == 0n) {
 					    	prec += (list[obfact] * num[num.length - 2] + 1n) + " &times; ";
+					    	console.log(prec);
 						t = prec + (quot / (list[obfact] * num[num.length - 2] + 1n));
 						console.log((list[obfact] * num[num.length - 2] + 1n).toString());
 						console.log(t.toString());
