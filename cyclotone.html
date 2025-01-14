@@ -310,7 +310,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			    if(list[obfact] > 1n) {
 				    num = baseconv(quot,list[obfact] * n);
 				    if(quot % (num[num.length - 2] * list[obfact] + 1n) == 0n) {
-						t = (list[obfact] * num[num.length - 2] + 1n) + " &times; " + t / (list[obfact] * num[num.length - 2] + 1n);
+						t = (list[obfact] * num[num.length - 2] + 1n) + " &times; " + (BigInt(num) / (list[obfact] * num[num.length - 2] + 1n));
 						console.log((list[obfact] * num[num.length - 2] + 1n).toString());
 						console.log(t.toString());
 					    	quot /= (list[obfact] * num[num.length - 2] + 1n);
