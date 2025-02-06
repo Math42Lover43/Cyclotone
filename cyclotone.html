@@ -20,6 +20,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var factorizing = false;
 	var status = null;
 	var primetests = true;
+	function root(x,i) {
+    var place = BigInt(x.toString.length);
+    var radic = 0n;
+    while (place >= 0n) {
+        while(radic ** i + 10n ** place <= x) {
+            radic += 10n ** place;
+        }
+        place -= 1n;
+    }
+    return radic;
+}
 	function sqrt(value) {
     if (value < 0n) {
         throw 'Square root of negative numbers is not supported';
