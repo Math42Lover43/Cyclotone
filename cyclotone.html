@@ -20,6 +20,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var factorizing = false;
 	var status = null;
 	var primetests = true;
+	function logs(al,lim) {
+    var list = [];
+    for(let b = 2n; b <= lim; b++) {
+        list.push(0n);
+        while(b ** list[BigInt(list.length) - 1n] < al) {
+            list[BigInt(list.length) - 1n]++;
+        }
+    }
+    return list;
+}
 	function root(x,i) {
     var place = BigInt(x.toString.length);
     var radic = 0n;
