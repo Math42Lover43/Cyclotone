@@ -20,23 +20,28 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var factorizing = false;
 	var status = null;
 	var primetests = true;
-	function get_logs(al,lim) {
+	function get_logs(al,lim,interval) {
     var list = [];
+	if(interval) {
+		var interv = interval;
+	} else {
+		var interv = 1n;
+	}
     if(lim) {
-		for(let b = 2n; b <= lim; b++) {
+		for(let b = interv + (interv == 1); b <= lim; b+= interv) {
 	        list.push(0n);
 	        while(b ** list[BigInt(list.length) - 1n] < al) {
 	            list[BigInt(list.length) - 1n]++;
 	        }
     	}
     } else {
-	    var b = 2n;
+	    var b = interv + (interv == 1);
 		while(list[list.length - 1] != list[list.length - 2] || list.length == 0) {
 	        list.push(0n);
 	        while(b ** list[BigInt(list.length) - 1n] < al) {
 	            list[BigInt(list.length) - 1n]++;
 	        }
-		b++;
+		b += interv;
     	}
     return list;
 	}
