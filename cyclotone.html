@@ -30,7 +30,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	        }
     	}
     } else {
-		while(list[list.length - 1] != list[list.length - 2]) {
+		while(list[list.length - 1] != list[list.length - 2] || list.length) {
 	        list.push(0n);
 	        while(b ** list[BigInt(list.length) - 1n] < al) {
 	            list[BigInt(list.length) - 1n]++;
