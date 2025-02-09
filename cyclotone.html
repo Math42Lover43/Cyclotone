@@ -22,12 +22,20 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var primetests = true;
 	function get_logs(al,lim) {
     var list = [];
-    for(let b = 2n; b <= lim; b++) {
-        list.push(0n);
-        while(b ** list[BigInt(list.length) - 1n] < al) {
-            list[BigInt(list.length) - 1n]++;
-        }
-    }
+    if(lim) {
+		for(let b = 2n; b <= lim; b++) {
+	        list.push(0n);
+	        while(b ** list[BigInt(list.length) - 1n] < al) {
+	            list[BigInt(list.length) - 1n]++;
+	        }
+    	}
+    } else {
+		while(list[list.length - 1] != list[list.length - 2]) {
+	        list.push(0n);
+	        while(b ** list[BigInt(list.length) - 1n] < al) {
+	            list[BigInt(list.length) - 1n]++;
+	        }
+    	}
     return list;
 }
 	function root(x,i) {
