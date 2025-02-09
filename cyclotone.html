@@ -28,14 +28,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var interv = 1n;
 	}
     if(lim) {
-		for(let b = interv + (interv == 1); b <= lim; b+= interv) {
+		for(let b = interv + BigInt(interv == 1n); b <= lim; b+= interv) {
 	        list.push(0n);
 	        while(b ** list[BigInt(list.length) - 1n] < al) {
 	            list[BigInt(list.length) - 1n]++;
 	        }
     	}
     } else {
-	    var b = interv + (interv == 1);
+	    var b = interv + BigInt(interv == 1n);
 		while(list[list.length - 1] != list[list.length - 2] || list.length == 0) {
 	        list.push(0n);
 	        while(b ** list[BigInt(list.length) - 1n] < al) {
