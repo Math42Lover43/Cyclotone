@@ -331,9 +331,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
 		}
 	}
-	function bmifact(num,obv) {
+	function bmifact(num,obv,custN) {
 		var t = num; // best5
-		var n = 0n;
+		var n = custN ? custN : 0n;
 		var num;
 		var long;
 		var min = 0n;
