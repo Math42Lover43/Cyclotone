@@ -358,6 +358,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				    long = n + ". Highest term: " + num[num.length - 2] + "; Length: " + num.length;
 				}
 			}
+			if(num[num.length - 2] == 1n) {
+				n = 10n ** n.toString().length;
+			}
 		},0)
 		var int2 = setInterval(function(){
 		    document.getElementById("factorization").innerHTML = long + "<hr/>Minimum: " + min + "<hr/>" + prec + t;
