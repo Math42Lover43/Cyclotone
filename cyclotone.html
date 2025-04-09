@@ -359,7 +359,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 			}
 			if(num[num.length - 2] == 1n) {
-				n = 10n ** n.toString().length;
+				n = 10n ** BigInt(n.toString().length);
 			}
 		},0)
 		var int2 = setInterval(function(){
