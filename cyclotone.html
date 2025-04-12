@@ -331,7 +331,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			discriminant = (p ** 2n * limit) ** 2n - 4n * -(p ** 2n) * (p * limit + 1n - number);
 		}
 	}
-	function bmifact(num,obv,custN,min) {
+	function bmifact(num,obv,custN,minH) {
 		var t = num; // best5
 		var n = custN ? custN : 0n;
 		var num;
@@ -358,7 +358,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				    long = n + ". Highest term: " + num[num.length - 2] + "; Length: " + num.length;
 				}
 			}
-			if(num[num.length - 2] <= min) {
+			if(num[num.length - 2] <= minH) {
 				n = 10n ** BigInt(n.toString().length);
 			}
 		},0)
