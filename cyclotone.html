@@ -345,6 +345,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var int1 = setInterval(function(){
 			if(x == range) {
 				for(let i = 0n; i < roots.length; i++) {
+					console.log("n: " + n);
+					console.log("x: " + x);
 					quot /= (n - x);
 					long = (n - x) + " &times; " + quot;
 				}
