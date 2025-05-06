@@ -357,7 +357,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				roots = []; // empty roots;
 			} else {
 				x++;
-				if(polysubst(poly,x,range[range.length - 2]) == 0n) {
+				if(polysubst(poly,x,poly[poly.length - 2]) == 0n) {
 					roots.push(x);
 				}
 			}
