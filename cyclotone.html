@@ -350,7 +350,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					console.log("n: " + n);
 					console.log("x: " + x);
 					if(x - n + 1n > 0n) {
-						quot /= (x - n + 1n);
+						if(quot % (x - n + 1n) == 0n) {
+							quot /= (x - n + 1n);
+						}
 						long = (x - n + 1n) + " &times; " + quot;
 					}
 				}
