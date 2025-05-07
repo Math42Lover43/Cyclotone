@@ -342,6 +342,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var test = 0n;
 		var range = 0n;
 		var roots = [];
+		let end = 0n;
 		var int1 = setInterval(function(){
 			if(x == range) {
 				console.log(roots);
@@ -358,6 +359,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				range = n * (BigInt(poly.length) - 2n); // create a range
 				x = -range - 1n; // start the search
 				roots = []; // empty roots;
+				end = Math.round(poly.length - 2);
 			} else {
 				x++;
 				if(polysubst(poly,x,poly[poly.length - 2]) == 0n) {
@@ -366,7 +368,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		},0)
 		var int2 = setInterval(function(){
-		    document.getElementById("factorization").innerHTML = long + "<hr/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Degree " + Math.round(poly.length - 2);
+		    document.getElementById("factorization").innerHTML = long + "<hr/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Degree " + end;
 		},1000)
 	}
 </script>
