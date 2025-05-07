@@ -366,7 +366,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		},0)
 		var int2 = setInterval(function(){
-		    document.getElementById("factorization").innerHTML = long + "<hr/>Trial <i>x</i> = " + x + " out of " + range;
+		    document.getElementById("factorization").innerHTML = long + "<hr/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Degree " + Math.round(poly.length - 2);
 		},1000)
 	}
 </script>
