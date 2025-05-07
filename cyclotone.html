@@ -364,6 +364,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				x++;
 				if(polysubst(poly,x,poly[poly.length - 2]) == 0n) {
 					roots.push(x);
+					console.log(poly);
 				}
 			}
 		},0)
