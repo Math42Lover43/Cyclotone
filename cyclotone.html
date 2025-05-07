@@ -348,8 +348,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				for(let i = 0n; i < roots.length; i++) {
 					console.log("n: " + n);
 					console.log("x: " + x);
-					quot /= (n - x);
-					long = (n - x) + " &times; " + quot;
+					if(n - x > 0n) {
+						quot /= (n - x);
+						long = (n - x) + " &times; " + quot;
+					}
 				}
 				n += obv; // increase base;
 				poly = baseconv(quot,t); // get a polynomial
