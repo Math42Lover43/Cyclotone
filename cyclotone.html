@@ -343,6 +343,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var range = 0n;
 		var roots = [];
 		let end = 0n;
+		var prec = "";
 		var int1 = setInterval(function(){
 			if(x == range) {
 				console.log(roots);
@@ -353,7 +354,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						if(quot % (n + 1n) == 0n) {
 							quot /= (n + 1n);
 						}
-						long = (n + 1n) + " &times; " + quot;
+						prec += (n + 1n) + " &times; ";
+						long = quot;
 					}
 				}
 				n += obv; // increase base;
@@ -371,7 +373,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		},0)
 		var int2 = setInterval(function(){
-		    document.getElementById("factorization").innerHTML = long + "<hr/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Degree " + end;
+		    document.getElementById("factorization").innerHTML = prec + long + "<hr/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Degree " + end;
 		},1000)
 	}
 </script>
