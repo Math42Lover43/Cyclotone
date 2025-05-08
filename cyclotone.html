@@ -358,7 +358,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				n += obv; // increase base;
 				poly = baseconv(quot, n); // get a polynomial
-				range = n * (BigInt(poly.length) - 2n); // create a range
+				range = n * (BigInt(baseconv(quot, n).length) - 2n); // create a range
 				x = -range - 1n; // start the search
 				roots = []; // empty roots;
 				end = Math.round(poly.length - 2);
