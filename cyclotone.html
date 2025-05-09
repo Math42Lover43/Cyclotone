@@ -376,7 +376,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		},0)
 		var int2 = setInterval(function(){
-		    document.getElementById("factorization").innerHTML = prec + long + "<hr/>Trial <i>x</i> = " + x + " out of " + range + " (" + (100n * (x + range) / 2n * range) + "%)<br/>Degree " + end;
+		    document.getElementById("factorization").innerHTML = prec + long + "<hr/>Trial <i>x</i> = " + x + " out of " + range + " (" + (100n * (x + range) / (2n * range)) + "%)<br/>Degree " + end;
 		},1000)
 	}
 </script>
