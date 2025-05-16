@@ -1,2 +1,1 @@
-New factorization method:
-1. Use only trinomials and only factor when t % x = 1. Factorization should use the trinomial's discriminant.
+1. Implement fractional roots that produce polynomial of the form dx - n where d is the denominator of the root and n is the numerator.
