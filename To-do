@@ -1,1 +1,7 @@
 1. Implement fractional roots that produce polynomial of the form dx - n where d is the denominator of the root and n is the numerator.
+    x/d - n + 1
+        x is root trial (without divisor)
+        n is base
+        d is divisor
+    x - dn + 1
+        incorporate divisor
