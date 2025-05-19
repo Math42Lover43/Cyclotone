@@ -353,10 +353,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				for(let i = 0n; i < roots.length; i++) {
 					console.log("n: " + n);
 					console.log("x: " + x);
-					if(x - n + 1n > 0n) {
-						if(quot % (n + 1n) == 0n) {
-							quot /= (n + 1n);
-							prec += (n + 1n) + " &times; ";
+					if(x - n * poly[poly.length - 2] + 1n > 0n) {
+						if(quot % (poly[poly.length - 2] * n + 1n) == 0n) {
+							quot /= (poly[poly.length - 2] * n + 1n);
+							prec += (poly[poly.length - 2] * n + 1n) + " &times; ";
 						}
 						long = quot;
 					}
