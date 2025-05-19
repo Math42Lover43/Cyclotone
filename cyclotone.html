@@ -347,21 +347,24 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var roots = [];
 		let end = 0n;
 		var prec = "";
+		var d = 0n;
 		var int1 = setInterval(function(){
 			if(x == range) {
 				console.log(roots);
 				for(let i = 0n; i < roots.length; i++) {
 					console.log("n: " + n);
 					console.log("x: " + x);
-					if(x - n * poly[poly.length - 2] + 1n > 0n) {
-						if(quot % (x - poly[poly.length - 2] * n + 1n) == 0n) {
-							quot /= (x - poly[poly.length - 2] * n + 1n);
-							prec += (x - poly[poly.length - 2] * n + 1n) + " &times; ";
+					console.log("d: " + d);
+					if(d * x - n + 1n > 0n) {
+						if(quot % (d * x - n + 1n) == 0n) {
+							quot /= (d * x - n + 1n);
+							prec += (d * x - n + 1n) + " &times; ";
 						}
 						long = quot;
 					}
 				}
 				n += obv; // increase base;
+				d++;
 				poly = baseconv(quot, n); // get a polynomial
 				range = abs(n * (BigInt(baseconv(quot, n).length) - 2n)); // create a range
 				x = -1n; // start the search
@@ -369,11 +372,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				end = Math.round(poly.length - 2);
 			} else {
 				x++;
-				if(polysubst(poly,x,poly[poly.length - 2]) == 0n) {
+				if(polysubst(poly,x,poly[poly.length - 2] * d) == 0n) {
 					roots.push(x);
 					console.log(poly);
 				}
-				if(polysubst(poly,-x,poly[poly.length - 2]) == 0n) {
+				if(polysubst(poly,-x,poly[poly.length - 2] * d) == 0n) {
 					roots.push(-x);
 					console.log(poly);
 				}
