@@ -355,11 +355,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					console.log("n: " + n);
 					console.log("x: " + x);
 					console.log("d: " + d);
-					console.log(d * n - roots[i] + 1n);
-					if(d * n - roots[i] + 1n > 0n) {
-						if(quot % (d * n - roots[i] + 1n) == 0n) {
-							quot /= (d * n - roots[i] + 1n);
-							prec += (d * n - roots[i] + 1n) + " &times; ";
+					console.log(n - roots[i] + 1n);
+					if(n - roots[i] + 1n > 0n) {
+						if(quot % (n - roots[i] + 1n) == 0n) {
+							quot /= (n - roots[i] + 1n);
+							prec += (n - roots[i] + 1n) + " &times; ";
 						}
 						long = quot;
 					}
