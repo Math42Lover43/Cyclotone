@@ -356,7 +356,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					console.log("x: " + x);
 					console.log("d: " + d);
 					console.log(x - n + 1n);
-					if(x - n + 1n > 0n) {
+					if(n - roots[i] > 0n) {
 						if(quot % (x - n + 1n) == 0n) {
 							quot /= (x - n + 1n);
 							prec += (x - n + 1n) + " &times; ";
@@ -373,13 +373,21 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				end = Math.round(poly.length - 2);
 			} else {
 				x++;
-				if(polysubst(poly,x,poly[poly.length - 2] * d) == 0n) {
-					roots.push(x);
-					console.log(poly);
+				if(n - x > 0n) {
+					console.log(n - x);
+					if(quot % (n - x) == 0n) {
+						quot /= (n - x);
+						prec += (n - x) + " &times; ";
+					}
+					long = quot;
 				}
-				if(polysubst(poly,-x,poly[poly.length - 2] * d) == 0n) {
-					roots.push(-x);
-					console.log(poly);
+				if(n + x > 0n) {
+					console.log(n + x);
+					if(quot % (n + x) == 0n) {
+						quot /= (n + x);
+						prec += (n + x) + " &times; ";
+					}
+					long = quot;
 				}
 			}
 		},0)
