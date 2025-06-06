@@ -373,20 +373,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				end = Math.round(poly.length - 2);
 			} else {
 				x++;
-				if(n - x > 1n) {
-					console.log(n - x);
-					if(quot % (n - x) == 0n) {
-						quot /= (n - x);
-						prec += (n - x) + " &times; ";
-					}
+				if(n - n * x + 1n > 1n && quot % (n - n * x + 1n) == 0n) {
+					console.log(n - n * x + 1n);
+					quot /= (n - n * x + 1n);
+					prec += (n - n * x + 1n) + " &times; ";
 					long = quot;
 				}
-				if(n + x > 1n) {
-					console.log(n + x);
-					if(quot % (n + x) == 0n) {
-						quot /= (n + x);
-						prec += (n + x) + " &times; ";
-					}
+				if(n + n * x + 1n > 1n && quot % (n + n * x + 1n) == 0n) {
+					console.log(n + n * x + 1n);
+					quot /= (n + n * x + 1n);
+					prec += (n + n * x + 1n) + " &times; ";
 					long = quot;
 				}
 			}
