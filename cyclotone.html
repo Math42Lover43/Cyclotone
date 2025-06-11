@@ -378,6 +378,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					roots.push(x);
 					console.log(poly);
 				}
+				if(quot % (n * x + 1n) == 0n) {
+					quot /= (x * n + 1n);
+					prec += (x * n + 1n) + " &times; ";
+					long = quot;
+				}
 				if(polysubst(poly,-x,poly[poly.length - 2] * d) == 0n) {
 					roots.push(-x);
 					console.log(poly);
