@@ -351,6 +351,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var step = 0;
 		var int1 = setInterval(function(){
 			if(x == range) {
+				step += 1;
+				step %= 3;
 				if(step == 0) {
 					console.log(poly);
 					console.log(roots);
@@ -375,8 +377,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				poly = baseconv(quot, n); // get a polynomial
 				x = -1n; // start the search
 				end = Math.round(poly.length - 2);
-				step += 1;
-				step %= 3;
 			} else {
 				x++;
 				if(step == 2) {
