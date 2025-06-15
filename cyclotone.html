@@ -388,12 +388,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						roots.push(-x);
 						console.log(poly);
 					}
-				} else {
+				} else if (step == 1n) {
 					if(quot % (n * x + 1n) == 0n && n * x) {
 						quot /= (x * n + 1n);
 						prec += (x * n + 1n) + " &times; ";
 						long = quot;
 					}
+				} else {
+					x = range;
 				}
 			}
 		},0)
