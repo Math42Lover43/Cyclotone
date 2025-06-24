@@ -349,6 +349,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 	    return c;
 	}
+	function polyfact(x) {
+	    var trials = quickfact(x[x.length - 2]);
+	    for(let i = 0; i < trials.length / 2; i++) {
+	        trials.push(-trials[i]);
+	    }
+	    console.log(trials);
+	    for(let ind = 0; ind < trials.length; ind += 2) {
+	        var polies = [[trials[ind]], [trials[ind + 1]]];
+	        console.log(polies);
+	    }
+	}
 	function bmifact(num,obv,custN) {
 		var t = num; // best5
 		var n = custN ? custN : 0n;
