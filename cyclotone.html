@@ -349,15 +349,19 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 	    return c;
 	}
-	function polyfact(x) {
+	function polyfact(x,p) {
 	    var trials = quickfact(x[x.length - 2]);
-	    for(let i = 0; i < trials.length / 2; i++) {
-	        trials.push(-trials[i]);
-	    }
 	    console.log(trials);
 	    for(let ind = 0; ind < trials.length; ind += 2) {
 	        var polies = [[trials[ind]], [trials[ind + 1]]];
+			var solve = {
+				const: x[length - 3],
+				coeff: [polies[0][0], polies[1][0]];
+				anticoeff: [0n, 0n];
+			};
+			// start solving! (TBI)
 	        console.log(polies);
+			console.log(solve);
 	    }
 	}
 	function bmifact(num,obv,custN) {
