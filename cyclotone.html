@@ -355,7 +355,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    for(let ind = 0; ind < trials.length; ind += 2) {
 	        var polies = [[trials[ind]], [trials[ind + 1]]];
 			var solve = {
-				const: x[x.length - 3],
+				equiv: x[x.length - 3] - polies[0][0] * polies[1][0],
 				coeff: [polies[0][0], polies[1][0]],
 				anticoeff: [0n, 0n]
 			};
