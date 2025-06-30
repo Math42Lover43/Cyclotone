@@ -353,7 +353,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var intercept = solve.equiv % solve.coeff[1];
 		var test = intercept;
 		test = test - solve.coeff[0] % solve.coeff[1];
-		test += solve.coeff[0] * (test < 0n);
+		test += solve.coeff[0] * BigInt(test < 0n);
 		var slope = test - intercept;
 		console.log(slope);
 		test = intercept;
@@ -363,7 +363,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var modulus1 = 0n;
 		while(test != intercept || modulus1 == 0n) {
 			test -= intercept % solve.coeff[1];
-			test += solve.coeff[0] * (test < 0n);
+			test += solve.coeff[0] * BigInt(test < 0n);
 			modulus1++;
 		}
 		console.log(modulus1);
