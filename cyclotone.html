@@ -349,6 +349,23 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 	    return c;
 	}
+	function anticoeff(solve,r) {
+		var intercept = solve.equiv;
+		var test = intercept;
+		test = test - coeff[0] % coeff[1];
+		var slope = test - intercept;
+		console.log(slope);
+		test = intercept;
+		if(slope == 0n) {
+			return null;
+		}
+		var modulus1 = 0n;
+		while(test != intercept || modulus1 == 0n) {
+			test -= intercept;
+			modulus1++;
+		}
+		console.log(modulus1);
+	}
 	function polyfact(x,p) {
 	    var trials = quickfact(x[x.length - 2]);
 	    console.log(trials);
