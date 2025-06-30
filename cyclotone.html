@@ -352,7 +352,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function anticoeff(solve,r) {
 		var intercept = solve.equiv;
 		var test = intercept;
-		test = test - coeff[0] % coeff[1];
+		test = test - solve.coeff[0] % solve.coeff[1];
 		var slope = test - intercept;
 		console.log(slope);
 		test = intercept;
