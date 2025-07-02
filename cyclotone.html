@@ -398,6 +398,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var prec = "";
 		var d = 0n;
 		var step = -1;
+		var maxrate = 0n;
+		var mrx = 0n;
 		var int1 = setInterval(function(){
 			if(x == range) {
 				step += 1;
@@ -438,7 +440,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		},0)
 		var oldx = 0n;
 		var int2 = setInterval(function(){
-		    document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / range) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx);
+			if(rate > maxrate) {
+				maxrate = rate;
+				mrx = x;
+			}
+		    document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / range) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx;
 			oldx = x;
 		},1000)
 	}
