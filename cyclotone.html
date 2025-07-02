@@ -440,7 +440,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		},0)
 		var oldx = 0n;
 		var int2 = setInterval(function(){
-			if((x - oldx) > maxrate) {
+			if((x - oldx) > maxrate && (x - oldx) < range / 3) {
 				maxrate = (x - oldx);
 				mrx = x;
 			}
