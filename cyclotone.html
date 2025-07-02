@@ -440,8 +440,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		},0)
 		var oldx = 0n;
 		var int2 = setInterval(function(){
-			if(rate > maxrate) {
-				maxrate = rate;
+			if((x - oldx) > maxrate) {
+				maxrate = (x - oldx);
 				mrx = x;
 			}
 		    document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / range) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx;
