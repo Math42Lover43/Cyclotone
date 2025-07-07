@@ -353,7 +353,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var intercept_mod = solve.equiv % solve.coeff[1];
 		var mod_slope = (solve.equiv - solve.coeff[0]) % solve.coeff[1] - intercept_mod + solve.coeff[1] * BigInt((solve.equiv - solve.coeff[0]) % solve.coeff[1] - intercept_mod + solve.coeff[1] < 0n);
 		console.log(`Intercept modulo: ${intercept_mod}
-  			Modulo slope: ${mod_slope}
+  Modulo slope: ${mod_slope}
   		`);
 	}
 	function polyfact(x,p) {
