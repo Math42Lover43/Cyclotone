@@ -351,13 +351,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function anticoeff(solve,r) {
 		var intercept_mod = solve.equiv % solve.coeff[1];
-		if(intercept_mod < 0n) {
-			intercept_mod += abs(solve.coeff[1]);
-		}
-		var mod_slope = (solve.equiv - solve.coeff[0]) % solve.coeff[1] - intercept_mod;
-		if(mod_slope < 0n) {
-			mod_slope += abs(solve.coeff[1]);
-		}
+		var mod_slope = (solve.equiv - solve.coeff[0] - intercept_mod) % solve.coeff[1];
 		console.log(`Intercept modulo: ${intercept_mod}
   Modulo slope: ${mod_slope}
   		`);
