@@ -350,25 +350,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    return c;
 	}
 	function anticoeff(solve,r) {
-		var intercept = solve.equiv % solve.coeff[1];
-		var test = intercept;
-		test = test - solve.coeff[0] % solve.coeff[1];
-		test += solve.coeff[0] * BigInt(test < 0n);
-		var slope = test - intercept;
-		console.log(intercept);
-		console.log(slope);
-		test = intercept;
-		if(slope == 0n) {
-			return null;
-		}
-		var modulus1 = 0n;
-		while(test != intercept || modulus1 == 0n) {
-			test -= intercept % solve.coeff[1];
-			test += solve.coeff[0] * BigInt(test < 0n);
-			modulus1++;
-			console.log(test);
-		}
-		console.log(modulus1);
+		var intercept_mod = solve.equiv % solve.coeff[1];
+		var mod_slope = (solve.equiv - solve.coeff[0]) % solve.coeff[1] - intercept_mod + solve.coeff[1] * BigInt((solve.equiv - solve.coeff[0]) % solve.coeff[1] - intercept_mod + solve.coeff[1] < 0n);
+		console.log(`Intercept modulo: ${intercept_mod}
+  			Modulo slope: ${mod_slope}
+  		`);
 	}
 	function polyfact(x,p) {
 	    var trials = quickfact(x[x.length - 2]);
