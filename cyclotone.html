@@ -358,6 +358,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function anticoeff(solve,r) {
 		var intercept_mod = candycanemod(solve.equiv, solve.coeff[1]);
 		var mod_slope = candycanemod(solve.equiv - solve.coeff[0] - intercept_mod, solve.coeff[1]);
+		if(solve.coeff[1] < 0n) {
+			mod_slope = solve.coeff[1] - mod_slope;
+		}
 		console.log(`Intercept modulo: ${intercept_mod}
   Modulo slope: ${mod_slope}
   		`);
