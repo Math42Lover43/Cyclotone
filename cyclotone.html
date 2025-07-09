@@ -398,7 +398,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var int1 = setInterval(function(){
 			if(x == range) {
 				step += 1;
-				step %= 3;
+				step %= 2; // 3 steps: Disabling step 2 for now
 				if(step == 0) {
 					console.log(poly);
 					n += obv; // increase base;
