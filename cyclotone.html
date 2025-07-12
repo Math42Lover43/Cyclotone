@@ -355,6 +355,29 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 	    return x % y;
 	}
+	function secs_to_eff(x) {
+		var safex = Number(x);
+		var returner = Number(x) + " sec";
+		if(x >= 60) {
+			var returner = Math.ceil(Number(x) / 60) + " min";
+		}
+		if(x >= 3600) {
+			var returner = Math.ceil(Number(x) / 3600) + " hr";
+		}
+		if(x >= 86400) {
+			var returner = Math.ceil(Number(x) / 86400) + " d";
+		}
+		if(x >= 604800) {
+			var returner = Math.ceil(Number(x) / 604800) + " w";
+		}
+		if(x >= 2629746) {
+			var returner = Math.ceil(Number(x) / 2629746) + " mo";
+		}
+		if(x >= 31556952) {
+			var returner = Math.ceil(Number(x) / 31556952) + " y";
+		}
+		return returner;
+	}
 	function anticoeff(solve,r) {
 		var intercept_mod = candycanemod(solve.equiv, solve.coeff[1]);
 		var mod_slope = candycanemod(solve.equiv - solve.coeff[0] - intercept_mod, solve.coeff[1]);
@@ -439,7 +462,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				maxrate = (x - oldx);
 				mrx = x;
 			}
-		    document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / range) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx;
+		    document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / range) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx + "<br/>Anticipated end of step: " + secs_to_eff(2n * range / (1500n + maxrate)) + " since start of step";
 			oldx = x;
 		},1000)
 	}
