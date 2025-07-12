@@ -367,15 +367,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		if(x >= 86400) {
 			var returner = Math.ceil(Number(x) / 86400) + " d";
 		}
-		if(x >= 604800) {
-			var returner = Math.ceil(Number(x) / 604800) + " w";
-		}
-		if(x >= 2629746) {
-			var returner = Math.ceil(Number(x) / 2629746) + " mo";
-		}
-		if(x >= 31556952) {
-			var returner = Math.ceil(Number(x) / 31556952) + " y";
-		}
 		return returner;
 	}
 	function anticoeff(solve,r) {
