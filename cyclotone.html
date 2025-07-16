@@ -378,6 +378,20 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		console.log(`Intercept modulo: ${intercept_mod}
   Modulo slope: ${mod_slope}
   		`);
+		var points = [];
+		var x = 0n;
+		while((intercept_mod + x * mod_slope) % solve.coeff[1] != 0n) {
+			x++;
+		}
+		points.push([x, (intercept_mod + x * mod_slope) / solve.coeff[1]]);
+		x++;
+		while((intercept_mod + x * mod_slope) % solve.coeff[1] != 0n) {
+			x++;
+		}
+		points.push([x, (intercept_mod + x * mod_slope) / solve.coeff[1]]);
+		console.log(`Points on line:
+ - (${points[0][0]}, ${points[0][1]})
+ - (${points[1][0]}, ${points[1][1]})`);
 	}
 	function polyfact(x,p) {
 	    var trials = quickfact(x[x.length - 2]);
