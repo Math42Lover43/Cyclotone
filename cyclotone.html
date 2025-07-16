@@ -380,15 +380,15 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
   		`);
 		var points = [];
 		var x = 0n;
-		while((intercept_mod + x * mod_slope) % solve.coeff[1] != 0n) {
+		while((solve.equiv - x * solve.coeff[0]) % solve.coeff[1] != 0n) {
 			x++;
 		}
-		points.push([x, (intercept_mod - x * solve.coeff[0]) / solve.coeff[1] + solve.coeff[0] - 1n]);
+		points.push([x, (solve.equiv - x * solve.coeff[0]) / solve.coeff[1]]);
 		x++;
-		while((intercept_mod + x * mod_slope) % solve.coeff[1] != 0n) {
+		while((solve.equiv - x * solve.coeff[0]) % solve.coeff[1] != 0n) {
 			x++;
 		}
-		points.push([x, (intercept_mod - x * solve.coeff[0]) / solve.coeff[1] + solve.coeff[0] - 1n]);
+		points.push([x, (solve.equiv - x * solve.coeff[0]) / solve.coeff[1]]);
 		console.log(`Points on line:
  - (${points[0][0]}, ${points[0][1]})
  - (${points[1][0]}, ${points[1][1]})`);
