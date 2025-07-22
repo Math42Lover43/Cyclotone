@@ -441,7 +441,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var int1 = setInterval(function(){
 			if(x == range) {
 				step += 1;
-				step %= 2; // 3 steps: Disabling step 2 for now
+				step %= 3; // 3 steps: Disabling step 2 for now
 				if(step == 0) {
 					maxrate == 0n;
 					console.log(poly);
@@ -455,15 +455,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			} else {
 				x++;
 				if(step == 2) {
-					while(mod_pow(2n, n ** 2n - n * x, n ** 2n - n * x + 1n) != 1n && x < range) {
-						x++;
-					}
-					if(quot % (n ** 2n - n * x + 1n) == 0n && n ** 2n - n * x) {
-						quot /= n ** 2n - n * x + 1n;
-						prec += (n ** 2n - n * x + 1n) + " &times; ";
-						long = quot;
-					}
-				} else if (step == 1n) {
+					console.log(polyfact(polies));
+				} else if (step == 1) {
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
 					}
