@@ -409,8 +409,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function polyfact(x,p) {
 	    var trials = quickfact(x[x.length - 2]);
 	    console.log(trials);
+		var polies = [];
 	    for(let ind = 0; ind < trials.length; ind += 2) {
-	        var polies = [[trials[ind]], [trials[ind + 1]]];
+	        polies.push([trials[ind]], [trials[ind + 1]]);
 	        console.log(polies);
 			var solve = {
 				equiv: x[x.length - 3] - polies[0][0] * polies[1][0],
