@@ -455,7 +455,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			} else {
 				x++;
 				if(step == 2) {
-					console.log(polyfact(polies));
+					if(poly[0] == 1n) {
+						console.log(polyfact(polies));
+					}
 				} else if (step == 1) {
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
