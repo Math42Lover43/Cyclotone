@@ -459,10 +459,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					if(poly[0] == 1n) {
 						console.log(polyfact(poly));
 					}
-					step += 1;
-					step %= 3;
 					x = range;
-					n += obv;
 				} else if (step == 1) {
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
