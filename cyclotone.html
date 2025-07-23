@@ -413,11 +413,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    for(let ind = 0; ind < trials.length; ind += 2) {
 	        polies.push([trials[ind]], [trials[ind + 1]]);
 	        console.log(polies);
-			var solve = {
-				equiv: x[x.length - 3] - polies[0][0] * polies[1][0],
-				coeff: [polies[0][0], polies[1][0]],
-				anticoeff: [0n, 0n]
-			};
+		    var solve = [];
+			solve.push({
+				equiv: x[x.length - 3] - polies[ind][polies[ind].length - 1] * polies[ind + 1][polies[ind + 1].length - 1],
+				coeff: [polies[ind][polies[ind].length - 1], polies[ind + 1][polies[ind + 1].length - 1]],
+			});
 			console.log(solve);
 			// start solving! (TBI)
 	    }
