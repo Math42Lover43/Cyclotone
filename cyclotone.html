@@ -439,7 +439,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var maxrate = 0n;
 		var mrx = 0n;
 		var int1 = setInterval(function(){
-			if(x == range && [1, 2].includes(step)) {
+			if(x == range) {
 				step += 1;
 				step %= 3;
 				if(step == 0) {
@@ -461,6 +461,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 					step += 1;
 					step %= 3;
+					x = range;
 				} else if (step == 1) {
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
@@ -470,6 +471,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						prec += (x * n + 1n) + " &times; ";
 						long = quot;
 					}
+					step++;
+					x = 0n;
 				} else {
 					x = range;
 				}
