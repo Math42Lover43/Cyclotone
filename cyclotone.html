@@ -370,7 +370,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return returner;
 	}
 	function anticoeff(solve,r) {
-		rev = solve.coeff.sort() != solve.coeff;
+		var rev = solve.coeff.sort() != solve.coeff;
+		console.log(rev);
 		solve.coeff = solve.coeff.sort();
 		var intercept_mod = candycanemod(solve.equiv, solve.coeff[1]);
 		var mod_slope = candycanemod(solve.equiv - solve.coeff[0] - intercept_mod, solve.coeff[1]);
