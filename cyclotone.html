@@ -411,15 +411,19 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    console.log(trials);
 		var polies = [];
 		var solve = [];
+		var pass = [];
 	    for(let ind = 0; ind < trials.length; ind += 2) {
 	        polies.push([trials[ind]], [trials[ind + 1]]);
 			solve.push({
 				equiv: x[x.length - 3] - polies[ind][polies[ind].length - 1] * polies[ind + 1][polies[ind + 1].length - 1],
 				coeff: [polies[ind][polies[ind].length - 1], polies[ind + 1][polies[ind + 1].length - 1]],
 			});
-			// start solving! (TBI)
+	    }
+		for(let ind = 0; ind < solve.length; ind++) {
+	        pass.push(anticoeff(solve[ind]));
 	    }
 		console.log(solve);
+		console.log(pass);
 		return polies;
 	}
 	function bmifact(num,obv,custN) {
