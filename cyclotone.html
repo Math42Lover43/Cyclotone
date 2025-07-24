@@ -370,6 +370,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return returner;
 	}
 	function anticoeff(solve,r) {
+		rev = solve.coeff.sort() != solve.coeff;
 		solve.coeff = solve.coeff.sort();
 		var intercept_mod = candycanemod(solve.equiv, solve.coeff[1]);
 		var mod_slope = candycanemod(solve.equiv - solve.coeff[0] - intercept_mod, solve.coeff[1]);
@@ -402,6 +403,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(abs(x) < abs(r)) {
 			points.push([x, (solve.equiv - x * solve.coeff[0]) / solve.coeff[1]]);
 			x -= one;
+		}
+		if(rev) {
+			for(let ind = 0; ind < points.length; ind++) {
+				points[ind] = points[ind].reverse();
+			}
 		}
 		console.log(`Points on line: ${points}`);
 		return points;
