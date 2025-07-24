@@ -443,6 +443,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var mrx = 0n;
 		var int1 = setInterval(function(){
 			if(x == range) {
+				if(quot == 1n) {
+					clearInterval(int1, int2);
+				}
 				step += 1;
 				step %= 3;
 				if(step == 0) {
