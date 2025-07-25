@@ -355,6 +355,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 	    return x % y;
 	}
+	function crossprod(x, y) {
+		var cap = x.length - 1;
+		var sigma = 0n;
+		for(let i = 0; round(i) <= round(cap); i++) {
+			sigma += x[Math.round(i)] * y[Math.round(cap - i)];
+		}
+		return sigma
+	}
 	function secs_to_eff(x) {
 		var safex = Number(x);
 		var returner = Number(x) + " sec";
