@@ -439,8 +439,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 		var pm1 = [];
 		for(let outer = 0; outer < polies.length; outer += 2) {
-			for(let inner = 0; inner < pass[outer].length; inner++) {
-				pm1.push(polies[outer].concat(pass[outer / 2][inner][0]), polies[outer + 1].concat(pass[outer / 2][inner][1]))
+			if(pass[outer / 2]) {
+				for(let inner = 0; inner < pass[outer / 2].length; inner++) {
+					pm1.push(polies[outer].concat(pass[outer / 2][inner][0]), polies[outer + 1].concat(pass[outer / 2][inner][1]))
+				}
 			}
 		}
 		polies = pm1;
