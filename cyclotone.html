@@ -437,8 +437,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		for(let ind = 0; ind < solve.length; ind++) {
 	        pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 2]));
 	    }
-		console.log(solve);
-		console.log(pass);
+		var pm1 = [];
+		for(let outer = 0; outer < polies.length; outer += 2) {
+			for(let inner = 0; inner < pass[outer].length; inner++) {
+				pm1.push(polies[outer].concat(pass[outer / 2][inner][0]), polies[outer + 1].concat(pass[outer / 2][inner][1]))
+			}
+		}
+		polies = pm1;
 		return polies;
 	}
 	function bmifact(num,obv,custN) {
