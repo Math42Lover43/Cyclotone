@@ -362,7 +362,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var cap = x.length - 1;
 		var sigma = 0n;
 		for(let i = 0; Math.round(i) <= Math.round(cap); i++) {
-			sigma += x[Math.round(i)] * y[Math.round(cap - i)];
+			if(y[Math.round(cap - i)]) {
+				sigma += x[Math.round(i)] * y[Math.round(cap - i)];
+			}
 		}
 		return sigma
 	}
