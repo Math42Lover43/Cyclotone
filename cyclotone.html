@@ -427,16 +427,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var polies = [];
 		var solve = [];
 		var pass = [];
-	    for(let ind = 0; ind < trials.length; ind += 2) {
-	        polies.push([trials[ind]], [trials[ind + 1]]);
+		for(let ind = 0; ind < trials.length; ind += 2) {
+			polies.push([trials[ind]], [trials[ind + 1]]);
 			solve.push({
 				equiv: x[x.length - 3],
-				coeff: [polies[ind][polies[ind].length - 1], polies[ind + 1][polies[ind + 1].length - 1]],
+				coeff: [polies[ind][0], polies[ind + 1][0]]
 			});
-	    }
+		}
 		for(let ind = 0; ind < solve.length; ind++) {
-	        pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
-	    }
+			pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
+		}
 		var pm1 = [];
 		for(let outer = 0; outer < polies.length; outer += 2) {
 			if(pass[outer / 2]) {
@@ -446,6 +446,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		}
 		polies = pm1;
+		{
+			solve = [];
+			pass = [];
+			for(let ind = 0; ind < polies.length; ind += 2) {
+				polies.push([trials[ind]], [trials[ind + 1]]);
+				solve.push({
+					equiv: x[x.length - 4] - crossprod(polies[polies.length - 3], polies[polies.length - 2]),
+					coeff: [polies[ind][0], polies[ind + 1][0]]
+				});
+			}
+		}
 		return polies;
 	}
 	function bmifact(num,obv,custN) {
