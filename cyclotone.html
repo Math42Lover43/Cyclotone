@@ -362,7 +362,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var cap = x.length - 1;
 		var sigma = 0n;
 		for(let i = 0; Math.round(i) <= Math.round(cap); i++) {
-			if(y[Math.round(cap - i)]) {
+			if(typeof y[Math.round(cap - i)] == "bigint") {
 				sigma += x[Math.round(i)] * y[Math.round(cap - i)];
 			}
 		}
@@ -457,7 +457,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			for(let ind = 0; ind < polies.length; ind += 2) {
 				polies.push([trials[ind]], [trials[ind + 1]]);
 				solve.push({
-					equiv: x[x.length - 4] - crossprod(polies.slice(polies.length - 3, polies.length - 2), polies.slice(polies.length - 3, polies.length - 2)),
+					equiv: x[x.length - 4] - crossprod(polies.slice(polies.length - 3, polies.length - 2)),
 					coeff: [polies[ind][0], polies[ind + 1][0]]
 				});
 			}
