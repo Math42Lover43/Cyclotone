@@ -466,6 +466,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					await new Promise(resolve => setTimeout(resolve, 0));
 				}
 			}
+			if(solve.length == 0) {
+				return null;
+			}
 		}
 		console.log(solve);
 		return polies;
