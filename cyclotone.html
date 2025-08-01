@@ -439,15 +439,22 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				coeff: [polies[ind][0], polies[ind + 1][0]]
 			});
 		}
-		for(let ind = 0; ind < solve.length; ind++) {
-			pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
+		async function f1() {
+			for(let ind = 0; ind < solve.length; ind++) {
+				pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
+				await new Promise(resolve => setTimeout(resolve, 0));
+			}
 		}
 		var pm1 = [];
-		for(let outer = 0; outer < polies.length; outer += 2) {
-			if(pass[outer / 2]) {
-				for(let inner = 0; inner < pass[outer / 2].length; inner++) {
-					pm1.push([pass[outer / 2][inner][0]].concat(polies[outer]), [pass[outer / 2][inner][1]].concat(polies[outer + 1]))
+		async function f2() {
+			for(let outer = 0; outer < polies.length; outer += 2) {
+				if(pass[outer / 2]) {
+					for(let inner = 0; inner < pass[outer / 2].length; inner++) {
+						pm1.push([pass[outer / 2][inner][0]].concat(polies[outer]), [pass[outer / 2][inner][1]].concat(polies[outer + 1]));
+						await new Promise(resolve => setTimeout(resolve, 0));
+					}
 				}
+				await new Promise(resolve => setTimeout(resolve, 0));
 			}
 		}
 		polies = pm1;
@@ -542,4 +549,5 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
