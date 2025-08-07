@@ -92,12 +92,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			return (BigInt(x) / BigInt(y))
 		}
 	}
-	function baseconv(val,base) {
+	function baseconv(val,base,mult) {
 		var number = val;
 		var list = [val];
+		var mult = mult ? mult : 1n;
 		while(list[list.length - 1] != 0n) {
 			list.push(list[list.length - 1] / BigInt(base));
 			list[list.length - 2] = list[list.length - 2] % BigInt(base);
+		}
+		for(let term = 0; term < list.length; term++) {
+			list[term] *= mult ** term;
 		}
 		return list;
 	}
@@ -511,7 +515,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					range = abs(n * (BigInt(baseconv(quot, n).length) - 2n));
 					range += BigInt(range == 0n); // create a range
 				}
-				poly = baseconv(quot, n); // get a polynomial
+				poly = baseconv(quot, n, n / obv); // get a polynomial
 				x = -1n; // start the search
 				end = Math.round(poly.length - 2);
 			} else {
@@ -549,6 +553,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
