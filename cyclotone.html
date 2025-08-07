@@ -11,7 +11,7 @@ body,input,button { font-family: 'Roboto', 'Arial', sans-serif }
 	Warning: The calculator will not work with JavaScript disabled.
 </noscript>
 Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
-<button onclick="bmifact(cyclotomic(document.getElementById('config_exp').value),BigInt(document.getElementById('config_exp').value * (1n + BigInt(BigInt(document.getElementById('config_exp').value) % 2n == 1n || BigInt(document.getElementById('config_exp').value) % 40n == 0n))));">Factorize</button>
+<button onclick="bmifact(cyclotomic(document.getElementById('config_exp').value),BigInt(document.getElementById('config_exp').value) * (1n + BigInt(BigInt(document.getElementById('config_exp').value) % 2n == 1n || BigInt(document.getElementById('config_exp').value) % 40n == 0n)));">Factorize</button>
 <div id="factorization">
 </div>
 <script>
@@ -549,6 +549,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
