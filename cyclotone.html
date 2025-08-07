@@ -101,7 +101,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			list[list.length - 2] = list[list.length - 2] % BigInt(base);
 		}
 		for(let term = 0; term < list.length; term++) {
-			list[term] *= mult ** term;
+			list[term] *= mult ** BigInt(term);
 		}
 		return list;
 	}
@@ -553,6 +553,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
