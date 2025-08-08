@@ -105,17 +105,20 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		return list;
 	}
-	function quickfact(val) {
+	function quickfact(val, rip, rip_pow) {
 		var list = [];
 		var quot = [];
 		var div = 1n;
-		while(!quot.includes(val / div)) {
-			quot.push(val / div);
-			if(val % div == 0n) {
-				list.push(val / div);
-				list.push(div);
+		val /= rip ** rip_pow;
+		for(let rp = 0n; rp <= rip_pow; rp++) {
+			while(!quot.includes(val / div * rip ** (rip_pow - rp))) {
+				quot.push(val / div);
+				if(val % div == 0n) {
+					list.push(val / div * rip ** (rip_pow - rp));
+					list.push(div * rip ** rp);
+				}
+				div += 1n;
 			}
-			div += 1n;
 		}
 		return list;
 	}
@@ -430,8 +433,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		console.log(`Points on line: ${points}`);
 		return points;
 	}
-	function polyfact(x,p) {
-	    var trials = quickfact(x[x.length - 2]);
+	function polyfact(x,p,rip,rip_pow) {
+	    var trials = quickfact(x[x.length - 2], rip, rip_pow);
 	    console.log(trials);
 		var polies = [];
 		var solve = [];
@@ -523,7 +526,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				x++;
 				if(step == 2) {
 					if(poly[0] == 1n) {
-						console.log(polyfact(poly));
+						console.log(polyfact(poly, n / obv, poly.length - 2));
 					}
 					x = range;
 				} else if (step == 1) {
@@ -554,6 +557,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
