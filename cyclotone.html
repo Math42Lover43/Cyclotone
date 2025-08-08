@@ -111,7 +111,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var div = 1n;
 		val /= rip ** rip_pow;
 		for(let rp = 0n; rp <= rip_pow; rp++) {
-			while(!quot.includes(val / div * rip ** (rip_pow - rp))) {
+			while(!quot.includes(val / div)) {
 				quot.push(val / div);
 				if(val % div == 0n) {
 					list.push(val / div * rip ** (rip_pow - rp));
@@ -557,6 +557,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
