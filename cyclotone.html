@@ -475,12 +475,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			let ind = 0;
 			async function p1() {
 				for(let ind = 0; ind < polies.length; ind += 2) {
-					if(polies[ind] && polies[ind + 1]) {
-						solve.push({
-							equiv: x[x.length - 4] - crossprod(polies.slice(polies.length - 3, polies.length - 2)),
-							coeff: [polies[ind][0], polies[ind + 1][0]]
-						});
-					}
+					solve.push({
+						equiv: x[x.length - 4] - crossprod(polies.slice(polies.length - 3, polies.length - 2)),
+						coeff: [polies[ind][0], polies[ind + 1][0]]
+					});
+					await new Promise(resolve => setTimeout(resolve, 0));
+				}
+				for(let ind = 0; ind < solve.length; ind++) {
+					pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
 					await new Promise(resolve => setTimeout(resolve, 0));
 				}
 			}
@@ -559,6 +561,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
