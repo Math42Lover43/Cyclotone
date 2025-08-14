@@ -437,22 +437,22 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return points;
 	}
 	function polyfact(x,rip,rip_pow) {
-	    var trials = quickfact(x[x.length - 2], rip, rip_pow);
+	    var trials = quickfact(x[x.length - 2], rip, rip_pow); // creates leading terms
 	    console.log(trials);
 		var polies = [];
 		var solve = [];
 		var pass = [];
 		for(let ind = 0; ind < trials.length; ind += 2) {
-			polies.push([trials[ind]], [trials[ind + 1]]);
+			polies.push([trials[ind]], [trials[ind + 1]]); // start with leading terms
 			solve.push({
 				equiv: x[x.length - 3],
 				coeff: [polies[ind][0], polies[ind + 1][0]]
-			});
+			}); // create linear equations to solve
 		}
 		console.log(solve);
 		async function f1() {
 			for(let ind = 0; ind < solve.length; ind++) {
-				pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
+				pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3])); // log solutions
 				await new Promise(resolve => setTimeout(resolve, 0));
 			}
 		}
@@ -561,6 +561,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
