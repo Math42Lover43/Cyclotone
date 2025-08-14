@@ -451,7 +451,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		console.log(solve);
 		async function f1() {
-			for(let ind = 0; ind < solve.length; ind++) {
+			for(ind in solve) {
 				pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3])); // log solutions
 				console.log(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
 				await new Promise(resolve => setTimeout(resolve, 0));
@@ -563,6 +563,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
