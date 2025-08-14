@@ -440,7 +440,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var trials = quickfact(x[x.length - 2], rip, rip_pow); // creates leading terms
 	    console.log(trials);
 		var polies = [];
-		var solve = [];
+		let solve = [];
 		var pass = [];
 		for(let ind = 0; ind < trials.length; ind += 2) {
 			polies.push([trials[ind]], [trials[ind + 1]]); // start with leading terms
@@ -563,6 +563,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
