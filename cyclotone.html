@@ -392,6 +392,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return returner;
 	}
 	function anticoeff(solve,r) {
+		if(solve.coeff[0] == solve.coeff[1]) {
+			if(candycanemod(solve.equiv, solve.coeff[0]) == 0n) {
+				var list = [];
+				for(let x = -abs(r); x <= abs(r); x++) {
+					list.push([solve.equiv / solve.coeff[0] * x, solve.equiv / solve.coeff[0] * -x]);
+				}
+				return list;
+			} else {
+				return [];
+			}
+		}
 		var rev = solve.coeff[1] < solve.coeff[0];
 		console.log(rev);
 		solve.coeff = solve.coeff.sort();
@@ -562,6 +573,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
