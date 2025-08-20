@@ -398,7 +398,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	  return gcd(b, a % b);
 	}
 	function anticoeff(solve,r) {
-		if(solve.equiv % gcd(solve.coeff[0], solve.coeff[1]) != 1n) {
+		if(solve.equiv % gcd(solve.coeff[0], solve.coeff[1]) > 1n) {
 			return [];
 		}
 		if(solve.coeff[0] == solve.coeff[1]) {
@@ -562,3 +562,4 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
