@@ -446,64 +446,38 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		console.log(`Points on line: ${points}`);
 		return points;
 	}
-	function polyfact(x,rip,rip_pow) {
-	    let trials = quickfact(x[x.length - 2], rip, rip_pow); // creates leading terms
-	    console.log(trials);
-		let polies = [];
-		let solve = [];
-		let pass = [];
-		for(let ind = 0; ind < trials.length; ind += 2) {
-			polies.push([trials[ind]], [trials[ind + 1]]); // start with leading terms
-			solve.push({
-				equiv: x[x.length - 3],
-				coeff: [polies[ind][0], polies[ind + 1][0]]
-			}); // create linear equations to solve
-		}
-		console.log(solve);
-		async function f1() {
-			for(ind in solve) {
-				pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3])); // log solutions
-				console.log(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
-				await new Promise(resolve => setTimeout(resolve, 0));
-			}
-		}
-		console.log(pass);
-		var pm1 = [];
-		async function f2() {
-			for(let outer = 0; outer < polies.length; outer += 2) {
-				if(pass[outer / 2]) {
-					for(let inner = 0; inner < pass[outer / 2].length; inner++) {
-						pm1.push([pass[outer / 2][inner][0]].concat(polies[outer]), [pass[outer / 2][inner][1]].concat(polies[outer + 1]));
-						await new Promise(resolve => setTimeout(resolve, 0));
-					}
-				}
-				await new Promise(resolve => setTimeout(resolve, 0));
-			}
-		}
-		polies = pm1;
-		{
-			console.log(polies);
-			pass = [];
-			let ind = 0;
-			async function p1() {
-				for(let ind = 0; ind < polies.length; ind += 2) {
-					solve.push({
-						equiv: x[x.length - 4] - crossprod(polies.slice(polies.length - 3, polies.length - 2)),
-						coeff: [polies[ind][0], polies[ind + 1][0]]
-					});
-					await new Promise(resolve => setTimeout(resolve, 0));
-				}
-				for(let ind = 0; ind < solve.length; ind++) {
-					pass.push(anticoeff(solve[ind], BigInt(x.length) * x[x.length - 3]));
-					await new Promise(resolve => setTimeout(resolve, 0));
-				}
-			}
-			if(solve.length == 0) {
-				return null;
-			}
-		}
-		console.log(solve);
-		return polies;
+	function polyfact(poly, rip, rip_pow, r) {
+	    // generate possible leading term pairs
+	    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
+	    console.log("trials: [" + trials + "]");
+	    // find possibilities for penultimate terms
+	    var solve = [];
+	    for(let ind = 0; ind < trials.length; ind += 2) {
+	        solve.push({"equiv": poly[poly.length - 3], "coeff":[trials[ind], trials[ind + 1]]});
+	    }
+	    console.log(solve);
+	    var solutions = [];
+	    for(let ind = 0; ind < solve.length; ind++) {
+	        solutions.push(anticoeff(solve[ind], r));
+	    }
+	    console.log(solutions);
+	    var polies = [];
+	    for(let outer = 0; outer < solutions.length; outer++) {
+	        if(solutions[outer]) {
+	            for(let inner = 0; inner < solutions[outer].length; inner++) {
+	                polies.push([solutions[outer][inner][1], solve[outer].coeff[0], 0n], [solutions[outer][inner][0], solve[outer].coeff[1], 0n]);
+	            }
+	        }
+	    }
+	    console.log(polies);
+	    var pass = [];
+	    solve = [];
+	    for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
+	        for(let ind = 0; ind < polies.length; ind += 2) {
+	            solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][0], polies[ind + 1][0]]});
+	        }
+	        console.log(solve);
+	    }
 	}
 	function bmifact(num,obv,custN) {
 		var t = num; // best5
@@ -573,6 +547,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
