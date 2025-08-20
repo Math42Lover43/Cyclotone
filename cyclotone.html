@@ -471,12 +471,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 	    console.log(polies);
 	    var pass = [];
-	    solve = [];
 	    for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
+			solve = [];
+			pass = [];
 	        for(let ind = 0; ind < polies.length; ind += 2) {
 	            solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][0], polies[ind + 1][0]]});
 	        }
-	        console.log(solve);
+			for(let ind = 0; ind < solve.length; ind++) {
+	            pass.push(anticoeff(solve[ind]));
+	        }
+			console.log(pass);
 	    }
 	}
 	function bmifact(num,obv,custN) {
@@ -547,6 +551,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
