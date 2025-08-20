@@ -395,7 +395,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		if(solve.coeff[0] == solve.coeff[1]) {
 			if(candycanemod(solve.equiv, solve.coeff[0]) == 0n) {
 				var list = [];
-				for(let x = -abs(r) / coeff[0]; x <= abs(r) / coeff[0]; x++) {
+				for(let x = -abs(r) / solve.coeff[0]; x <= abs(r) / solve.coeff[0]; x++) {
 					list.push([solve.equiv / solve.coeff[0] * x, solve.equiv - solve.equiv / solve.coeff[0] * x]);
 				}
 				return list;
@@ -553,6 +553,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
