@@ -447,6 +447,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			points.push([x, (solve.equiv - x * solve.coeff[0]) / solve.coeff[1]]);
 			x -= one;
 		}
+		var slope = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0]);
+		var x = points[0][0];
+		var y = points[0][0];
+		if(abs(slope) == 1n) {
+			points = points.slice(0, 1);
+			while(x <= abs(r)) {
+				x += 1n;
+				y += slope;
+				points.push([x, y]);
+			}
+		}
 		if(!rev) {
 			for(let ind = 0; ind < points.length; ind++) {
 				points[ind] = points[ind].reverse();
@@ -562,4 +573,5 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
