@@ -450,6 +450,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var slope = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0]);
 		var x = points[0][0];
 		var y = points[0][0];
+		console.log(slope);
 		if(abs(slope) == 1n) {
 			points = points.slice(0, 1);
 			while(x <= abs(r)) {
@@ -573,5 +574,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
