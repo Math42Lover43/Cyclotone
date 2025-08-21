@@ -504,8 +504,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			for(let outer = 0; outer < pm1.length; outer++) {
 		        if(pass[outer]) {
 		            for(let inner = 0; inner < pass[outer].length; inner++) {
-						console.log(solutions[outer]);
-		                polies.push([solutions[outer][inner][1]].concat(pm1[outer * 2]), [solutions[outer][inner][0]].concat(pm1[outer * 2 + 1]));
+						console.log(pass[outer]);
+		                polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
 		            }
 		        }
 		    }
@@ -580,6 +580,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
