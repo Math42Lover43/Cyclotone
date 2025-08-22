@@ -498,12 +498,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 		    }
 	    }
-		for(let ind = 0; ind < polies.length; ind += 2) {
-			if(polysubst(polies[ind], BigInt(poly.length)) * polysubst(polies[ind + 1], BigInt(poly.length)) == polysubst(poly, BigInt(poly.length))) {
-				return [polies[ind], polies[ind + 1]];
+		var toret = null;
+		for(let ind = 0; ind < polies.length; ind++) {
+			if(polysubst(poly, BigInt(poly.length)) % polysubst(polies[ind], BigInt(poly.length)) == 0n && polysubst(polies[ind], BigInt(poly.length)) > 1n && (!toret || polysubst(polies[ind], BigInt(poly.length)) < toret)) {
+				toret = polysubst(polies[ind], BigInt(poly.length));
 			}
 		}
-		return null;
+		return toret;
 	}
 	function bmifact(num,obv,custN) {
 		var t = num; // best5
@@ -542,7 +543,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(step == 2) {
 					x = range;
 					if(quot % n == 1n) {
-						console.log(polyfact(poly, n / obv, BigInt(poly.length - 2), poly[poly.length - 2]));
+						if(polyfact(poly, n / obv, BigInt(poly.length - 2), poly[poly.length - 2])) {
+							quot /= x * n + 1n;
+							prec += (x * n + 1n) + " &times; ";
+							long = quot;
+						}
 					}
 				} else if (step == 1) {
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
@@ -572,4 +577,5 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
