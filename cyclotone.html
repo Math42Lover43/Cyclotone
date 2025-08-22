@@ -410,6 +410,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
                         x += 1n;
         				y -= slope;
         			}
+					if(points.length > 15000) {
+						break;
+					}
         		}
 				return points;
 			} else {
@@ -581,6 +584,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
