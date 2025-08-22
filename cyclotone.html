@@ -470,7 +470,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var polies = [];
 	    for(let outer = 0; outer < solutions.length; outer++) {
 	        if(solutions[outer]) {
-	            for(let inner = 0; inner < solutions[outer].length; inner++) {
+	            for(let inner = 0; inner < solutions[outer].length && polies.length < 15000; inner++) {
 	                polies.push([solutions[outer][inner][1], solve[outer].coeff[0], 0n], [solutions[outer][inner][0], solve[outer].coeff[1], 0n]);
 	            }
 	        }
@@ -572,6 +572,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
