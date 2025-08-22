@@ -493,7 +493,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			solve = [];
 			pass = [];
 	        for(let ind = 0; ind < polies.length; ind += 2) {
-	            solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(1, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
+	            solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
 	        }
 			console.log(solve);
 			for(let ind = 0; ind < solve.length; ind++) {
@@ -580,6 +580,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
