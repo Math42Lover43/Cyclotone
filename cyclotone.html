@@ -406,7 +406,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
         		var y = solve.equiv - x;
                 points = [];
         		if(abs(slope) == 1n) {
-        			while(x <= abs(r)) {
+        			while(x <= abs(r) && points.length < 15000) {
         				points.push([x, y]);
                         x += 1n;
         				y -= slope;
@@ -569,5 +569,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
