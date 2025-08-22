@@ -476,7 +476,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	        }
 	    }
 	    var pass = [];
-	    for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
+	    for(let term = poly.length - 4; term >= poly.length / 2 - 1 && polies.length < 15000; term--) {
 			solve = [];
 			pass = [];
 	        for(let ind = 0; ind < polies.length; ind += 2) {
@@ -493,6 +493,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		                polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
 		            }
 		        }
+				if(polies.length >= 15000) {
+					break;
+				}
 		    }
 	    }
 		for(let ind = 0; ind < polies.length; ind += 2) {
@@ -569,6 +572,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
