@@ -475,39 +475,44 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	        }
 	    }
 	    var pass = [];
-	    for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
-			solve = [];
-			pass = [];
-	        for(let ind = 0; ind < polies.length; ind += 2) {
-	            solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
-	        }
-			for(let ind = 0; ind < solve.length; ind++) {
-	            pass.push(anticoeff(solve[ind], abs(r)));
-	        }
-			var pm1 = polies;
-			var polies = [];
-			for(let outer = 0; outer < pm1.length; outer++) {
-		        if(pass[outer]) {
-		            for(let inner = 0; inner < pass[outer].length; inner++) {
-		                polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
-		            }
+	    async function sieve() {
+			for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
+				solve = [];
+				pass = [];
+		        for(let ind = 0; ind < polies.length; ind += 2) {
+		            solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
 		        }
+				for(let ind = 0; ind < solve.length; ind++) {
+		            pass.push(anticoeff(solve[ind], abs(r)));
+		        }
+				var pm1 = polies;
+				var polies = [];
+				for(let outer = 0; outer < pm1.length; outer++) {
+			        if(pass[outer]) {
+			            for(let inner = 0; inner < pass[outer].length; inner++) {
+			                polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
+			            }
+			        }
+			    }
+				await new Promise((resolve) => {
+				setTimeout(() => {
+				  resolve("resolved");
+				}, 0);
+			  });
 		    }
-	    }
-		console.log(polies.length);
-		async function pairs() {
+			console.log(polies.length);
 			for(let ind = 0; ind < polies.length; ind += 2) {
 				if(polysubst(polies[ind], BigInt(poly.length)) * polysubst(polies[ind + 1], BigInt(poly.length)) == polysubst(poly, BigInt(poly.length))) {
 					return [polies[ind], polies[ind + 1]];
 				}
 				await new Promise((resolve) => {
-	            setTimeout(() => {
-	              resolve("resolved");
-	            }, 0);
-	          });
+				setTimeout(() => {
+				  resolve("resolved");
+				}, 0);
+			  });
 			}
+			return null;
 		}
-		return null;
 	}
 	function bmifact(num,obv,custN) {
 		var t = num; // best5
@@ -574,4 +579,5 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
