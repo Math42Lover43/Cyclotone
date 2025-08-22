@@ -500,7 +500,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 		var toret = null;
 		for(let ind = 0; ind < polies.length; ind++) {
-			if(polysubst(poly, BigInt(poly.length)) % polysubst(polies[ind], BigInt(poly.length)) == 0n && polysubst(polies[ind], BigInt(poly.length)) > 1n && (!toret || polysubst(polies[ind], BigInt(poly.length)) < toret)) {
+			if(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n) == 0n && polysubst(polies[ind], BigInt(poly.length) ** 2n) > 1n && (!toret || polysubst(polies[ind], BigInt(poly.length) ** 2n) < toret)) {
 				toret = polysubst(polies[ind], BigInt(poly.length));
 			}
 		}
@@ -577,5 +577,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
