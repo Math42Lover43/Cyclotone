@@ -494,13 +494,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		            }
 		        }
 		    }
-			for(let ind = 0; ind < polies.length; ind += 2) {
-				if(polysubst(polies[ind], BigInt(poly.length)) * polysubst(polies[ind + 1], BigInt(poly.length)) == polysubst(poly, BigInt(poly.length))) {
-					return [polies[ind], polies[ind + 1]];
-				}
-			}
-			return null;
 	    }
+		for(let ind = 0; ind < polies.length; ind += 2) {
+			if(polysubst(polies[ind], BigInt(poly.length)) * polysubst(polies[ind + 1], BigInt(poly.length)) == polysubst(poly, BigInt(poly.length))) {
+				return [polies[ind], polies[ind + 1]];
+			}
+		}
+		return null;
 	}
 	function bmifact(num,obv,custN) {
 		var t = num; // best5
@@ -567,6 +567,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
