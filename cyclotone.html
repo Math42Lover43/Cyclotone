@@ -439,12 +439,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			x++;
 		}
 		var one = x - zero;
-		while(abs(x) < abs(r)) {
+		while(abs(x) < abs(r) && points.length < 15000) {
 			points.push([x, (solve.equiv - x * solve.coeff[0]) / solve.coeff[1]]);
 			x += one;
 		}
 		x = zero - one;
-		while(abs(x) < abs(r)) {
+		while(abs(x) < abs(r) && points.length < 15000) {
 			points.push([x, (solve.equiv - x * solve.coeff[0]) / solve.coeff[1]]);
 			x -= one;
 		}
@@ -572,8 +572,3 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
-
-
-
-
-
