@@ -538,7 +538,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				x++;
 				if(step == 2) {
 					x = range;
-					console.log(polyfact(poly, n / obv, poly.length - 2, poly[poly.length - 2]));
+					console.log(polyfact(poly, n / obv, BigInt(poly.length - 2), poly[poly.length - 2]));
 				} else if (step == 1) {
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
@@ -567,6 +567,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
