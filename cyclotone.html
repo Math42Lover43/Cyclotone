@@ -454,6 +454,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		return points;
 	}
+	function update() {
+		await new Promise((resolve) => {
+            setTimeout(() => {
+              resolve("resolved");
+            }, 0);
+          });
+	}
 	function polyfact(poly, rip, rip_pow, r) {
 	    // generate possible leading term pairs
 	    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
@@ -499,6 +506,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			if(polysubst(polies[ind], BigInt(poly.length)) * polysubst(polies[ind + 1], BigInt(poly.length)) == polysubst(poly, BigInt(poly.length))) {
 				return [polies[ind], polies[ind + 1]];
 			}
+			update();
 		}
 		return null;
 	}
@@ -567,11 +575,3 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
-
-
-
-
-
-
-
-
