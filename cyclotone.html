@@ -15,7 +15,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <div id="factorization">
 </div>
 <script>
-	var lim = 15000;
+	var lim = Infinity;
 	var ints = [];
 	var fullints = [];
 	var factorizing = false;
@@ -553,7 +553,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(step == 2) {
 					x = range;
 					if(quot % n == 1n) {
-						if(polyfact(poly, n, BigInt(poly.length - 2), poly[poly.length - 2], n)) {
+						if(polyfact(poly, n, 1n, 1n, n)) {
 							quot /= x * n + 1n;
 							prec += (x * n + 1n) + " &times; ";
 							long = quot;
@@ -587,6 +587,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
