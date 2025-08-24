@@ -464,7 +464,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	        solve.push({"equiv": poly[poly.length - 3], "coeff":[trials[ind], trials[ind + 1]]});
 			if(solve.length >= lim) {
 				solve = solve.sort(function(a, b) {
-				    return Number(abs(a.equiv[0] * a.equiv[1] - b.equiv[0] * b.equiv[1]));
+				    return Number(abs(a.coeff[0] * a.coeff[1] - b.coeff[0] * b.coeff[1]));
 				})
 			}
 			solve.pop();
@@ -593,5 +593,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
