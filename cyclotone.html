@@ -545,7 +545,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					range = abs(n * (BigInt(baseconv(quot, n).length) - 2n));
 					range += BigInt(range == 0n); // create a range
 				}
-				poly = baseconv(quot, n, n / obv); // get a polynomial
+				poly = baseconv(quot, n); // get a polynomial
 				x = -1n; // start the search
 				end = Math.round(poly.length - 2);
 			} else {
@@ -553,7 +553,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(step == 2) {
 					x = range;
 					if(quot % n == 1n) {
-						if(polyfact(poly, n / obv, BigInt(poly.length - 2), poly[poly.length - 2])) {
+						if(polyfact(poly, n, BigInt(poly.length - 2), poly[poly.length - 2])) {
 							quot /= x * n + 1n;
 							prec += (x * n + 1n) + " &times; ";
 							long = quot;
@@ -587,6 +587,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
