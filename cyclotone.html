@@ -531,6 +531,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var step = -1;
 		var maxrate = 0n;
 		var mrx = 0n;
+		var trial = 0n;
 		var int1 = setInterval(function(){
 			if(x == range) {
 				if(quot == 1n) {
@@ -553,9 +554,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(step == 2) {
 					x = range;
 					if(quot % n == 1n) {
-						if(polyfact(poly, n, 1n, 1n, n)) {
-							quot /= x * n + 1n;
-							prec += (x * n + 1n) + " &times; ";
+						trial = polyfact(poly, n, 1n, 1n, n);
+						console.log(trial);
+						if(trial) {
+							quot /= trial;
+							prec += trial + " &times; ";
 							long = quot;
 						}
 					}
@@ -587,10 +590,3 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
-
-
-
-
-
-
-
