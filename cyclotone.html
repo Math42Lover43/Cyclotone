@@ -466,8 +466,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				solve = solve.sort(function(a, b) {
 				    return Number(abs(a.coeff[0] * a.coeff[1] - b.coeff[0] * b.coeff[1]));
 				})
+				solve.pop();
 			}
-			solve.pop();
 	    }
 		console.log(solve);
 	    var solutions = [];
@@ -593,6 +593,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
