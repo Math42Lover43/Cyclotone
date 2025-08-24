@@ -456,7 +456,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		return points;
 	}
-	function polyfact(poly, rip, rip_pow, r) {
+	function polyfact(poly, rip, rip_pow, r, t) {
 	    // generate possible leading term pairs
 	    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
 	    // find possibilities for penultimate terms
@@ -511,7 +511,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var toret = null;
 		for(let ind = 0; ind < polies.length; ind++) {
 			if(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n) == 0n && polysubst(polies[ind], BigInt(poly.length) ** 2n) > 1n && (!toret || polysubst(polies[ind], BigInt(poly.length) ** 2n) < toret)) {
-				toret = polysubst(polies[ind], BigInt(poly.length));
+				toret = polysubst(polies[ind], t);
 			}
 		}
 		return toret;
@@ -553,7 +553,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(step == 2) {
 					x = range;
 					if(quot % n == 1n) {
-						if(polyfact(poly, n, BigInt(poly.length - 2), poly[poly.length - 2])) {
+						if(polyfact(poly, n, BigInt(poly.length - 2), poly[poly.length - 2], n)) {
 							quot /= x * n + 1n;
 							prec += (x * n + 1n) + " &times; ";
 							long = quot;
@@ -587,6 +587,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
