@@ -457,6 +457,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function polyfact(poly, rip, rip_pow, r, t) {
 	    // generate possible leading term pairs
+		console.log(poly, poly[poly.length - 2]);
 	    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
 		console.log(trials);
 	    // find possibilities for penultimate terms
@@ -598,10 +599,3 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
-
-
-
-
-
-
-
