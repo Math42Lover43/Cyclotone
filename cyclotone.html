@@ -464,10 +464,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    for(let ind = 0; ind < trials.length && solve.length < lim; ind += 2) {
 	        solve.push({"equiv": poly[poly.length - 3], "coeff":[trials[ind], trials[ind + 1]]});
 	    }
+		if(solve.length >= lim) {
+			return null;
+		}
 	    var solutions = [];
 	    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
 	        solutions.push(anticoeff(solve[ind], r));
 	    }
+		if(solutions.length >= lim) {
+			return null;
+		}
 	    var polies = [];
 	    for(let outer = 0; outer < solutions.length; outer++) {
 	        if(solutions[outer]) {
@@ -581,6 +587,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
