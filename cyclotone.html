@@ -15,7 +15,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <div id="factorization">
 </div>
 <script>
-	var lim = Infinity;
+	var lim = 30000;
 	var ints = [];
 	var fullints = [];
 	var factorizing = false;
@@ -460,12 +460,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
 	    // find possibilities for penultimate terms
 	    var solve = [];
-	    for(let ind = 0; ind < trials.length && solve.length < lim; ind += 2) {
+	    for(let ind = 0; ind < trials.length; ind += 2) {
 	        solve.push({"equiv": poly[poly.length - 3], "coeff":[trials[ind], trials[ind + 1]]});
+			if(solve.length >= lim) {
+				solve = solve.sort(function(a, b) {
+				    return Number(abs(a.equiv[0] * a.equiv[1] - b.equiv[0] * b.equiv[1]));
+				})
+			}
+			solve.pop();
 	    }
-		if(solve.length >= lim) {
-			return null;
-		}
+		console.log(solve);
 	    var solutions = [];
 	    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
 	        solutions.push(anticoeff(solve[ind], r));
@@ -589,4 +593,5 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
