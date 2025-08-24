@@ -461,11 +461,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
 	    // find possibilities for penultimate terms
 	    var solve = [];
-	    for(let ind = 0; ind < trials.length; ind += 2) {
+	    for(let ind = 0; ind < trials.length && solve.length < lim; ind += 2) {
 	        solve.push({"equiv": poly[poly.length - 3], "coeff":[trials[ind], trials[ind + 1]]});
 	    }
 	    var solutions = [];
-	    for(let ind = 0; ind < solve.length; ind++) {
+	    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
 	        solutions.push(anticoeff(solve[ind], r));
 	    }
 	    var polies = [];
@@ -578,3 +578,4 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
