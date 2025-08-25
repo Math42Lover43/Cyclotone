@@ -456,118 +456,120 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return points;
 	}
 	function polyfact(poly, rip, rip_pow, r, t) {
-	    // generate possible leading term pairs
-		console.log(poly, poly[poly.length - 2]);
-	    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
-		console.log(trials);
-	    // find possibilities for penultimate terms
-	    var solve = [];
-	    for(let ind = 0; ind < trials.length; ind += 2) {
-	        solve.push({"equiv": poly[poly.length - 3], "coeff":[trials[ind], trials[ind + 1]]});
-			if(solve.length >= lim) {
-				solve = solve.sort(function(a, b) {
-				    return Number(abs(a.coeff[0] * a.coeff[1] - b.coeff[0] * b.coeff[1]));
-				})
-				solve.pop();
-			}
-			await setTimeout(1000);
-			status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%";
-	    }
-		console.log(solve);
-	    var solutions = [];
-	    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
-	        solutions.push(anticoeff(solve[ind], r));
-			if(solutions.length >= lim) {
-				solutions = solutions.sort(function(a, b) {
-				    return a.length - b.length;
-				})
-				solutions.pop();
-			}
-			await setTimeout(1000);
-			status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%";
-	    }
-		console.log(solutions);
-	    var polies = [];
-	    for(let outer = 0; outer < solutions.length; outer++) {
-	        if(solutions[outer]) {
-	            for(let inner = 0; inner < solutions[outer].length; inner++) {
-	                polies.push([solutions[outer][inner][1], solve[outer].coeff[0], 0n], [solutions[outer][inner][0], solve[outer].coeff[1], 0n]);
-					if(polies.length >= lim) {
-						polies = polies.sort(function(a) {
-							var k = 0n;
-						    for(let ind = 0; ind < a.length; ind++) {
-								k -= a[ind];
-							}
-							return Number(k);
-						});
-						polies.pop();
-					}
-					await setTimeout(1000);
-	            }
-	        }
-			status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
-	    }
-		console.log(polies);
-	    var pass = [];
-	    async function decompose() {
-			for(let term = poly.length - 4; term >= poly.length / 2 - 1 && polies.length < lim; term--) {
-				solve = [];
-				pass = [];
-		        for(let ind = 0; ind < polies.length; ind += 2) {
-		            solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
-					if(solve.length >= lim) {
-						solve = solve.sort(function(a) {
-							return abs(a.coeff[0] * a.coeff[1]);
-						});
-						solve.pop();
-					}
-					await setTimeout(1000);
-					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
-		        }
-				for(let ind = 0; ind < solve.length && pass.length < lim; ind++) {
-		            pass.push(anticoeff(solve[ind], abs(r)));
-					if(pass.length >= lim) {
-						pass = pass.sort(function(a) {
-							return abs(a.length);
-						});
-						pass.pop();
-					}
-					await setTimeout(1000);
-					status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%<br/>Term" + term;
-		        }
-				var pm1 = polies;
-				var polies = [];
-				for(let outer = 0; outer < pm1.length; outer++) {
-			        if(pass[outer]) {
-			            for(let inner = 0; inner < pass[outer].length; inner++) {
-			                polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
-							if(polies.length >= lim) {
-								polies = polies.sort(function(a) {
-									var k = 0n;
-								    for(let ind = 0; ind < a.length; ind++) {
-										k -= a[ind];
-									}
-									return Number(k);
-								});
-								polies.pop();
-							}
-							await setTimeout(1000);
-			            }
-			        }
-					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "%<br/>Term" + term;
-			    }
+		async fact() {
+		    // generate possible leading term pairs
+			console.log(poly, poly[poly.length - 2]);
+		    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
+			console.log(trials);
+		    // find possibilities for penultimate terms
+		    var solve = [];
+		    for(let ind = 0; ind < trials.length; ind += 2) {
+		        solve.push({"equiv": poly[poly.length - 3], "coeff":[trials[ind], trials[ind + 1]]});
+				if(solve.length >= lim) {
+					solve = solve.sort(function(a, b) {
+					    return Number(abs(a.coeff[0] * a.coeff[1] - b.coeff[0] * b.coeff[1]));
+					})
+					solve.pop();
+				}
+				await setTimeout(1000);
+				status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%";
 		    }
-		}
-		var toret = null;
-		for(let ind = 0; ind < polies.length; ind++) {
-			while(polies[ind][0] == 0n) {
-				polies[ind] = polies[ind].slice(1, polies[ind].length);
+			console.log(solve);
+		    var solutions = [];
+		    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
+		        solutions.push(anticoeff(solve[ind], r));
+				if(solutions.length >= lim) {
+					solutions = solutions.sort(function(a, b) {
+					    return a.length - b.length;
+					})
+					solutions.pop();
+				}
+				await setTimeout(1000);
+				status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%";
+		    }
+			console.log(solutions);
+		    var polies = [];
+		    for(let outer = 0; outer < solutions.length; outer++) {
+		        if(solutions[outer]) {
+		            for(let inner = 0; inner < solutions[outer].length; inner++) {
+		                polies.push([solutions[outer][inner][1], solve[outer].coeff[0], 0n], [solutions[outer][inner][0], solve[outer].coeff[1], 0n]);
+						if(polies.length >= lim) {
+							polies = polies.sort(function(a) {
+								var k = 0n;
+							    for(let ind = 0; ind < a.length; ind++) {
+									k -= a[ind];
+								}
+								return Number(k);
+							});
+							polies.pop();
+						}
+						await setTimeout(1000);
+		            }
+		        }
+				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
+		    }
+			console.log(polies);
+		    var pass = [];
+		    async function decompose() {
+				for(let term = poly.length - 4; term >= poly.length / 2 - 1 && polies.length < lim; term--) {
+					solve = [];
+					pass = [];
+			        for(let ind = 0; ind < polies.length; ind += 2) {
+			            solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
+						if(solve.length >= lim) {
+							solve = solve.sort(function(a) {
+								return abs(a.coeff[0] * a.coeff[1]);
+							});
+							solve.pop();
+						}
+						await setTimeout(1000);
+						status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
+			        }
+					for(let ind = 0; ind < solve.length && pass.length < lim; ind++) {
+			            pass.push(anticoeff(solve[ind], abs(r)));
+						if(pass.length >= lim) {
+							pass = pass.sort(function(a) {
+								return abs(a.length);
+							});
+							pass.pop();
+						}
+						await setTimeout(1000);
+						status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%<br/>Term" + term;
+			        }
+					var pm1 = polies;
+					var polies = [];
+					for(let outer = 0; outer < pm1.length; outer++) {
+				        if(pass[outer]) {
+				            for(let inner = 0; inner < pass[outer].length; inner++) {
+				                polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
+								if(polies.length >= lim) {
+									polies = polies.sort(function(a) {
+										var k = 0n;
+									    for(let ind = 0; ind < a.length; ind++) {
+											k -= a[ind];
+										}
+										return Number(k);
+									});
+									polies.pop();
+								}
+								await setTimeout(1000);
+				            }
+				        }
+						status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "%<br/>Term" + term;
+				    }
+			    }
 			}
-			if(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n) == 0n && polysubst(polies[ind], BigInt(poly.length) ** 2n) && (!toret || abs(polysubst(polies[ind], BigInt(poly.length) ** 2n)) < abs(toret))) {
-				toret = abs(polysubst(polies[ind], t));
+			var toret = null;
+			for(let ind = 0; ind < polies.length; ind++) {
+				while(polies[ind][0] == 0n) {
+					polies[ind] = polies[ind].slice(1, polies[ind].length);
+				}
+				if(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n) == 0n && polysubst(polies[ind], BigInt(poly.length) ** 2n) && (!toret || abs(polysubst(polies[ind], BigInt(poly.length) ** 2n)) < abs(toret))) {
+					toret = abs(polysubst(polies[ind], t));
+				}
+				await setTimeout(1000);
+				status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 			}
-			await setTimeout(1000);
-			status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 		}
 		return toret;
 	}
@@ -645,6 +647,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
