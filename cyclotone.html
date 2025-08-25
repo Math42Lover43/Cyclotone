@@ -456,7 +456,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return points;
 	}
 	function polyfact(poly, rip, rip_pow, r, t) {
-		async fact() {
+		async function fact() {
 		    // generate possible leading term pairs
 			console.log(poly, poly[poly.length - 2]);
 		    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
@@ -647,6 +647,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
