@@ -536,7 +536,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 		var toret = null;
 		for(let ind = 0; ind < polies.length; ind++) {
-			polies[ind] = abs(polies[ind]);
 			while(polies[ind][0] == 0n) {
 				polies[ind] = polies[ind].slice(1, polies[ind].length);
 			}
@@ -620,6 +619,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
