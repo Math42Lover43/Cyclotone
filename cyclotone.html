@@ -457,11 +457,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function polyfact(poly, rip, rip_pow, r, t) {
 		var toret = null;
+		var polies;
 		async function fact() {
 		    // generate possible leading term pairs
-			console.log(poly, poly[poly.length - 2]);
 		    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
-			console.log(trials);
 		    // find possibilities for penultimate terms
 		    var solve = [];
 		    for(let ind = 0; ind < trials.length; ind += 2) {
@@ -475,7 +474,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				await setTimeout(1000);
 				status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%";
 		    }
-			console.log(solve);
 		    var solutions = [];
 		    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
 		        solutions.push(anticoeff(solve[ind], r));
@@ -488,8 +486,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				await setTimeout(1000);
 				status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%";
 		    }
-			console.log(solutions);
-		    var polies = [];
+		    polies = [];
 		    for(let outer = 0; outer < solutions.length; outer++) {
 		        if(solutions[outer]) {
 		            for(let inner = 0; inner < solutions[outer].length; inner++) {
@@ -509,7 +506,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		        }
 				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
 		    }
-			console.log(polies);
 		    var pass = [];
 		    async function decompose() {
 				for(let term = poly.length - 4; term >= poly.length / 2 - 1 && polies.length < lim; term--) {
@@ -560,7 +556,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				    }
 			    }
 			}
-			console.log(polies);
 			for(let ind = 0; ind < polies.length; ind++) {
 				while(polies[ind][0] == 0n) {
 					polies[ind] = polies[ind].slice(1, polies[ind].length);
@@ -572,6 +567,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 			}
 		}
+		console.log(polies);
 		return toret;
 	}
 	function bmifact(num,obv,custN) {
@@ -648,3 +644,4 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
