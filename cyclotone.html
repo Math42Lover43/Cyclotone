@@ -506,7 +506,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
 		    }
 		    var pass = [];
+			console.log("Will solve terms until " + ( poly.length / 2 - 1 ));
 			for(let term = poly.length - 4; term >= poly.length / 2 - 1 && polies.length < lim; term--) {
+				console.log(term);
 				solve = [];
 				pass = [];
 				for(let ind = 0; ind < polies.length; ind += 2) {
@@ -643,6 +645,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
