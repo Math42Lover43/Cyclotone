@@ -565,7 +565,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return toret;
 	}
 	function bmifact(num,obv,custN) {
-		factorizing = true;
 		var t = num; // best5
 		var n = custN ? custN : 0n;
 		var x = 0n;
@@ -576,6 +575,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var range = 0n;
 		let end = 0n;
 		var prec = "";
+		factorizing = true;
 		var d = 0n;
 		var step = -1;
 		var maxrate = 0n;
@@ -639,8 +639,3 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
-
-
-
-
-
