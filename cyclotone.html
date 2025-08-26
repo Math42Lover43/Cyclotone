@@ -552,6 +552,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "%<br/>Term" + term;
 				}
+				polies = polies.slice(0, lim);
 			}
 			console.log(polies);
 			for(let ind = 0; ind < polies.length; ind++) {
@@ -642,3 +643,4 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
