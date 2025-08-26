@@ -289,8 +289,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function alfa(n) {
 		return (cyclotomic(n) - 1n) / BigInt(n);
 	}
-	function updatestatus() {
-		document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>" + ((step == 2) ? (status + "<br/>Step " + step) : ("Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / (range + BigInt(range == 0n))) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx + "<br/>Anticipated end of step: " + secs_to_eff(2n * range / (1500n + maxrate)) + " since start of step"));
+	function updatestatus(x) {
+		if(x) {
+			document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>" + ((step == 2) ? (status + "<br/>Step " + step) : ("Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / (range + BigInt(range == 0n))) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx + "<br/>Anticipated end of step: " + secs_to_eff(2n * range / (1500n + maxrate)) + " since start of step"));
+		}
 	}
 	setInterval(() => {
 		updatestatus(factorizing);
@@ -563,6 +565,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return toret;
 	}
 	function bmifact(num,obv,custN) {
+		factorizing = true;
 		var t = num; // best5
 		var n = custN ? custN : 0n;
 		var x = 0n;
@@ -636,3 +639,4 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
