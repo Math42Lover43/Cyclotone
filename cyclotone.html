@@ -469,6 +469,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					    return Number(abs(a.coeff[0] * a.coeff[1] - b.coeff[0] * b.coeff[1]));
 					})
 					solve.pop();
+					console.log(status);
 				}
 				await setTimeout(0);
 				status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%";
@@ -481,6 +482,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					    return a.length - b.length;
 					})
 					solutions.pop();
+					console.log(status);
 				}
 				await setTimeout(0);
 				status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%";
@@ -499,6 +501,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								return Number(k);
 							});
 							polies.pop();
+							console.log(status);
 						}
 						await setTimeout(0);
 		            }
@@ -508,7 +511,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		    var pass = [];
 			console.log("Will solve terms until " + ( poly.length / 2 - 1 ));
 			for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
-				console.log(term);
 				solve = [];
 				pass = [];
 				for(let ind = 0; ind < polies.length; ind += 2) {
@@ -518,6 +520,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							return abs(a.coeff[0] * a.coeff[1]);
 						});
 						solve.pop();
+						console.log(status);
 					}
 					await setTimeout(0);
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
@@ -529,6 +532,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							return abs(a.length);
 						});
 						pass.pop();
+						console.log(status);
 					}
 					await setTimeout(0);
 					status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%<br/>Term" + term;
@@ -548,6 +552,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 									return Number(k);
 								});
 								polies.pop();
+								console.log(status);
 							}
 							await setTimeout(0);
 						}
@@ -648,3 +653,4 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
