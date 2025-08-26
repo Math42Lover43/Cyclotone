@@ -457,7 +457,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function polyfact(poly, rip, rip_pow, r, t) {
 		var toret = null;
-		var polies = [];
 		async function fact() {
 		    // generate possible leading term pairs
 		    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
@@ -486,7 +485,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				await setTimeout(1000);
 				status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%";
 		    }
-		    polies = [];
+		    var polies = [];
 		    for(let outer = 0; outer < solutions.length; outer++) {
 		        if(solutions[outer]) {
 		            for(let inner = 0; inner < solutions[outer].length; inner++) {
@@ -556,6 +555,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				    }
 			    }
 			}
+			console.log(polies);
 			for(let ind = 0; ind < polies.length; ind++) {
 				while(polies[ind][0] == 0n) {
 					polies[ind] = polies[ind].slice(1, polies[ind].length);
@@ -566,8 +566,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				await setTimeout(1000);
 				status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 			}
+			console.log(toret);
 		}
-		console.log(polies);
 		return toret;
 	}
 	function bmifact(num,obv,custN) {
@@ -644,5 +644,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
