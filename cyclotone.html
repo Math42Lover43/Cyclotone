@@ -289,7 +289,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function alfa(n) {
 		return (cyclotomic(n) - 1n) / BigInt(n);
 	}
-	function update() {
+	function updatestatus() {
 		document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>" + ((step == 2) ? (status + "<br/>Step " + step) : ("Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / (range + BigInt(range == 0n))) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx + "<br/>Anticipated end of step: " + secs_to_eff(2n * range / (1500n + maxrate)) + " since start of step"));
 	}
 	setInterval(() => {
@@ -464,7 +464,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					})
 					solve.pop();
 				}
-				await setTimeout(0);
+				await setTimeout(updatestatus, 0);
 				status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%";
 		    }
 		    var solutions = [];
@@ -476,7 +476,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					})
 					solutions.pop();
 				}
-				await setTimeout(update, 0);
+				await setTimeout(updatestatus, 0);
 				status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%";
 		    }
 		    var polies = [];
@@ -494,7 +494,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							});
 							polies.pop();
 						}
-						await setTimeout(update, 0);
+						await setTimeout(updatestatus, 0);
 		            }
 		        }
 				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
@@ -511,7 +511,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						});
 						solve.pop();
 					}
-					await setTimeout(update, 0);
+					await setTimeout(updatestatus, 0);
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
 				}
 				for(let ind = 0; ind < solve.length && pass.length < lim; ind++) {
@@ -522,7 +522,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						});
 						pass.pop();
 					}
-					await setTimeout(update, 0);
+					await setTimeout(updatestatus, 0);
 					status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%<br/>Term" + term;
 				}
 				var pm1 = polies;
@@ -541,7 +541,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								});
 								polies.pop();
 							}
-							await setTimeout(update, 0);
+							await setTimeout(updatestatus, 0);
 						}
 					}
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
@@ -556,7 +556,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n) == 0n && polysubst(polies[ind], BigInt(poly.length) ** 2n) && (!toret || abs(polysubst(polies[ind], BigInt(poly.length) ** 2n)) < abs(toret))) {
 					toret = abs(polysubst(polies[ind], t));
 				}
-				await setTimeout(update, 0);
+				await setTimeout(updatestatus, 0);
 				status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 			}
 		})()
@@ -636,4 +636,3 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
-
