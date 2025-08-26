@@ -555,12 +555,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				polies = polies.slice(0, lim);
 			}
-			console.log(polies);
 			for(let ind = 0; ind < polies.length; ind++) {
 				while(polies[ind][0] == 0n) {
 					polies[ind] = polies[ind].slice(1, polies[ind].length);
 				}
-				if(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n) == 0n && polysubst(polies[ind], BigInt(poly.length) ** 2n) && (!toret || abs(polysubst(polies[ind], BigInt(poly.length) ** 2n)) < abs(toret))) {
+				if(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n) == 0n && polysubst(polies[ind], BigInt(poly.length) ** 2n) && (!toret || abs(polysubst(polies[ind], BigInt(poly.length) ** 2n)) < abs(toret)) && abs(polysubst(polies[ind], t)) > 1n) {
 					toret = abs(polysubst(polies[ind], t));
 				}
 				await new Promise(promise => setTimeout(updatestatus, 0, factorizing));
@@ -643,5 +642,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
