@@ -564,21 +564,28 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var prec = "";
 	var long;
 	var n;
+	var step;
+	var x;
+	var range;
+	var end;
+	var oldx;
+	var maxrate;
+	var mrx;
 	function bmifact(num,obv,custN) {
 		var t = num; // best5
 		n = custN ? custN : 0n;
-		var x = 0n;
+		x = 0n;
 		var quot = t;
 		var poly = [];
 		long = num.toString();
 		var test = 0n;
-		var range = 0n;
-		let end = 0n;
+		range = 0n;
+		end = 0n;
 		factorizing = true;
 		var d = 0n;
-		var step = -1;
-		var maxrate = 0n;
-		var mrx = 0n;
+		step = -1;
+		maxrate = 0n;
+		mrx = 0n;
 		var trial = 0n;
 		var status = "";
 		var int1 = setInterval(function(){
@@ -624,7 +631,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 			}
 		},0)
-		var oldx = 0n;
+		oldx = 0n;
 		var int2 = setInterval(function(){
 			if((x - oldx) > maxrate && (x - oldx) < range / 3n) {
 				maxrate = (x - oldx);
@@ -638,5 +645,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
