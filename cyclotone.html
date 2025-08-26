@@ -552,12 +552,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 									return Number(k);
 								});
 								polies.pop();
-								console.log(status, polies.length);
+								console.log(status);
 							}
 							await setTimeout(0);
 						}
 					}
-					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "%<br/>Term" + term;
+					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
 				}
 				polies = polies.slice(0, lim);
 			}
@@ -653,5 +653,3 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
-
-
