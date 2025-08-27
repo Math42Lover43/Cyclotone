@@ -552,8 +552,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				while(polies[ind][0] == 0n) {
 					polies[ind] = polies[ind].slice(1, polies[ind].length);
 				}
-				console.log(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n));
-				if(polysubst(poly, BigInt(poly.length) ** 2n) % polysubst(polies[ind], BigInt(poly.length) ** 2n) == 0n && (!toret || abs(polysubst(polies[ind], BigInt(poly.length) ** 2n)) < abs(toret)) && abs(polysubst(polies[ind], t)) > 1n) {
+				console.log(polysubst(poly, t));
+				if(polysubst(poly, t) % polysubst(polies[ind], t) == 0n && (!toret || abs(polysubst(polies[ind], t)) < abs(toret)) && abs(polysubst(polies[ind], t)) > 1n) {
 					toret = abs(polysubst(polies[ind], t));
 				}
 				setTimeout(updatestatus, 0, factorizing);
@@ -648,6 +648,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
