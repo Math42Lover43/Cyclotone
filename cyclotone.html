@@ -466,9 +466,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					})
 					solve.pop();
 				}
-				console.log(status);
 				status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%";
 		    }
+			console.log(status);
 		    var solutions = [];
 		    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
 		        solutions.push(anticoeff(solve[ind], r));
@@ -478,9 +478,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					})
 					solutions.pop();
 				}
-				console.log(status);
 				status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%";
 		    }
+			console.log(status);
 		    var polies = [];
 		    for(let outer = 0; outer < solutions.length; outer++) {
 		        if(solutions[outer]) {
@@ -496,11 +496,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							});
 							polies.pop();
 						}
-						console.log(status);
 		            }
 		        }
 				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
 		    }
+			console.log(status);
 		    var pass = [];
 			for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
 				solve = [];
@@ -513,9 +513,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						});
 						solve.pop();
 					}
-					console.log(status);
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
 				}
+				console.log(status);
 				for(let ind = 0; ind < solve.length && pass.length < lim; ind++) {
 					pass.push(anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
@@ -524,9 +524,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						});
 						pass.pop();
 					}
-					console.log(status);
 					status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%<br/>Term" + term;
 				}
+				console.log(status);
 				var pm1 = polies;
 				polies = [];
 				for(let outer = 0; outer < pm1.length; outer++) {
@@ -543,11 +543,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								});
 								polies.pop();
 							}
-							console.log(status);
 						}
 					}
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
 				}
+				console.log(status);
 				polies = polies.slice(0, lim);
 			}
 			console.log(polies);
@@ -651,6 +651,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
