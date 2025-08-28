@@ -554,7 +554,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					if(typeof polies[ind] + typeof polies[ind + 1] == "objectobject") {
 						ind += 2;
 					} else {
-						polies = polies.slice(0, ind).concat(polies.slice(polies[ind + 2]));
+						polies = polies.slice(0, ind).concat(polies.slice(ind + 2));
 					}
 				}
 				console.log(polies);
@@ -660,6 +660,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
