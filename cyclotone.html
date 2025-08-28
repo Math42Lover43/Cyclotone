@@ -608,7 +608,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					if(quot % n == 1n) {
 						trial = polyfact(poly, 1n, 1n, n, n);
 						console.log(trial);
-						if(trial > 1n && quot % trial == 0n) {
+						if(trial && trial > 1n && quot % trial == 0n) {
 							quot /= trial;
 							prec += trial + " &times; ";
 							long = quot;
@@ -642,6 +642,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
