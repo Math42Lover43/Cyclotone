@@ -532,31 +532,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				console.log(pm1);
 				for(let outer = 0; outer < pm1.length; outer++) {
 					if(pass[outer]) {
-						for(let inner = 0; inner < pass[outer].length; inner++) {
+						for(let inner = 0; inner < pass[outer].length && polies.length < lim; inner++) {
 							polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
-							if(polies.length >= lim) {
-								polies = polies.sort(function(a) {
-									var k = 0n;
-									for(let ind = 0; ind < a.length; ind++) {
-										k -= a[ind];
-									}
-									return Number(k);
-								});
-								polies = polies.pop();
-							}
 						}
 					}
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
 				}
-				polies = [polies.slice(0, polies.lastIndexOf(0n) + 1)].concat(polies.slice(polies.lastIndexOf(0n) + 1), Math.floor(polies.length / 2) * 2);
 				var ind = 0;
-				while(ind < polies.length) {
-					if(typeof polies[ind] + typeof polies[ind + 1] == "objectobject") {
-						ind += 2;
-					} else {
-						polies = polies.slice(0, ind).concat(polies.slice(ind + 2));
-					}
-				}
 				console.log(polies);
 				console.log(status);
 			}
@@ -660,6 +642,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
