@@ -548,7 +548,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
 				}
-				polies = [polies.slice(0, polies.lastIndexOf(0n) + 1)].concat(polies.slice(polies.lastIndexOf(0n) + 1), polies.length / 2n * 2n);
+				polies = [polies.slice(0, polies.lastIndexOf(0n) + 1)].concat(polies.slice(polies.lastIndexOf(0n) + 1), Math.floor(polies.length / 2) * 2);
 				console.log(polies);
 				console.log(status);
 			}
@@ -652,6 +652,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
