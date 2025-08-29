@@ -532,8 +532,22 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				console.log(pm1);
 				for(let outer = 0; outer < pm1.length; outer++) {
 					if(pass[outer]) {
-						for(let inner = 0; inner < pass[outer].length && polies.length < lim; inner++) {
+						for(let inner = 0; inner < pass[outer].length; inner++) {
 							polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
+						}
+						if(polies.length >= lim) {
+							polies = polies.sort(function(a, b) {
+								var k = 0n;
+								if(sort.indexOf(a) % 2 == 0 && sort.indexOf(b) % 2 == 1 && abs(sort.indexOf(b) - sort.indexOf(a)) == 1) {
+									var lint = a.concat(b)
+									for(let h = 0; h < lint.length; h++) {
+										k += lint[h];
+									}
+									return k;
+								}
+							});
+							polies.pop();
+							polies.pop();
 						}
 					}
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
@@ -642,27 +656,3 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
