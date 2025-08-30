@@ -539,12 +539,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							polies = polies.sort(function(a, b) {
 								var k = 0n;
 								if(polies.indexOf(a) % 2 == 0 && polies.indexOf(b) % 2 == 1 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
-									console.log(a, b);
-									var lint = a.concat(b)
-									for(let h = 0; h < lint.length; h++) {
-										k += lint[h];
+									if(typeof a + typeof b == "objectobject") {
+										console.log(a, b);
+										var lint = a.concat(b)
+										for(let h = 0; h < lint.length; h++) {
+											k += lint[h];
+										}
+										return Number(k);
+									} else {
+										polies = polies.slice(0, polies.indexOf(a)).slice(polies.indexOf(a) + 1);
+										polies = polies.slice(0, polies.indexOf(B)).slice(polies.indexOf(B) + 1);
 									}
-									return Number(k);
 								}
 							});
 							polies = polies.concat(0, lim);
@@ -656,6 +661,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
