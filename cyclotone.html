@@ -141,9 +141,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var k = 0n;
 		var poly = 0n;
 		while(k < n.length) {
-			poly += n[k] * t ** k;
+			poly += n[k] * BigInt(t) ** BigInt(k);
 			k++;
-			poly *= d ? d : 1n;
+			poly *= BigInt(d) ? d : 1n;
 		}
 		return poly;
 	}
@@ -669,6 +669,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
