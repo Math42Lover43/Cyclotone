@@ -486,50 +486,32 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		        if(solutions[outer]) {
 		            for(let inner = 0; inner < solutions[outer].length; inner++) {
 		                polies.push([solutions[outer][inner][1], solve[outer].coeff[0], 0n], [solutions[outer][inner][0], solve[outer].coeff[1], 0n]);
-						if(polies.length >= lim) {
-							polies = polies.sort(function(a, b) {
-								var k = 0n;
-								if(polies.indexOf(a) % 2 == 0 && polies.indexOf(b) % 2 == 1 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
-									console.log(typeof a + typeof b == "objectobject");
-									if(typeof a + typeof b == "objectobject") {
-										var lint = a.concat(b)
-										for(let h = 0; h < lint.length; h++) {
-											k += lint[h];
-										}
-										return Number(k);
-									} else {
-										polies = polies.slice(0, polies.indexOf(a)).slice(polies.indexOf(a) + 1);
-										polies = polies.slice(0, polies.indexOf(b)).slice(polies.indexOf(b) + 1);
-									}
-								}
-							});
-						}
 		            }
 		        }
 				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
 		    }
+			polies = polies.sort(function(a, b) {
+				var k = 0n;
+				if((polies.indexOf(a) + polies.indexOf(b)) % 4 == 3 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
+					console.log(typeof a + typeof b == "objectobject");
+					if(typeof a + typeof b == "objectobject") {
+						var lint = a.concat(b)
+						for(let h = 0; h < lint.length; h++) {
+							k += lint[h];
+						}
+						return Number(k);
+					} else {
+						polies = polies.slice(0, polies.indexOf(a)).slice(polies.indexOf(a) + 1);
+						polies = polies.slice(0, polies.indexOf(b)).slice(polies.indexOf(b) + 1);
+					}
+				}
+			});
 			polies = polies.slice(0, lim);
 			console.log(status);
 		    var pass = [];
 			for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
 				solve = [];
 				pass = [];
-				polies = polies.sort(function(a, b) {
-					var k = 0n;
-					if(polies.indexOf(a) % 2 == 0 && polies.indexOf(b) % 2 == 1 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
-						if(typeof a + typeof b == "objectobject") {
-							console.log(a, b);
-							var lint = a.concat(b)
-							for(let h = 0; h < lint.length; h++) {
-								k += lint[h];
-							}
-							return Number(k);
-						} else {
-							polies = polies.slice(0, polies.indexOf(a)).slice(polies.indexOf(a) + 1);
-							polies = polies.slice(0, polies.indexOf(b)).slice(polies.indexOf(b) + 1);
-						}
-					}
-				});
 				for(let ind = 0; ind < polies.length && polies[ind + 1]; ind += 2) {
 					console.log(polies[ind], polies[ind + 1]);
 					solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
@@ -565,7 +547,23 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					polies = polies.concat(0, lim);
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
 				}
-				var ind = 0;
+				polies = polies.sort(function(a, b) {
+					var k = 0n;
+					if((polies.indexOf(a) + polies.indexOf(b)) % 4 == 3 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
+						console.log(typeof a + typeof b == "objectobject");
+						if(typeof a + typeof b == "objectobject") {
+							var lint = a.concat(b)
+							for(let h = 0; h < lint.length; h++) {
+								k += lint[h];
+							}
+							return Number(k);
+						} else {
+							polies = polies.slice(0, polies.indexOf(a)).slice(polies.indexOf(a) + 1);
+							polies = polies.slice(0, polies.indexOf(b)).slice(polies.indexOf(b) + 1);
+						}
+					}
+				});
+				polies = polies.concat(0, lim);
 				console.log(polies);
 				console.log(status);
 			}
@@ -669,6 +667,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
