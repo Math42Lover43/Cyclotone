@@ -514,6 +514,22 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
 				solve = [];
 				pass = [];
+				polies = polies.sort(function(a, b) {
+					var k = 0n;
+					if(polies.indexOf(a) % 2 == 0 && polies.indexOf(b) % 2 == 1 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
+						if(typeof a + typeof b == "objectobject") {
+							console.log(a, b);
+							var lint = a.concat(b)
+							for(let h = 0; h < lint.length; h++) {
+								k += lint[h];
+							}
+							return Number(k);
+						} else {
+							polies = polies.slice(0, polies.indexOf(a)).slice(polies.indexOf(a) + 1);
+							polies = polies.slice(0, polies.indexOf(b)).slice(polies.indexOf(b) + 1);
+						}
+					}
+				});
 				for(let ind = 0; ind < polies.length && polies[ind + 1]; ind += 2) {
 					console.log(polies[ind], polies[ind + 1]);
 					solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
@@ -544,24 +560,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					if(pass[outer]) {
 						for(let inner = 0; inner < pass[outer].length; inner++) {
 							polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
-						}
-						if(polies.length >= lim) {
-							polies = polies.sort(function(a, b) {
-								var k = 0n;
-								if(polies.indexOf(a) % 2 == 0 && polies.indexOf(b) % 2 == 1 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
-									if(typeof a + typeof b == "objectobject") {
-										console.log(a, b);
-										var lint = a.concat(b)
-										for(let h = 0; h < lint.length; h++) {
-											k += lint[h];
-										}
-										return Number(k);
-									} else {
-										polies = polies.slice(0, polies.indexOf(a)).slice(polies.indexOf(a) + 1);
-										polies = polies.slice(0, polies.indexOf(b)).slice(polies.indexOf(b) + 1);
-									}
-								}
-							});
 						}
 					}
 					polies = polies.concat(0, lim);
@@ -671,6 +669,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
