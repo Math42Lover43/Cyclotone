@@ -506,12 +506,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				pass = [];
 				for(let ind = 0; ind < polies.length && polies[ind + 1]; ind += 2) {
 					console.log(polies[ind], polies[ind + 1]);
-					solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
-					if(solve.length >= lim) {
-						solve = solve.sort(function(a) {
-							return Number(abs(a.coeff[0] * a.coeff[1]));
-						});
-						solve.pop();
+					if(polies[ind].slice && polies[ind + 1].slice) {
+						solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
+						if(solve.length >= lim) {
+							solve = solve.sort(function(a) {
+								return Number(abs(a.coeff[0] * a.coeff[1]));
+							});
+							solve.pop();
+						}
 					}
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
 				}
@@ -659,6 +661,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
