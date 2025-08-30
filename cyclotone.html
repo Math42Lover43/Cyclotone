@@ -529,7 +529,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%<br/>Term" + term;
 				}
 				console.log(status);
-				var pm1 = polies;
+				var pm1 = polies.slice(0, lim);
 				polies = [];
 				console.log(pm1);
 				for(let outer = 0; outer < pm1.length; outer++) {
@@ -661,6 +661,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
