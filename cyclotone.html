@@ -490,22 +490,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		        }
 				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
 		    }
-			polies = polies.sort(function(a, b) {
-				var k = 0n;
-				if((polies.indexOf(a) + polies.indexOf(b)) % 4 == 3 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
-					console.log(typeof a + typeof b == "objectobject");
-					if(typeof a + typeof b == "objectobject") {
-						var lint = a.concat(b)
-						for(let h = 0; h < lint.length; h++) {
-							k += lint[h];
-						}
-						return Number(k);
-					} else {
-						polies = polies.slice(0, polies.indexOf(a)).slice(polies.indexOf(a) + 1);
-						polies = polies.slice(0, polies.indexOf(b)).slice(polies.indexOf(b) + 1);
-					}
+			var ind = 0n;
+			while(ind < polies.length) {
+				if(typeof polies[ind] == "object") {
+					ind++;
+				} else {
+					polies = polies.slice(0, ind).concat(polies.slice(ind + 1));
 				}
-			});
+			}
 			polies = polies.slice(0, lim);
 			console.log(status);
 		    var pass = [];
@@ -667,6 +659,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
