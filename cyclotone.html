@@ -539,6 +539,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							polies = polies.sort(function(a, b) {
 								var k = 0n;
 								if(polies.indexOf(a) % 2 == 0 && polies.indexOf(b) % 2 == 1 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
+									console.log(a, b);
 									var lint = a.concat(b)
 									for(let h = 0; h < lint.length; h++) {
 										k += lint[h];
@@ -655,6 +656,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
