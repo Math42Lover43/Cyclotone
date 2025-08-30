@@ -492,7 +492,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		    }
 			var ind = 0n;
 			while(ind < polies.length) {
-				if(typeof polies[ind] == "object") {
+				if(typeof polies[ind] == "object" && !polies[ind].includes(undefined)) {
 					ind++;
 				} else {
 					polies = polies.slice(0, ind).concat(polies.slice(ind + 1));
@@ -661,6 +661,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
