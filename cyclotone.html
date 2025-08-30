@@ -515,6 +515,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				solve = [];
 				pass = [];
 				for(let ind = 0; ind < polies.length && polies[ind + 1]; ind += 2) {
+					console.log(polies[ind], polies[ind + 1]);
 					solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
 					if(solve.length >= lim) {
 						solve = solve.sort(function(a) {
@@ -670,6 +671,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
