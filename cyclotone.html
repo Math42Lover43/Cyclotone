@@ -143,7 +143,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		while(k < n.length) {
 			poly += n[k] * BigInt(t) ** BigInt(k);
 			k++;
-			poly *= BigInt(d) ? d : 1n;
+			poly *= d ? d : 1n;
 		}
 		return poly;
 	}
@@ -669,6 +669,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
