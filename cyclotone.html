@@ -540,7 +540,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
 						}
 					}
-					polies = polies.concat(0, lim);
+					polies = polies.slice(0, lim);
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
 				}
 				polies = polies.sort(function(a, b) {
@@ -558,7 +558,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						}
 					}
 				});
-				polies = polies.concat(0, lim);
+				polies = polies.slice(0, lim);
 				console.log(polies);
 				console.log(status);
 			}
@@ -669,6 +669,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
