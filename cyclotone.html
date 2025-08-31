@@ -140,8 +140,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function polysubst(n,t,d) {
 		var k = 0n;
 		var poly = 0n;
-		console.log(t, d);
 		while(k < n.length) {
+			console.log(n[k], BigInt(t), BigInt(k));
 			poly += n[k] * BigInt(t) ** BigInt(k);
 			k++;
 			poly *= d ? d : 1n;
