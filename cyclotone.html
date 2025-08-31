@@ -505,7 +505,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				solve = [];
 				pass = [];
 				for(let ind = 0; ind < polies.length && polies[ind + 1]; ind += 2) {
-					console.log(polies[ind], polies[ind + 1]);
 					if(polies[ind].slice && polies[ind + 1].slice) {
 						solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
 						if(solve.length >= lim) {
@@ -531,7 +530,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				console.log(status);
 				var pm1 = polies.slice(0, lim);
 				polies = [];
-				console.log(pm1);
 				for(let outer = 0; outer < pm1.length; outer++) {
 					if(pass[outer]) {
 						for(let inner = 0; inner < pass[outer].length; inner++) {
@@ -544,7 +542,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				polies = polies.sort(function(a, b) {
 					var k = 0n;
 					if((polies.indexOf(a) + polies.indexOf(b)) % 4 == 3 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
-						console.log(typeof a + typeof b == "objectobject");
 						if(typeof a + typeof b == "objectobject") {
 							var lint = a.concat(b)
 							for(let h = 0; h < lint.length; h++) {
@@ -565,7 +562,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				while(polies[ind][0] == 0n) {
 					polies[ind] = polies[ind].slice(1, polies[ind].length);
 				}
-				console.log(polysubst(polies[ind], t));
 				if(polysubst(polies[ind], t) != 0n && polysubst(poly, t) % polysubst(polies[ind], t) == 0n && (!toret || abs(polysubst(polies[ind], t)) < abs(toret)) && abs(polysubst(polies[ind], t)) > 1n) {
 					toret = abs(polysubst(polies[ind], t));
 				}
@@ -669,6 +665,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
