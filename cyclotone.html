@@ -521,15 +521,16 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
 				}
 				console.log(status);
-				for(let ind = 0; ind < solve.length && pass.length < lim; ind++) {
+				for(let ind = 0; ind < solve.length; ind++) {
 					pass.push(anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
 						pass = pass.sort(function(a) {
-							return abs(a.length);
+							return -abs(a.length);
 						});
 						pass.pop();
 					}
 					status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%<br/>Term" + term;
+					console.log(ind + "/" + solve.length);
 				}
 				console.log(status);
 				var pm1 = polies.slice(0, lim);
@@ -669,6 +670,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
