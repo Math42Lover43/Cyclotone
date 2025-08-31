@@ -397,7 +397,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function anticoeff(solve,r) {
 		console.log(solve.equiv % gcd(solve.coeff[0], solve.coeff[1]));
-		if(solve.equiv % gcd(solve.coeff[0], solve.coeff[1]) > 0n) {
+		if(abs(solve.equiv % gcd(solve.coeff[0], solve.coeff[1])) > 0n) {
 			return null;
 		}
 		if([solve.coeff[0], -solve.coeff[0]].includes(solve.coeff[1])) {
@@ -671,6 +671,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
