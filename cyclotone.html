@@ -523,7 +523,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				console.log(status);
 				for(let ind = 0; ind < solve.length; ind++) {
 					console.log(ind, solve[ind].coeff, solve[ind].equiv);
-					pass.push(anticoeff(solve[ind], abs(r)));
+					pass.push(pass.indexOf(solve[ind]) < ind ? pass[solve.indexOf(solve[ind])] : anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
 						pass = pass.sort(function(a) {
 							return -abs(a.length);
@@ -669,6 +669,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
