@@ -144,7 +144,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var k = 0n;
 		var poly = 0n;
 		while(k < n.length) {
-			console.log(n[k], BigInt(t), BigInt(k));
 			poly += n[k] * BigInt(t) ** BigInt(k);
 			k++;
 			poly *= d ? d : 1n;
@@ -396,7 +395,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	  return gcd(b, a % b);
 	}
 	function anticoeff(solve,r) {
-		console.log(solve.equiv % gcd(solve.coeff[0], solve.coeff[1]));
 		if(abs(solve.equiv % gcd(solve.coeff[0], solve.coeff[1])) > 0n) {
 			return null;
 		}
@@ -523,7 +521,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				console.log(status);
 				for(let ind = 0; ind < solve.length; ind++) {
-					console.log(ind + "/" + solve.length, solve[ind].equiv, solve[ind].coeff);
 					pass.push(anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
 						pass = pass.sort(function(a) {
@@ -561,7 +558,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 				});
 				polies = polies.slice(0, lim);
-				console.log(polies);
 				console.log(status);
 			}
 			for(let ind = 0; ind < polies.length; ind++) {
@@ -671,6 +667,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
