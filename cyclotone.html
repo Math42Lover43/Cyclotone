@@ -475,7 +475,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		    var solutions = [];
 		    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
 				console.log(solve[ind].coeff, solve[ind].equiv);
-		        solutions.push(anticoeff(solve[ind], r));
+		        solutions.push(solve.indexOf(solve[ind]) < ind ? solutions[solve.indexOf(solve[ind])] : anticoeff(solve[ind], r));
 				if(solutions.length >= lim) {
 					solutions = solutions.sort(function(a, b) {
 					    return a.length - b.length;
@@ -669,6 +669,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
