@@ -395,7 +395,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	  return gcd(b, a % b);
 	}
 	function anticoeff(solve,r) {
-		console.log(solve.coeff, solve.equiv);
 		if(abs(solve.equiv % gcd(solve.coeff[0], solve.coeff[1])) > 0n) {
 			return null;
 		}
@@ -523,6 +522,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				console.log(status);
 				for(let ind = 0; ind < solve.length; ind++) {
+					console.log(ind, solve[ind].coeff, solve[ind].equiv);
 					pass.push(anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
 						pass = pass.sort(function(a) {
@@ -669,6 +669,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
