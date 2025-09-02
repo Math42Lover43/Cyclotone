@@ -471,7 +471,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%";
 		    }
-			console.log(solve);
 		    var solutions = [];
 		    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
 		        solutions.push(solve.indexOf(solve[ind]) < ind ? solutions[solve.indexOf(solve[ind])] : anticoeff(solve[ind], r));
@@ -483,7 +482,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%";
 		    }
-			console.log(solutions);
 		    var polies = [];
 		    for(let outer = 0; outer < solutions.length; outer++) {
 		        if(solutions[outer]) {
@@ -501,7 +499,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					polies = polies.slice(0, ind).concat(polies.slice(ind + 1));
 				}
 			}
-			console.log(polies);
 			polies = polies.slice(0, lim);
 		    var pass = [];
 			for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
@@ -509,7 +506,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				pass = [];
 				for(let ind = 0; ind < polies.length && polies[ind + 1]; ind += 2) {
 					if(polies[ind].slice && polies[ind + 1].slice) {
-						console.log(crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)));
 						solve.push({"equiv": poly[term] - crossprod(polies[ind].slice(0, polies[ind].length - 2), polies[ind + 1].slice(0, polies[ind + 1].length - 2)), "coeff":[polies[ind][polies[ind].length - 2], polies[ind + 1][polies[ind + 1].length - 2]]});
 						if(solve.length >= lim) {
 							solve = solve.sort(function(a) {
@@ -520,9 +516,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
 				}
-				console.log(solve);
 				for(let ind = 0; ind < solve.length; ind++) {
-					console.log((pass.indexOf(solve[ind]) > -1) ? pass[solve.indexOf(solve[ind])] : anticoeff(solve[ind], abs(r)));
 					pass.push((pass.indexOf(solve[ind]) > -1) ? pass[solve.indexOf(solve[ind])] : anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
 						pass = pass.sort(function(a) {
@@ -534,9 +528,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				var pm1 = polies.slice(0, lim);
 				polies = [];
-				console.log(pm1.length);
 				for(let outer = 0; outer < pm1.length; outer++) {
-					console.log(pass[outer]);
 					if(pass[outer]) {
 						for(let inner = 0; inner < pass[outer].length; inner++) {
 							polies.push([pass[outer][inner][1]].concat(pm1[outer * 2]), [pass[outer][inner][0]].concat(pm1[outer * 2 + 1]));
@@ -545,7 +537,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					polies = polies.slice(0, lim);
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
 				}
-				console.log(polies);
 				polies = polies.sort(function(a, b) {
 					var k = 0n;
 					if((polies.indexOf(a) + polies.indexOf(b)) % 4 == 3 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
@@ -669,6 +660,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
