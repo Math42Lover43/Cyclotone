@@ -471,6 +471,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 				status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%";
 		    }
+			console.log(solve);
 		    var solutions = [];
 		    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
 		        solutions.push(solve.indexOf(solve[ind]) < ind ? solutions[solve.indexOf(solve[ind])] : anticoeff(solve[ind], r));
@@ -660,6 +661,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
