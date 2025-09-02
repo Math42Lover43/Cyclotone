@@ -542,6 +542,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					polies = polies.slice(0, lim);
 					status = "Transfer: " + Math.round(Math.floor(outer / pm1.length * 100)) + "% (out of " + pm1.length + ")<br/>Term " + term;
 				}
+				console.log(polies);
 				polies = polies.sort(function(a, b) {
 					var k = 0n;
 					if((polies.indexOf(a) + polies.indexOf(b)) % 4 == 3 && Math.abs(polies.indexOf(b) - polies.indexOf(a)) == 1) {
@@ -558,7 +559,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 				});
 				polies = polies.slice(0, lim);
-				console.log(polies);
 			}
 			for(let ind = 0; ind < polies.length; ind++) {
 				while(polies[ind][0] == 0n) {
@@ -666,6 +666,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
