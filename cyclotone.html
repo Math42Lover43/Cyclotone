@@ -493,6 +493,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		        }
 				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
 		    }
+			console.log(polies);
 			var ind = 0;
 			while(ind < polies.length) {
 				if(typeof polies[ind] == "object" && !polies[ind].includes(undefined)) {
@@ -662,6 +663,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
