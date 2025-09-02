@@ -493,7 +493,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		        }
 				status = "Constructing polynomial bases: " + Math.round(Math.floor(outer / solutions.length * 100)) + "%";
 		    }
-			console.log(polies);
 			var ind = 0;
 			while(ind < polies.length) {
 				if(typeof polies[ind] == "object" && !polies[ind].includes(undefined)) {
@@ -502,6 +501,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					polies = polies.slice(0, ind).concat(polies.slice(ind + 1));
 				}
 			}
+			console.log(polies);
 			polies = polies.slice(0, lim);
 		    var pass = [];
 			for(let term = poly.length - 4; term >= poly.length / 2 - 1; term--) {
@@ -519,6 +519,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
 				}
+				console.log(solve);
 				for(let ind = 0; ind < solve.length; ind++) {
 					pass.push(pass.indexOf(solve[ind]) < ind ? pass[solve.indexOf(solve[ind])] : anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
@@ -663,6 +664,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
