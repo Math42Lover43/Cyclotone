@@ -395,6 +395,25 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	  return gcd(b, a % b);
 	}
 	function anticoeff(solve,r) {
+		if(solve.coeff.includes(0n)) {
+			if(solve.coeff == [0n, 0n]) {
+				return null;
+			} else {
+				var list = [];
+				if(solve.equiv % gcd(solve.coeff[0], solve.coeff[1]) != 0n) {
+					return null;
+				}
+				for(let other = -abs(r); other <= abs(r); other++) {
+					if(solve.coeff[0] == 0n && solve.equiv % solve.coeff[1] == 0n) {
+						list.push([other, solve.equiv / solve.coeff[1]]);
+					}
+					if(solve.coeff[1] == 0n && solve.equiv % solve.coeff[0] == 0n) {
+						list.push([solve.equiv / solve.coeff[0], other]);
+					}
+				}
+				return list;
+			}
+		}
 		if(abs(solve.equiv % gcd(solve.coeff[0], solve.coeff[1])) > 0n) {
 			return null;
 		}
@@ -668,6 +687,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
