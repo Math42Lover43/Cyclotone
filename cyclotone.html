@@ -396,6 +396,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function anticoeff(solve,r) {
 		console.clear();
+		if(abs(r * solve.coeff[0] * solve.coeff[1]) < abs(solve.equiv)) {
+			return null;
+		}
 		if(solve.coeff.includes(0n)) {
 			if(solve.coeff == [0n, 0n]) {
 				return null;
@@ -550,7 +553,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						pass.pop();
 					}
 					status = "Solving linear equations: " + Math.round(Math.floor(ind / solve.length * 100)) + "%<br/>Term" + term;
-					console.log(solve[ind].coeff);
+					console.log(solve[ind].coeff, solve[ind].equiv);
 				}
 				console.log(status);
 				var pm1 = polies.slice(0, lim);
@@ -689,6 +692,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
