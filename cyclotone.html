@@ -595,6 +595,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				}
 			}
 		})()
+		var tolog = "";
+		for(let ind = 0; ind < poly.length; ind++) {
+			tolog += "+" + poly[ind] + "x^" + ind;
+		}
+		console.log(tolog);
 		return toret;
 	}
 	var prec = "";
@@ -682,6 +687,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
