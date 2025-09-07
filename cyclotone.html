@@ -582,15 +582,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 				});
 				polies = polies.slice(0, lim);
-			}
-			for(let ind = 0; ind < polies.length; ind++) {
-				while(polies[ind][0] == 0n) {
-					polies[ind] = polies[ind].slice(1, polies[ind].length);
+				for(let ind = 0; ind < polies.length; ind++) {
+					if(polysubst(polies[ind], t) != 0n && polysubst(poly, t) % polysubst(polies[ind], t) == 0n && (!toret || abs(polysubst(polies[ind], t)) < abs(toret)) && abs(polysubst(polies[ind], t)) > 1n) {
+						toret = abs(polysubst(polies[ind], t));
+					}
+					status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 				}
-				if(polysubst(polies[ind], t) != 0n && polysubst(poly, t) % polysubst(polies[ind], t) == 0n && (!toret || abs(polysubst(polies[ind], t)) < abs(toret)) && abs(polysubst(polies[ind], t)) > 1n) {
-					toret = abs(polysubst(polies[ind], t));
-				}
-				status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 			}
 			ind = 0;
 			while(ind < polies.length) {
@@ -652,13 +649,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				x++;
 				if(step == 2) {
 					x = range;
-					if(quot % n == 1n) {
-						trial = polyfact(poly, 1n, 1n, n, n);
-						if(trial && trial > 1n && quot % trial == 0n) {
-							quot /= trial;
-							prec += trial + " &times; ";
-							long = quot;
-						}
+					trial = polyfact(poly, 1n, 1n, n, n);
+					if(trial && trial > 1n && quot % trial == 0n) {
+						quot /= trial;
+						prec += trial + " &times; ";
+						long = quot;
 					}
 				} else if (step == 1) {
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
@@ -688,6 +683,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
