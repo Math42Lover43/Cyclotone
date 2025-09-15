@@ -103,7 +103,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		if(minimize) {
 			for(let term = 0; term < list.length; term++) {
-				if(list[term] > base) {
+				if(list[term] > base / 2n) {
 					list[term] -= base;
 					list[term + 1] += 1n;
 				}
@@ -694,6 +694,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
