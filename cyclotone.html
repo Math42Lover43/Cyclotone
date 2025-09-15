@@ -93,13 +93,24 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			return (BigInt(x) / BigInt(y))
 		}
 	}
-	function baseconv(val,base,mult) {
+	function baseconv(val,base,mult,minimize) {
 		var number = val;
 		var list = [val];
 		var mult = mult ? mult : 1n;
 		while(list[list.length - 1] != 0n) {
 			list.push(list[list.length - 1] / BigInt(base));
 			list[list.length - 2] = list[list.length - 2] % BigInt(base);
+		}
+		if(minimize) {
+			for(let term = 0; term < list.length; term++) {
+				if(list[term] > base) {
+					list[term] -= base;
+					list[term + 1] += 1n;
+				}
+			}
+			if(list[list.length - 1] != 0n) {
+				list.push(0n);
+			}
 		}
 		for(let term = 0; term < list.length; term++) {
 			list[term] *= mult ** BigInt(term);
@@ -683,6 +694,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
