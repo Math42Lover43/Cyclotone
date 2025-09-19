@@ -391,7 +391,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var test;
 		for(let x = min; x <= max; x++) {
 			test = polysubst(poly, x, 1n);
-			console.log(test);
 			if(test * old < 0n) {
 				count++;
 			}
@@ -677,8 +676,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				x++;
 				if(step == 2) {
 					x = range;
-					trial = polyfact(poly, 1n, 1n, n, n);
-					console.log(trial);
+					trial = 1n; // polyfact(poly, 1n, 1n, n, n)
+					console.log(roots(poly, -poly.length * poly[poly.length - 2], poly.length * poly[poly.length - 2]));
 					if(trial && trial > 1n && quot % trial == 0n) {
 						quot /= trial;
 						prec += trial + " &times; ";
@@ -712,6 +711,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
