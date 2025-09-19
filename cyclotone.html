@@ -385,6 +385,19 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 		return sigma
 	}
+	function roots(poly, min, max) {
+		var count = 0;
+		var old = polysubst(poly, min, 1n);
+		var test;
+		for(let x = min; x <= max; x++) {
+			test = polysubst(poly, x, 1n);
+			if(test * old < 0n) {
+				count++;
+			}
+			old = test;
+		}
+		return count;
+	}
 	function secs_to_eff(x) {
 		var safex = Number(x);
 		var returner = Number(x) + " sec";
@@ -695,6 +708,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
