@@ -395,6 +395,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			if(test * old < 0n) {
 				count++;
 			}
+			if(test * old == 0n) {
+				count += 0.5;
+			}
 			old = test;
 		}
 		return count;
@@ -709,6 +712,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
