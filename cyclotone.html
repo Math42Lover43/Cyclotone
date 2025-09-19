@@ -677,7 +677,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(step == 2) {
 					x = range;
 					trial = 1n; // polyfact(poly, 1n, 1n, n, n)
-					console.log(roots(poly, -poly.length * poly[poly.length - 2], poly.length * poly[poly.length - 2]));
+					console.log(roots(poly, -BigInt(poly.length) * poly[poly.length - 2], BigInt(poly.length) * poly[poly.length - 2]));
 					if(trial && trial > 1n && quot % trial == 0n) {
 						quot /= trial;
 						prec += trial + " &times; ";
@@ -711,6 +711,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
