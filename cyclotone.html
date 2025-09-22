@@ -627,6 +627,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 					status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 				}
+				if(polies == []) {
+					break;
+				}
 			}
 			ind = 0;
 			while(ind < polies.length) {
@@ -723,6 +726,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
