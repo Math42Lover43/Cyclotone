@@ -616,6 +616,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				polies = polies.slice(0, lim);
 				console.log(polies);
 				for(let ind = 0; ind < polies.length; ind++) {
+					console.log(polysubst(polies[ind], t), polysubst(poly, t) % polysubst(polies[ind], t), (!toret || abs(polysubst(polies[ind], t)) < abs(toret)), abs(polysubst(polies[ind], t)));
 					if(polysubst(polies[ind], t) != 0n && polysubst(poly, t) % polysubst(polies[ind], t) == 0n && (!toret || abs(polysubst(polies[ind], t)) < abs(toret)) && abs(polysubst(polies[ind], t)) > 1n) {
 						toret = abs(polysubst(polies[ind], t));
 					}
@@ -717,6 +718,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
