@@ -696,7 +696,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					polies_old = [{"val": poly, "roots": baseline_root_count}];
 					for(let term = poly.length - 2; term > 0; term--) {
 						polies_new = [];
-						for(let ind = 0n; ind < polies_old.length; ind++) {
+						for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
 							polies_new.push(polies_old[ind]);
 							if(roots(convert_term(polies_old[ind].val, term, n, 1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
 								polies_new.push({"val": convert_term(polies_old[ind].val, term, n, 1n), "roots": roots(convert_term(polies_old[ind].val, term, n, 1n), -BigInt(poly.length), BigInt(poly.length))});
@@ -742,6 +742,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
