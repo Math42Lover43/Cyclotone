@@ -694,19 +694,22 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					x = range;
 					var baseline_root_count = roots(poly, -BigInt(poly.length), BigInt(poly.length));
 					polies_old = [{"val": poly, "roots": baseline_root_count}];
-					for(let term = poly.length - 2; term > 0; term--) {
-						polies_new = [];
-						for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
-							polies_new.push(polies_old[ind]);
-							if(roots(convert_term(polies_old[ind].val, term, n, 1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
-								polies_new.push({"val": convert_term(polies_old[ind].val, term, n, 1n), "roots": roots(convert_term(polies_old[ind].val, term, n, 1n), -BigInt(poly.length), BigInt(poly.length))});
+					(async function() {
+						for(let term = poly.length - 2; term > 0; term--) {
+							polies_new = [];
+							for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
+								polies_new.push(polies_old[ind]);
+								if(roots(convert_term(polies_old[ind].val, term, n, 1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
+									polies_new.push({"val": convert_term(polies_old[ind].val, term, n, 1n), "roots": roots(convert_term(polies_old[ind].val, term, n, 1n), -BigInt(poly.length), BigInt(poly.length))});
+								}
+								if(roots(convert_term(polies_old[ind].val, term, n, -1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
+									polies_new.push({"val": convert_term(polies_old[ind].val, term, n, -1n), "roots": roots(convert_term(polies_old[ind].val, term, n, -1n), -BigInt(poly.length), BigInt(poly.length))});
+								}
+								await setTimeout(0);
 							}
-							if(roots(convert_term(polies_old[ind].val, term, n, -1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
-								polies_new.push({"val": convert_term(polies_old[ind].val, term, n, -1n), "roots": roots(convert_term(polies_old[ind].val, term, n, -1n), -BigInt(poly.length), BigInt(poly.length))});
-							}
+							polies_old = polies_new;
 						}
-						polies_old = polies_new;
-					}
+					})()
 					console.log(polies_old);
 					// console.log(roots(polies_old[0], -BigInt(poly.length) * poly[poly.length - 2], BigInt(poly.length) * poly[poly.length - 2]));
 					// if(trial && trial > 1n && quot % trial == 0n) {
@@ -742,6 +745,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
