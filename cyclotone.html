@@ -652,6 +652,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var maxrate;
 	var mrx;
 	var quot;
+	var polies_old;
+	var polies_new;
 	function bmifact(num,obv,custN) {
 		var t = num; // best5
 		n = custN ? custN : 0n;
@@ -690,13 +692,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				x++;
 				if(step == 2) {
 					x = range;
-					trial = 1n; // polyfact(poly, 1n, 1n, n, n)
-					console.log(roots(poly, -BigInt(poly.length) * poly[poly.length - 2], BigInt(poly.length) * poly[poly.length - 2]));
-					if(trial && trial > 1n && quot % trial == 0n) {
-						quot /= trial;
-						prec += trial + " &times; ";
-						long = quot;
-					}
+					polies_new = [];
+					polies_old = [poly];
+					console.log(roots(polies_old[0], -BigInt(poly.length) * poly[poly.length - 2], BigInt(poly.length) * poly[poly.length - 2]));
+					// if(trial && trial > 1n && quot % trial == 0n) {
+					// 	quot /= trial;
+					// 	prec += trial + " &times; ";
+					// 	long = quot;
+					// }
 				} else if (step == 1) {
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
@@ -725,6 +728,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
