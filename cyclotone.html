@@ -705,7 +705,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								if(roots(convert_term(polies_old[ind].val, term, n, -1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
 									polies_new.push({"val": convert_term(polies_old[ind].val, term, n, -1n), "roots": roots(convert_term(polies_old[ind].val, term, n, -1n), -BigInt(poly.length), BigInt(poly.length))});
 								}
-								await setTimeout(0);
+								await updatestatus(factorizing);
 							}
 							polies_old = polies_new;
 						}
@@ -745,6 +745,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
