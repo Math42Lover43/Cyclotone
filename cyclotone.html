@@ -694,29 +694,28 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				x++;
 				if(step == 2) {
 					if(x >= range) {
-						x = 0n;
+						x = poly.length - 2;
 						console.log("step 2");
 						var baseline_root_count = roots(poly, -BigInt(poly.length), BigInt(poly.length));
 						polies_old = [{"val": poly, "roots": baseline_root_count}];
-						term = poly.length - 2;
 					} else if (term > 0) {
 						(async function(){
 							polies_new = [];
 							for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
 								polies_new.push(polies_old[ind]);
 								if(roots(convert_term(polies_old[ind].val, term, n, 1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
-									polies_new.push({"val": convert_term(polies_old[ind].val, term, n, 1n), "roots": roots(convert_term(polies_old[ind].val, term, n, 1n), -BigInt(poly.length), BigInt(poly.length))});
+									polies_new.push({"val": convert_term(polies_old[ind].val, x, n, 1n), "roots": roots(convert_term(polies_old[ind].val, x, n, 1n), -BigInt(poly.length), BigInt(poly.length))});
 								}
 								if(roots(convert_term(polies_old[ind].val, term, n, -1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
-									polies_new.push({"val": convert_term(polies_old[ind].val, term, n, -1n), "roots": roots(convert_term(polies_old[ind].val, term, n, -1n), -BigInt(poly.length), BigInt(poly.length))});
+									polies_new.push({"val": convert_term(polies_old[ind].val, x, n, -1n), "roots": roots(convert_term(polies_old[ind].val, x, n, -1n), -BigInt(poly.length), BigInt(poly.length))});
 								}
 								await updatestatus(factorizing);
 							}
 							polies_old = polies_new;
 						})()
-						term--;
-					} else if(term) {
-						console.log(term);
+						x--;
+					} else if(x) {
+						console.log(x);
 						console.log(polies_old);
 					}
 					// console.log(roots(polies_old[0], -BigInt(poly.length) * poly[poly.length - 2], BigInt(poly.length) * poly[poly.length - 2]));
@@ -753,6 +752,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
