@@ -674,7 +674,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var trial = 0n;
 		var status = "";
 		var int1 = setInterval(function(){
-			if(x == range) {
+			if(x < 0n) {
 				if(quot == 1n) {
 					clearInterval(int1, int2);
 				}
@@ -726,7 +726,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					// 	long = quot;
 					// }
 				} else if (step == 1) {
-					x++
+					x++;
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
 					}
@@ -752,6 +752,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
