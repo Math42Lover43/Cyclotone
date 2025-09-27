@@ -655,6 +655,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var polies_old;
 	var polies_new;
 	var term;
+	var baseline_root_count;
 	function bmifact(num,obv,custN) {
 		var t = num; // best5
 		n = custN ? custN : 0n;
@@ -695,7 +696,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					if(x >= range) {
 						x = poly.length - 2;
 						console.log("step 2");
-						var baseline_root_count = roots(poly, -BigInt(poly.length), BigInt(poly.length));
+						baseline_root_count = roots(poly, -BigInt(poly.length), BigInt(poly.length));
 						polies_old = [{"val": poly, "roots": baseline_root_count}];
 					} else if (x > 0) {
 						(async function(){
@@ -753,6 +754,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
