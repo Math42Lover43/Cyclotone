@@ -733,6 +733,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
 					}
+					console.log(x);
 					if(quot % (n * x + 1n) == 0n && n * x) {
 						quot /= x * n + 1n;
 						prec += (x * n + 1n) + " &times; ";
@@ -758,6 +759,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
