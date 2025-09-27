@@ -674,7 +674,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var trial = 0n;
 		var status = "";
 		var int1 = setInterval(function(){
-			if(x < 0n) {
+			if(step < 0) {
 				if(quot == 1n) {
 					clearInterval(int1, int2);
 				}
@@ -752,6 +752,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
