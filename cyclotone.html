@@ -637,7 +637,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return toret;
 	}
 	function convert_term(pol, term, subst, times) {
-		console.log(subst, times);
 		pol[term] += times;
 		pol[term - 1] -= subst * times;
 		return pol;
@@ -701,6 +700,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						baseline_root_count = roots(poly, -BigInt(poly.length), BigInt(poly.length));
 						polies_old = [{"val": poly, "roots": baseline_root_count}];
 					} else if (x > 0) {
+						console.log(x)
 						(async function(){
 							polies_new = [];
 							for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
@@ -717,7 +717,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						})()
 						x--;
 					} else {
-						console.log(x);
 						console.log(polies_old);
 						step = -1;
 					}
@@ -757,6 +756,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
