@@ -637,6 +637,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return toret;
 	}
 	function convert_term(pol, term, subst, times) {
+		console.log(subst, times);
 		pol[term] += times;
 		pol[term - 1] -= subst * times;
 		return pol;
@@ -756,6 +757,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
