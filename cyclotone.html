@@ -704,7 +704,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						baseline_root_count = roots(poly, -BigInt(poly.length), BigInt(poly.length));
 						polies_old = [{"val": poly, "roots": baseline_root_count}];
 					} else if (x > 0) {
-						(async function(){
+						async function(){
 							polies_new = [];
 							for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
 								polies_new.push(polies_old[ind]);
@@ -714,10 +714,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								if(roots(convert_term(polies_old[ind].val, x, n, -1n), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count) {
 									polies_new.push({"val": convert_term(polies_old[ind].val, x, n, -1n), "roots": roots(convert_term(polies_old[ind].val, x, n, -1n), -BigInt(poly.length), BigInt(poly.length))});
 								}
-								await updatestatus(factorizing);
 							}
 							polies_old = polies_new;
-						})()
+						}
 						x--;
 					} else {
 						step = -1;
@@ -746,8 +745,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		},0)
 		oldx = 0n;
 		var int2 = setInterval(function(){
-			console.log(x, oldx);
-			if(step == 1 && (x - oldx) > maxrate && (x - oldx) < range / 3n) {
+			if(step == 1 && oldx != 0n && (x - oldx) > maxrate && (x - oldx) < range / 3n) {
 				maxrate = (x - oldx);
 				mrx = x;
 			}
@@ -759,6 +757,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
