@@ -746,6 +746,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		},0)
 		oldx = 0n;
 		var int2 = setInterval(function(){
+			console.log(x, oldx);
 			if(step == 1 && (x - oldx) > maxrate && (x - oldx) < range / 3n) {
 				maxrate = (x - oldx);
 				mrx = x;
@@ -758,6 +759,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
