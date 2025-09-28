@@ -309,7 +309,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function updatestatus(r) {
 		if(r) {
 			console.log(x);
-			document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>" + ((step == 2) ? (status + "Solving for term of degree " + x + "<br/>Step " + step) : ("Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / (range + BigInt(range == 0n))) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx + "<br/>Anticipated end of step: " + secs_to_eff(2n * range / (1500n + maxrate)) + " since start of step"));
+			document.getElementById("factorization").innerHTML = prec + long + "<hr/>n = " + n + "<br/>" + (
+				(step == 2) ? (status + "Solving for term of degree " + x + "<br/>Step " + step) : 
+				(step == 1) ? ("Trial <i>x</i> = " + x + " out of " + range + "<br/>Step " + step + ": " + (100n * x / (range + BigInt(range == 0n))) + "%<br/>Degree " + end + "<br/>Rate: " + (x - oldx) + "<br/>Highest rate: " + maxrate + ". " + mrx + "<br/>Anticipated end of step: " + secs_to_eff(2n * range / (1500n + maxrate)) + " since start of step")) :
+				"Preparation";
 		}
 	}
 	var cpolynomial;
@@ -755,6 +758,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
