@@ -357,6 +357,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function abs(x) {
+		console.log(x);
 		return x * (1n - 2n * BigInt(Boolean(x < 0n)));
 	}
 	function mod_pow(b,p,m) {
@@ -537,6 +538,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		    }
 		    var solutions = [];
 		    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
+				console.log(solve[ind]);
 		        solutions.push(solve.indexOf(solve[ind]) < ind ? solutions[solve.indexOf(solve[ind])] : anticoeff(solve[ind], r));
 				if(solutions.length >= lim) {
 					solutions = solutions.sort(function(a, b) {
@@ -587,6 +589,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
 				}
 				for(let ind = 0; ind < solve.length; ind++) {
+					console.log(solve[ind]);
 					pass.push((pass.indexOf(solve[ind]) > -1) ? pass[solve.indexOf(solve[ind])] : anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
 						pass = pass.sort(function(a) {
@@ -770,6 +773,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
