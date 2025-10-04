@@ -124,6 +124,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		if(typeof rip_pow != "bigint") {
 			rip_pow = 1n;
 		}
+		if(typeof rip != "bigint") {
+			rip = 1n;
+		}
 		val /= rip ** rip_pow;
 		for(let rp = 0n; rp <= rip_pow; rp++) {
 			div = 1n;
@@ -760,6 +763,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
