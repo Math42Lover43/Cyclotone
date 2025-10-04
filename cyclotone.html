@@ -358,6 +358,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function abs(x) {
 		console.log(x);
+		if(typeof x != "bigint") {
+			return x;
+		}
 		return x * (1n - 2n * BigInt(Boolean(x < 0n)));
 	}
 	function mod_pow(b,p,m) {
@@ -773,6 +776,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
