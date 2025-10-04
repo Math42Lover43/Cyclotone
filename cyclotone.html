@@ -521,6 +521,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var toret = null;
 		(async function() {
 		    // generate possible leading term pairs
+			console.log(poly);
 		    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
 		    // find possibilities for penultimate terms
 		    var solve = [];
@@ -769,6 +770,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
