@@ -118,7 +118,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return list;
 	}
 	function quickfact(val, rip, rip_pow) {
-		console.log(val);
 		var list = [];
 		var quot = [];
 		var div = 1n;
@@ -357,7 +356,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function abs(x) {
-		console.log(x);
 		if(typeof x != "bigint") {
 			return x;
 		}
@@ -433,7 +431,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	  return gcd(b, a % b);
 	}
 	function anticoeff(solve,r) {
-		console.log(solve,r);
 		if(abs(r) * (abs(solve.coeff[0]) + abs(solve.coeff[1])) < abs(solve.equiv)) {
 			return null;
 		}
@@ -526,7 +523,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var toret = null;
 		(async function() {
 		    // generate possible leading term pairs
-			console.log(poly);
 		    var trials = quickfact(poly[poly.length - 2], rip, rip_pow);
 		    // find possibilities for penultimate terms
 		    var solve = [];
@@ -542,7 +538,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		    }
 		    var solutions = [];
 		    for(let ind = 0; ind < solve.length && solutions.length < lim; ind++) {
-				console.log(solve[ind]);
 		        solutions.push(solve.indexOf(solve[ind]) < ind ? solutions[solve.indexOf(solve[ind])] : anticoeff(solve[ind], r));
 				if(solutions.length >= lim) {
 					solutions = solutions.sort(function(a, b) {
@@ -593,7 +588,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					status = "Finding linear equations: " + Math.round(Math.floor(ind / trials.length * 100)) + "%<br/>Term" + term;
 				}
 				for(let ind = 0; ind < solve.length; ind++) {
-					console.log(solve[ind]);
 					pass.push((pass.indexOf(solve[ind]) > -1) ? pass[solve.indexOf(solve[ind])] : anticoeff(solve[ind], abs(r)));
 					if(pass.length >= lim) {
 						pass = pass.sort(function(a) {
@@ -732,10 +726,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							}
 						}
 						polies_old = polies_new;
-						console.log(x, ". ", polies_old.length);
 						x--;
 					} else {
-						console.log(polies_old);
 						for(let ind = 0; ind < polies_old.length; ind++) {
 							console.log(polyfact(polies_old[ind].val, 1n, 1n, BigInt(polies_old[ind].val.length), n));
 						}
@@ -777,6 +769,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
