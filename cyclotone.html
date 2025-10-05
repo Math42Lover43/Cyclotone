@@ -737,7 +737,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					} else {
 						console.log(polies_old);
 						for(let ind = 0; ind < polies_old.length; ind++) {
-							console.log(polyfact(polies_old[ind].val, 1n, 1n, polies_old[ind].length, n));
+							console.log(polyfact(polies_old[ind].val, 1n, 1n, BigInt(polies_old[ind].length), n));
 						}
 						step = -1;
 					}
@@ -777,6 +777,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
