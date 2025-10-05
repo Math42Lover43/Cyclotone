@@ -709,6 +709,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					if(x >= range) {
 						x = poly.length - 2;
 						baseline_root_count = roots(poly, -BigInt(poly.length), BigInt(poly.length));
+						console.log(baseline_root_count);
 						polies_old = [{"val": poly, "roots": baseline_root_count}];
 					} else if (x > 0) {
 						polies_new = [];
@@ -769,6 +770,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
