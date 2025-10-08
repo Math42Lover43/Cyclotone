@@ -685,6 +685,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var trial = 0n;
 		var status = "";
 		var conv_offset;
+		var addition;
 		var int1 = setInterval(function(){
 			if(step < 0) {
 				if(quot == 1n) {
@@ -721,14 +722,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							polies_new.push(polies_old[ind]);
 							conv_offset = 1n;
 							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count && conv_offset < BigInt(poly.length)) {
-								console.log(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length));
-								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length))});
+								addition = convert_term(polies_old[ind].val, x, n, conv_offset);
+								polies_new.push({"val": addition, "roots": roots(addition, -BigInt(poly.length), BigInt(poly.length))});
 								conv_offset++;
 							}
 							conv_offset = -1n;
 							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count && conv_offset > -BigInt(poly.length)) {
-								console.log(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length));
-								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length))});
+								addition = convert_term(polies_old[ind].val, x, n, conv_offset);
+								polies_new.push({"val": addition, "roots": roots(addition, -BigInt(poly.length), BigInt(poly.length))});
 								conv_offset--;
 							}
 						}
@@ -777,6 +778,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
