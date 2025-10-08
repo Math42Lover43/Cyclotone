@@ -722,12 +722,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
 							polies_new.push(polies_old[ind]);
 							conv_offset = 0n;
-							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count + (baseline_root_count == 0n) && conv_offset < BigInt(poly.length)) {
+							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count && conv_offset < BigInt(poly.length)) {
 								conv_offset++;
 								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length))});
 							}
 							conv_offset = 0n;
-							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count + (baseline_root_count == 0n) && conv_offset > -BigInt(poly.length)) {
+							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count && conv_offset > -BigInt(poly.length)) {
 								conv_offset--;
 								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length))});
 							}
@@ -736,16 +736,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						x--;
 					} else {
 						for(let ind = 0; ind < polies_old.length; ind++) {
-							console.log(polies_old[ind].val, polyfact(polies_old[ind].val, 1n, 1n, BigInt(polies_old[ind].val.length), n));
+							trial = polyfact(polies_old[ind].val, 1n, 1n, BigInt(polies_old[ind].val.length), n);
+							console.log(polies_old[ind].val, trial);
+							if(trial && trial > 1n && quot % trial == 0n) {
+							 	quot /= trial;
+							 	prec += trial + " &times; ";
+							 	long = quot;
+							}
 						}
 						step = -1;
 					}
 					// console.log(roots(polies_old[0], -BigInt(poly.length) * poly[poly.length - 2], BigInt(poly.length) * poly[poly.length - 2]));
-					// if(trial && trial > 1n && quot % trial == 0n) {
-					// 	quot /= trial;
-					// 	prec += trial + " &times; ";
-					// 	long = quot;
-					// }
 				} else if (step == 1) {
 					x++;
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
@@ -776,6 +777,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
