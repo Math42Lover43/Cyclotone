@@ -721,15 +721,15 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						polies_new = [];
 						for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
 							polies_new.push(polies_old[ind]);
-							conv_offset = 0n;
+							conv_offset = 1n;
 							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count && conv_offset < BigInt(poly.length)) {
+								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length))});
 								conv_offset++;
-								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length))});
 							}
-							conv_offset = 0n;
+							conv_offset = -1n;
 							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count && conv_offset > -BigInt(poly.length)) {
-								conv_offset--;
 								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length))});
+								conv_offset--;
 							}
 						}
 						polies_old = polies_new;
@@ -777,6 +777,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
