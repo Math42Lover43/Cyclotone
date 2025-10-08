@@ -12,6 +12,8 @@ body,input,button { font-family: 'Roboto', 'Arial', sans-serif }
 </noscript>
 Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <button onclick="lim = document.getElementById('config_exp').value * 10; bmifact(cyclotomic(document.getElementById('config_exp').value),BigInt(document.getElementById('config_exp').value) * (1n + BigInt(BigInt(document.getElementById('config_exp').value) % 2n == 1n || BigInt(document.getElementById('config_exp').value) % 40n == 0n)));">Factorize</button>
+<h4>Experimental features</h4>
+<input type="checkbox" id="step1" checked/> Step 1
 <div id="factorization">
 </div>
 <script>
@@ -703,6 +705,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					end = Math.round(poly.length - 2);
 					oldx = 0n;
 					step++;
+					if(!step1.checked) {
+						step++;
+					}
 				}
 			} else {
 				if(step == 2) {
@@ -770,6 +775,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
