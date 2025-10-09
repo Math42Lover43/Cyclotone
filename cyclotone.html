@@ -725,14 +725,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								addition = convert_term(polies_old[ind].val, x, n, conv_offset);
 								console.log(addition);
 								// Why is the fundamental polynomial not changing?
-								polies_new.push({"val": addition, "roots": roots(addition, -BigInt(poly.length), BigInt(poly.length))});
+								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(addition, -BigInt(poly.length), BigInt(poly.length))});
 								conv_offset++;
 							}
 							conv_offset = -1n;
 							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count && conv_offset > -BigInt(poly.length)) {
 								addition = convert_term(polies_old[ind].val, x, n, conv_offset);
 								console.log(addition);
-								polies_new.push({"val": addition, "roots": roots(addition, -BigInt(poly.length), BigInt(poly.length))});
+								polies_new.push({"val": convert_term(polies_old[ind].val, x, n, conv_offset), "roots": roots(addition, -BigInt(poly.length), BigInt(poly.length))});
 								conv_offset--;
 							}
 						}
@@ -782,6 +782,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
