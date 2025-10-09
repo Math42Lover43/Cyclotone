@@ -154,7 +154,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return (BigInt(x) < BigInt(y));
 	}
 	function polysubst(n,t,d) {
-		if(!n[Symbol.iterator]) {
+		if(!n) {
 			return undefined;
 		}
 		var k = 0n;
@@ -783,6 +783,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
