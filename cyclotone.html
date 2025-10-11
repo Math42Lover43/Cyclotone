@@ -648,10 +648,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return toret;
 	}
 	function convert_term(pol, term, subst, times) {
-		old = polysubst(pol, obv);
+		console.log(pol, term, subst, times);
+		old = polysubst(pol, subst);
 		pol[term] += times;
-		pol[term - 1] -= obv * times;
-		console.log(old, polysubst(pol, obv));
+		pol[term - 1] -= subst * times;
+		console.log(old, polysubst(pol, subst));
 		return pol;
 	}
 	var prec = "";
@@ -789,6 +790,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
