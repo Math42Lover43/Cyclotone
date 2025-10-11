@@ -721,6 +721,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
 							polies_new.push(polies_old[ind]);
 							conv_offset = 1n;
+							console.log(n);
 							while(roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count && conv_offset < BigInt(poly.length)) {
 								addition = {"val": [], "roots": 0};
 								for(let inner = 0n; inner < convert_term(polies_old[ind].val, x, n, conv_offset).length; inner++) {
@@ -789,6 +790,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
