@@ -749,11 +749,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								conv_offset--;
 							}
 						}
-						polies_new = polies_new.filter(x => (polysubst(x.val, n) == quot));
+						// polies_new = polies_new.filter(x => (polysubst(x.val, n) == quot));
 						polies_old = polies_new;
-						console.log(polies_old);
 						x--;
 					} else {
+						console.log(polies_old);
 						for(let ind = 0; ind < polies_old.length; ind++) {
 							trial = polyfact(polies_old[ind].val, 1n, 1n, BigInt(polies_old[ind].val.length), n);
 							console.log(polies_old[ind].val, polysubst(polies_old[ind].val, n), trial);
@@ -796,6 +796,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
