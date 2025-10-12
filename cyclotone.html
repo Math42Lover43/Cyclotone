@@ -724,6 +724,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						polies_new = [];
 						for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
 							polies_new.push(polies_old[ind]);
+							console.log(x, n);
 							conv_offset = 1n;
 							while(conv_offset < BigInt(poly.length)) {
 								addition = {"val": [], "roots": 0};
@@ -797,6 +798,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
