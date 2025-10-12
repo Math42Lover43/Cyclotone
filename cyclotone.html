@@ -725,7 +725,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						for(let ind = 0n; ind < polies_old.length && polies_new.length < lim; ind++) {
 							polies_new.push(polies_old[ind]);
 							conv_offset = 1n;
-							while((roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count || convert_term(polies_old[ind].val, x, n, conv_offset)[convert_term(polies_old[ind].val, x, n, conv_offset).length - 2] == 0n) && conv_offset < BigInt(poly.length)) {
+							while(conv_offset < BigInt(poly.length)) {
 								addition = {"val": [], "roots": 0};
 								for(let inner = 0n; inner < convert_term(polies_old[ind].val, x, n, conv_offset).length; inner++) {
 									if(polysubst(convert_term(polies_old[ind].val, x, n, conv_offset), n) == quot) {
@@ -737,7 +737,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								conv_offset++;
 							}
 							conv_offset = -1n;
-							while((roots(convert_term(polies_old[ind].val, x, n, conv_offset), -BigInt(poly.length), BigInt(poly.length)) >= baseline_root_count || convert_term(polies_old[ind].val, x, n, conv_offset)[convert_term(polies_old[ind].val, x, n, conv_offset).length - 2] == 0n) && conv_offset > -BigInt(poly.length)) {
+							while(conv_offset > -BigInt(poly.length)) {
 								addition = {"val": [], "roots": 0};
 								for(let inner = 0n; inner < convert_term(polies_old[ind].val, x, n, conv_offset).length; inner++) {
 									if(polysubst(convert_term(polies_old[ind].val, x, n, conv_offset), n) == quot) {
@@ -749,6 +749,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								conv_offset--;
 							}
 						}
+						polies_new = polies_new.slice(0, lim);
 						// polies_new = polies_new.filter(x => (polysubst(x.val, n) == quot));
 						polies_old = polies_new;
 						x--;
@@ -796,6 +797,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
