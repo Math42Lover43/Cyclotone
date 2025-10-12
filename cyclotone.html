@@ -746,6 +746,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 								conv_offset--;
 							}
 						}
+						polies_new = polies_new.filter(x => (polysubst(x.val, n) == quot));
 						polies_old = polies_new;
 						console.log(polies_old);
 						x--;
@@ -792,6 +793,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
