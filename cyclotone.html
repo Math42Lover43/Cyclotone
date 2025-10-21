@@ -649,6 +649,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function convert_term(pol, term, subst, times) {
 		old = pol;
+		console.log(pol[term], times);
 		pol[term] += times;
 		pol[term - 1] -= subst * times;
 		if(polysubst(pol, subst) != polysubst(old, subst)) {
@@ -798,6 +799,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
