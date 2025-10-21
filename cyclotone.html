@@ -652,9 +652,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		console.log(pol[term], times);
 		pol[term] += times;
 		pol[term - 1] -= subst * times;
-		if(polysubst(pol, subst) != polysubst(old, subst)) {
-			console.log(old, term, subst, times);
-		}
 		return pol;
 	}
 	var prec = "";
@@ -799,6 +796,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
