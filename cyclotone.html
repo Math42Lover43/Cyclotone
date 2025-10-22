@@ -671,7 +671,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var baseline_root_count;
 	function bmifact(num,obv,custN) {
 		console.log(obv);
-		obv = obv * (1n + BigInt(obv % 2n == 1n || obv % 40n == 0n));
+		obv = obv * (1n + BigInt(obv % 2n == 1n));
 		var t = num; // best5
 		n = custN ? custN : 0n;
 		x = 0n;
@@ -797,6 +797,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
