@@ -649,6 +649,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	}
 	function convert_term(pol, term, subst, times) {
 		old = pol;
+		pol[term] = BigInt(pol[term]);
+		pol[term - 1] = BigInt(pol[term - 1]);
+		times = BigInt(times);
 		try {
 			pol[term] += times;
 		} catch (error) {
@@ -800,6 +803,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
