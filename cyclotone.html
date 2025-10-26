@@ -760,7 +760,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						x--;
 					} else {
 						let ind = 0;
-						while(typeof polies_old[ind].val == "object") {
+						while(ind < polies_old.length) {
 							trial = polyfact(polies_old[ind].val, 1n, 1n, BigInt(polies_old[ind].val.length), n);
 							if(trial && trial > 1n && quot % trial == 0n) {
 							 	quot /= trial;
@@ -802,6 +802,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
