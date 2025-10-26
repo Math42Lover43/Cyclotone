@@ -676,7 +676,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var term;
 	var baseline_root_count;
 	function bmifact(num,obv,custN) {
-		console.log(obv);
 		obv = obv * (1n + BigInt(obv % 2n == 1n));
 		var t = num; // best5
 		n = custN ? custN : 0n;
@@ -732,6 +731,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							conv_offset = 1n;
 							while(conv_offset < BigInt(poly.length)) {
 								addition = {"val": [], "roots": 0};
+								console.log(polies_old[ind].val);
 								for(let inner = 0n; inner < convert_term(polies_old[ind].val, x, n, conv_offset).length; inner++) {
 									if(polysubst(convert_term(polies_old[ind].val, x, n, conv_offset), n) == quot) {
 										addition.val.push(convert_term(polies_old[ind].val, x, n, conv_offset)[inner]);
@@ -759,11 +759,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						polies_old = polies_new;
 						x--;
 					} else {
-						console.log(polies_old);
 						let ind = 0;
 						while(typeof polies_old[ind].val == "object") {
 							trial = polyfact(polies_old[ind].val, 1n, 1n, BigInt(polies_old[ind].val.length), n);
-							console.log(polies_old[ind].val, polysubst(polies_old[ind].val, n), trial);
 							if(trial && trial > 1n && quot % trial == 0n) {
 							 	quot /= trial;
 							 	prec += trial + " &times; ";
@@ -804,6 +802,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
