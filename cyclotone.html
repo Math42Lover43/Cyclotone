@@ -762,7 +762,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						x--;
 					} else {
 						console.log(polies_old);
-						for(let ind = 0; ind < polies_old.length; ind++) {
+						let ind = 0;
+						while(typeof polies_old[ind].val == "object") {
 							trial = polyfact(polies_old[ind].val, 1n, 1n, BigInt(polies_old[ind].val.length), n);
 							console.log(polies_old[ind].val, polysubst(polies_old[ind].val, n), trial);
 							if(trial && trial > 1n && quot % trial == 0n) {
@@ -770,6 +771,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							 	prec += trial + " &times; ";
 							 	long = quot;
 							}
+							ind++;
 						}
 						step = -1;
 					}
@@ -804,6 +806,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
