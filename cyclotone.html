@@ -756,7 +756,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						}
 						polies_new = polies_new.slice(0, lim);
 						// polies_new = polies_new.filter(x => (polysubst(x.val, n) == quot));
-						polies_old = polies_new;
+						polies_old = polies_new.filter(n => n.val.length);
 						x--;
 					} else {
 						let ind = 0;
@@ -802,6 +802,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
