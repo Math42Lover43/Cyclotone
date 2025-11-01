@@ -11,7 +11,7 @@ body,input,button { font-family: 'Roboto', 'Arial', sans-serif }
 	Warning: The calculator will not work with JavaScript disabled.
 </noscript>
 Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
-<button onclick="lim = document.getElementById('config_exp').value * 10; bmifact(cyclotomic(document.getElementById('config_exp').value),BigInt(document.getElementById('config_exp').value) * (1n + BigInt(BigInt(document.getElementById('config_exp').value) % 2n == 1n || BigInt(document.getElementById('config_exp').value) % 40n == 0n)));">Factorize</button>
+<button onclick="lim = document.getElementById('config_exp').value * 10; bmifact(cyclotomic(document.getElementById('config_exp').value), BigInt(document.getElementById('config_exp').value) * (1n + BigInt(BigInt(document.getElementById('config_exp').value) % 2n == 1n || BigInt(document.getElementById('config_exp').value) % 40n == 0n)), localStorage.n ? localStorage.n : 0n);">Factorize</button>
 <h4>Experimental features</h4>
 <input type="checkbox" id="step1" checked/> Step 1
 <div id="factorization">
@@ -707,6 +707,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(step == 0) {
 					maxrate = 0n;
 					n += obv; // increase base;
+					localStorage.n = n;
 					d++;
 					range = abs(n * (BigInt(baseconv(quot, n).length) - 2n));
 					range += BigInt(range == 0n); // create a range
@@ -789,12 +790,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 				}
 			}
+			localStorage.step = step;
 		},0)
 		oldx = 0n;
 		int2 = setInterval(function(){
 			if(step == 1 && oldx != 0n && (x - oldx) > maxrate && (x - oldx) < range / 3n) {
 				maxrate = (x - oldx);
 				mrx = x;
+				localStorage.checkpoint = mrx;
 			}
 		    updatestatus(factorizing);
 			oldx = x;
@@ -804,6 +807,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
