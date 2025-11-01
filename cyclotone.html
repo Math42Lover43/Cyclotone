@@ -709,7 +709,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					n += obv; // increase base;
 					localStorage.n = n;
 					d++;
-					range = abs(n * (BigInt(baseconv(quot, n).length) - 2n));
+					range = abs(BigInt(n) * (BigInt(baseconv(quot, n).length) - 2n));
 					range += BigInt(range == 0n); // create a range
 					poly = baseconv(quot, n, 1n, true); // get a polynomial
 					x = -1n; // start the search
@@ -807,6 +807,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
