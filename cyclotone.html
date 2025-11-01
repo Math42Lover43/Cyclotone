@@ -96,6 +96,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function baseconv(val,base,mult,minimize) {
+		base = BigInt(base);
 		var number = val;
 		var list = [val];
 		var mult = mult ? mult : 1n;
@@ -807,6 +808,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
