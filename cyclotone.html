@@ -675,6 +675,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var polies_new;
 	var term;
 	var baseline_root_count;
+	var int1;
+	var int2;
 	function bmifact(num,obv,custN) {
 		obv = obv * (1n + BigInt(obv % 2n == 1n));
 		var t = num; // best5
@@ -695,7 +697,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var status = "";
 		var conv_offset;
 		var addition;
-		var int1 = setInterval(function(){
+		int1 = setInterval(function(){
 			if(step < 0) {
 				if(quot == 1n) {
 					clearInterval(int1, int2);
@@ -789,7 +791,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 			}
 		},0)
 		oldx = 0n;
-		var int2 = setInterval(function(){
+		int2 = setInterval(function(){
 			if(step == 1 && oldx != 0n && (x - oldx) > maxrate && (x - oldx) < range / 3n) {
 				maxrate = (x - oldx);
 				mrx = x;
@@ -802,6 +804,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
