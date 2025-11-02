@@ -791,6 +791,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						quot /= x * n + 1n;
 						prec += (x * n + 1n) + " &times; ";
 						long = quot;
+						localStorage.tofact = BigInt(quot);
 					}
 					if(x >= range) {
 						step++;
@@ -814,6 +815,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
