@@ -708,6 +708,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var status = "";
 		var conv_offset;
 		var addition;
+		var started = false;
 		int1 = setInterval(function(){
 			if(step < 0) {
 				if(quot == 1n) {
@@ -723,7 +724,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					range = abs(BigInt(n) * (BigInt(baseconv(quot, n).length) - 2n));
 					range += BigInt(range == 0n); // create a range
 					poly = baseconv(quot, n, 1n, true); // get a polynomial
-					x = -1n; // start the search
+					if(!started) {
+						x = -1n; // start the search
+					}
 					end = Math.round(poly.length - 2);
 					oldx = 0n;
 					step++;
@@ -732,6 +735,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						x = range;
 					}
 				}
+				started = true;
 			} else {
 				if(step == 2) {
 					if(x >= range) {
@@ -820,6 +824,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
