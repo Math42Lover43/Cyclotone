@@ -678,9 +678,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var baseline_root_count;
 	var int1;
 	var int2;
+	if(localStorage.tofact) {
+		bmifact(BigInt(localStorage.tofact),BigInt(localStorage.obv),BigInt(localStorage.n));
+	}
 	function bmifact(num,obv,custN) {
 		localStorage.tofact = num;
 		obv = obv * (1n + BigInt(obv % 2n == 1n));
+		localStorage.obv = obv;
 		var t = num; // best5
 		n = custN ? custN : 0n;
 		x = 0n;
@@ -810,6 +814,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
