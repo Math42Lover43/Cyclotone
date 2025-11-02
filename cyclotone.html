@@ -793,6 +793,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					// console.log(roots(polies_old[0], -BigInt(poly.length) * poly[poly.length - 2], BigInt(poly.length) * poly[poly.length - 2]));
 				} else if (step == 1) {
 					x++;
+					if(typeof n != "bigint") {
+						n = BigInt(n);
+					}
 					while(mod_pow(2n, n * x, n * x + 1n) != 1n && x < range) {
 						x++;
 					}
@@ -824,6 +827,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
