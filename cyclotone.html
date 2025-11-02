@@ -679,9 +679,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	var int1;
 	var int2;
 	if(localStorage.tofact) {
-		bmifact(BigInt(localStorage.tofact),BigInt(localStorage.obv),BigInt(localStorage.n) - BigInt(localStorage.obv));
+		bmifact(BigInt(localStorage.tofact),BigInt(localStorage.obv),BigInt(localStorage.n) - BigInt(localStorage.obv), BigInt(localStorage.step), BigInt(localStorage.checkpoint));
 	}
-	function bmifact(num,obv,custN) {
+	function bmifact(num, obv, custN, sstep, startx) {
 		localStorage.tofact = num;
 		obv = obv * (1n + BigInt(obv % 2n == 1n));
 		localStorage.obv = obv;
@@ -696,7 +696,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		end = 0n;
 		factorizing = true;
 		var d = 0n;
-		step = -1;
+		step = sstep ? sstep : -1;
+		if(step == 1) {
+			x = startx ? startx : 0n;
+		}
 		maxrate = 0n;
 		mrx = 0n;
 		var trial = 0n;
@@ -815,6 +818,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
