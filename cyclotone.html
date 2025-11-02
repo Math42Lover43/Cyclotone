@@ -688,7 +688,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		obv = obv * (1n + BigInt(obv % 2n == 1n));
 		localStorage.obv = obv;
 		var t = num; // best5
-		n = custN ? custN : 0n;
+		n = custN ? BigInt(custN) : 0n;
 		x = 0n;
 		quot = t;
 		var poly = [];
@@ -824,6 +824,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
