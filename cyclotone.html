@@ -523,6 +523,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return tolog;
 	}
 	function polyfact(poly, rip, rip_pow, r, t) {
+		rip = rip ? rip : 1n;
+		rip_pow = rip_pow ? rip_pow : 1n;
 		var toret = null;
 		(async function() {
 		    // generate possible leading term pairs
@@ -818,6 +820,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
