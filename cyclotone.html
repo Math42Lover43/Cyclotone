@@ -708,7 +708,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var status = "";
 		var conv_offset;
 		var addition;
-		var started = false;
+		var started = Boolean(startx);
 		int1 = setInterval(function(){
 			if(step < 0) {
 				if(quot == 1n) {
@@ -828,6 +828,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
