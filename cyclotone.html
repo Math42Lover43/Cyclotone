@@ -745,6 +745,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					poly = baseconv(quot, n, 1n, true); // get a polynomial
 					if(!started) {
 						x = -1n; // start the search
+						started = true;
 					}
 					end = Math.round(poly.length - 2);
 					oldx = 0n;
@@ -847,6 +848,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
