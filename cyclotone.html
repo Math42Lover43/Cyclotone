@@ -321,6 +321,24 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				"Preparation") + "<hr/><button onclick=\"clearInterval(int1, int2); factorizing = false; localStorage.clear(); document.getElementById('factorization').innerHTML += 'Factorization stopped by user';\">Stop</button>";
 		}
 	}
+	function lb(x) {
+	    var test = 1n;
+	    var base = 0n;
+	    var ret = 0n;
+	    while(2n ** (2n ** base) < x) {
+	        base++;
+	    }
+	    base -= 1n;
+	    ret = 2n ** base;
+	    while(base > 0n) {
+	        base -= 1n;
+	        if(2n ** (ret + 2n ** base) <= x) {
+	            ret += 2n ** base;
+	        }
+	    }
+	    console.log(base);
+	    return ret;
+	}
 	var cpolynomial;
 	var graphx;
 	var archives;
@@ -829,6 +847,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
