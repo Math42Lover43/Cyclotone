@@ -60,24 +60,18 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
     }
     return radic;
 }
-	function sqrt(value) {
-    if (value < 0n) {
-        throw 'Square root of negative numbers is not supported';
-    }
-    if (value < 2n) {
-        return value;
-    }
-
-    function newtonIteration(n, x0) {
-        const x1 = ((n / x0) + x0) >> 1n;
-        if (x0 === x1 || x0 === (x1 - 1n)) {
-            return x0;
-        }
-        return newtonIteration(n, x1);
-    }
-
-    return newtonIteration(value, 1n);
-}
+	function sqrt(x) {
+	    var num = 0n;
+	    var test = lb(x) / 2n;
+	    num += 2n ** test;
+	    while(test > 0n) {
+	        test--;
+	        if((num + 2n ** test) ** 2n <= x) {
+	            num += 2n ** test;
+	        }
+	    }
+	    return num;
+	}
 	function add(x,y) {
 		return (BigInt(x) + BigInt(y));
 	}
@@ -848,6 +842,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
