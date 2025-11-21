@@ -65,7 +65,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var test = lb(x) / 2n;
 	    num += 2n ** test;
 	    while(test > 0n) {
-			while((num + 2n ** test) ** 2n > x && x > 0n) {
+			while((num + 2n ** test) ** 2n > x && test > 0n) {
 	        	test--;
 			}
 			if((num + 2n ** test) ** 2n <= x) {
@@ -844,6 +844,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
