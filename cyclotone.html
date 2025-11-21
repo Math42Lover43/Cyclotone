@@ -126,7 +126,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		if(typeof rip != "bigint") {
 			rip = 1n;
 		}
-		console.log(val, rip, rip_pow);
 		val /= rip ** rip_pow;
 		for(let rp = 0n; rp <= rip_pow; rp++) {
 			div = 1n;
@@ -332,7 +331,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	            ret += 2n ** base;
 	        }
 	    }
-	    console.log(base);
 	    return ret;
 	}
 	var cpolynomial;
@@ -765,7 +763,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							conv_offset = 1n;
 							while(conv_offset < BigInt(poly.length)) {
 								addition = {"val": [], "roots": 0};
-								console.log(polies_old[ind].val);
 								for(let inner = 0n; inner < convert_term(polies_old[ind].val, x, n, conv_offset).length; inner++) {
 									if(polysubst(convert_term(polies_old[ind].val, x, n, conv_offset), n) == quot) {
 										addition.val.push(convert_term(polies_old[ind].val, x, n, conv_offset)[inner]);
@@ -844,6 +841,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
