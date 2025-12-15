@@ -144,6 +144,39 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function mod(x,y) {
 		return BigInt(x) % BigInt(y);
 	}
+	function conic_section(number, k) {
+    var N = number;
+    var pro_N;
+    var y = 1n;
+    var x = 0n;
+    var old_diff = 0n;
+    var diff = 0n;
+    var pro_N = k * N;
+    y = 1n;
+    var start = new Date();
+    var conic_interval = setInterval(function() {
+        function iter() {
+            x = -y + sqrt(y ** 2n + pro_N);
+            diff = ((x + y) ** 2n - y ** 2n);
+            if(diff % N == 0n) {
+                console.log(`(${x}, ${y}) at ${new Date() - start}`);
+            }
+            y++;
+            // pro_N -= N;
+        }
+        if(y > k) {
+            done = true;
+            clearInterval(conic_interval);
+        } else {
+            old_diff = diff;
+            iter();
+            while(old_diff >= diff && y <= k) {
+                iter();
+            }
+            console.log(y, diff - old_diff);
+        }
+    }, 10);
+}
 	function power(x,y) {
 		return (BigInt(x) ** BigInt(y))
 	}
@@ -841,6 +874,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 </body>
 </head>
 </html>
+
 
 
 
