@@ -17,6 +17,28 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <div id="factorization">
 </div>
 <script>
+	function charge(x) {
+	    var poly = baseconv(x, 2n, 1n);
+	    for(let i = 0; i < poly.length - 1; i++) {
+	        if(poly[i] > 0n) {
+	            poly[i] -= 2n;
+	            poly[i + 1] += 1n;
+	        }
+	    }
+	    for(let i = 0; i < poly.length - 1; i++) {
+	        if((poly[i] < 0n && poly[i + 1] < 0n) || poly[i] == -2n) {
+	            poly[i] += 2n;
+	            poly[i + 1] -= 1n;
+	        }
+	    }
+	    for(let i = 0; i < poly.length - 1; i++) {
+	        if((poly[i] == -1n && poly[i + 1] == 1n)) {
+	            poly[i] += 2n;
+	            poly[i + 1] -= 1n;
+	        }
+	    }
+	    return poly;
+	}
 	var lim = 30000;
 	var ints = [];
 	var fullints = [];
