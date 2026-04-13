@@ -39,6 +39,13 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    }
 	    return poly;
 	}
+	function chargetowritten(x) {
+		var str = "";
+		for(let t = 0; t <= x.length; t++) {
+			str = (x[t] == 0n ? "0" : x[t] == 1n ? "+" : x[t] == -1n ? "-" : "") + str;
+		}
+		return str;
+	}
 	var lim = 30000;
 	var ints = [];
 	var fullints = [];
