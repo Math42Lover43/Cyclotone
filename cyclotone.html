@@ -506,6 +506,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	  if (b === 0n) {
 	    return a;
 	  }
+	  if (a === 0n) {
+	    return b;
+	  }
 	  return gcd(b, a % b);
 	}
 	function anticoeff(solve,r) {
