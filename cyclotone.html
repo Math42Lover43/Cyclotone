@@ -719,6 +719,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				if(polies.length < weak.count && Math.abs(term - poly.length / 2) < weak.degree) {
 					weak = {"degree": term, "count": polies.length};
 				}
+				if(typeof toret != "bigint") {
+					toret = weak;
+				}
 				if(polies == []) {
 					console.log("broken at " + term);
 					return weak;
