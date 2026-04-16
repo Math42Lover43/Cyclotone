@@ -526,10 +526,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					return null;
 				}
 				for(let other = -abs(r); other <= abs(r); other++) {
-					if(solve.coeff[0] == 0n && solve.equiv % solve.coeff[1] == 0n) {
+					if(solve.coeff[0] == 0n && solve.coeff[1] && solve.equiv % solve.coeff[1] == 0n) {
 						list.push([other, solve.equiv / solve.coeff[1]]);
 					}
-					if(solve.coeff[1] == 0n && solve.equiv % solve.coeff[0] == 0n) {
+					if(solve.coeff[1] == 0n && solve.coeff[0] && solve.equiv % solve.coeff[0] == 0n) {
 						list.push([solve.equiv / solve.coeff[0], other]);
 					}
 				}
