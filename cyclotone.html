@@ -603,6 +603,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return tolog;
 	}
 	function polyfact(poly, rip, rip_pow, r, t) {
+		var weak = {"degree": Infinity, "count": Infinity};
 		rip = rip ? rip : 1n;
 		rip_pow = rip_pow ? rip_pow : 1n;
 		var toret = null;
@@ -715,9 +716,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 						status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 				}
+				if(polies.length < weak.count && Math.abs(term - poly.length / 2) < weak.degree) {
+					weak = {"degree": term, "count": polies.length};
+				}
 				if(polies == []) {
 					console.log("broken at " + term);
-					return;
+					return weak;
 				}
 			}
 			ind = 0;
