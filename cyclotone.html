@@ -716,7 +716,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 						status = "Trials: " + Math.round(Math.floor(ind / polies.length * 100)) + "%";
 				}
-				if((Math.abs(term - poly.length / 2 + 1) < Math.abs(weak.degree - poly.length / 2 + 1) && (polies.length < weak.count || (polies.length == weak.count && abs(poly[term]) < weak.term))) || (Math.abs(term - poly.length / 2 + 1) == Math.abs(weak.degree - poly.length / 2 + 1) && abs(poly[term]) < weak.term))) {
+				if((Math.abs(term - poly.length / 2 + 1) < Math.abs(weak.degree - poly.length / 2 + 1) && (polies.length < weak.count || (polies.length == weak.count && abs(poly[term]) < weak.term))) || (Math.abs(term - poly.length / 2 + 1) == Math.abs(weak.degree - poly.length / 2 + 1) && abs(poly[term]) < weak.term)) {
 					weak = {"degree": term, "count": polies.length, "term": abs(poly[term])};
 					if(typeof toret != "bigint") {
 						toret = weak;
