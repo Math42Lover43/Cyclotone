@@ -17,6 +17,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <div id="factorization">
 </div>
 <script>
+	function entropy(poly) {
+	    return polysubst(poly.slice(poly.length / 2, poly.length), 1n, 1n) - polysubst(poly.slice(0, poly.length / 2 - 1), 1n, 1n);
+	}
 	function charge(x) {
 	    var poly = baseconv(x, 2n, 1n);
 	    for(let i = 0; i < poly.length - 1; i++) {
