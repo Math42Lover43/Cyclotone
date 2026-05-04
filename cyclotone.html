@@ -382,17 +382,20 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		}
 	}
 	function lb(x) {
+	    return log(x, 2n);
+	}
+	function log(x, b) {
 	    var test = 1n;
 	    var base = 0n;
 	    var ret = 0n;
-	    while(2n ** (2n ** base) < x) {
+	    while(b ** (2n ** base) <= x) {
 	        base++;
 	    }
 	    base -= 1n;
 	    ret = 2n ** base;
 	    while(base > 0n) {
 	        base -= 1n;
-	        if(2n ** (ret + 2n ** base) <= x) {
+	        if(b ** (ret + 2n ** base) <= x) {
 	            ret += 2n ** base;
 	        }
 	    }
