@@ -85,7 +85,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
     var place = BigInt(x.toString().length);
     var radic = 0n;
     while (place >= 0n) {
-        while(radic ** i + 10n ** place <= x) {
+        while((radic + 10n ** place) ** i <= x) {
             radic += 10n ** place;
         }
         place -= 1n;
