@@ -17,6 +17,20 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <div id="factorization">
 </div>
 <script>
+	function unity(b, m) {
+    var pows = [{"base": b, "exponent": 1n}];
+    var exp = 1n;
+    while(pows.filter(x => x.base ** log(b, x.base) == b).length < 2n) {
+        exp *= log(m, b) + 1n;
+        b = mod_pow(b, log(m, b) + 1n, m);
+        pows.push({
+            "base": b,
+            "exponent": exp
+        });
+    }
+    exp = pows[pows.length - 1].exponent - log(pows[pows.length - 1].base, pows[0].base);
+    return exp;
+}
 	function entropy(poly) {
 	    return polysubst(poly.slice(poly.length / 2, poly.length), 1n, 1n) - polysubst(poly.slice(0, poly.length / 2 - 1), 1n, 1n);
 	}
