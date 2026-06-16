@@ -22,20 +22,39 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var exp = 1n;
 	    var k = 0n;
 	    var shrimp = 0n;
+	    var path;
+	    var cand;
+	    var changed;
+	
 	    while(pows.filter(x => x.base ** log(b, x.base) == b).length < 2n) {
-	        k = 1n;
-	        while(mod_pow(b, log(k * m, b) + 1n, m) > mod_pow(b, log(k * b * m, b) + 1n, m)) {
-	            k *= b;
-	        }
-	        console.log(mod_pow(b, log(k * m, b) + 1n, m), mod_pow(b, log(k * b * m, b) + 1n, m));
-	        exp *= log(k * m, b) + 1n;
-	        b = mod_pow(b, log(k * m, b) + 1n, m);
-	        pows.push({
-	            "base": b,
-	            "exponent": exp
-	        });
-	        if(k > 1n) {
-	            console.log(log(k, b), pows[pows.length - 1]);
+	        while(shrimp == 0n || path) {
+	            shrimp++;
+	            path = false;
+	            k = 1n;
+	            cand = {"base": m, "exponent": -1n};
+	            while(k == 1n || changed) {
+	                changed = false;
+	                for(let i = 0n; i < shrimp; i++) {
+	                    k *= b;
+	                    if(mod_pow(b, log(k * m, b) + 1n, m) < cand.base) {
+	                        cand = {"base": mod_pow(b, log(k * m, b) + 1n, m), "exponent": log(k * m, b) + 1n};
+	                        changed = true;
+	                    }
+	                }
+	                path = true;
+	            }
+	            exp *= cand.exponent;
+	            b = cand.base;
+	            pows.push({
+	                "base": b,
+	                "exponent": exp
+	            });
+	            if(b == 1n) {
+	                return exp;
+	            }
+	            if(k > 0n) {
+	                console.log(shrimp, log(k, b), pows[pows.length - 1]);
+	            }
 	        }
 	    }
 	    console.log(pows.filter(x => x.base ** log(b, x.base) == b));
