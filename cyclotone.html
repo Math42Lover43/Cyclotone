@@ -47,6 +47,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	            b = cand.base;
 	            pows.push({
 	                "base": b,
+					"progress": b.toString().length,
 	                "exponent": exp
 	            });
 	            if(b == 1n) {
