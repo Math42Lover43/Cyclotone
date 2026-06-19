@@ -25,17 +25,23 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var path;
 	    var cand;
 	    var changed;
+		var kicked;
 	
 	    while(pows.filter(x => x.base ** log(b, x.base) == b).length < 2n) {
 	        while(shrimp == 0n || path) {
 	            shrimp++;
 	            path = false;
 	            k = 1n;
+				kicked = false;
 	            cand = {"base": m, "exponent": -1n};
 	            while(k == 1n || changed) {
 	                changed = false;
 	                for(let i = 0n; i < shrimp; i++) {
-	                    k *= b;
+	                    if(kicked) {
+							k *= b;
+						} else {
+							kicked = true;
+						}
 	                    if(mod_pow(b, log(k * m, b) + 1n, m) < cand.base) {
 	                        cand = {"base": mod_pow(b, log(k * m, b) + 1n, m), "exponent": log(k * m, b) + 1n};
 	                        changed = true;
