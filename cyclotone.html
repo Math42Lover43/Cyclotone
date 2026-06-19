@@ -42,6 +42,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						} else {
 							kicked = true;
 						}
+						console.log(`mod_pow(${b}, ${log(k * m, b)} + 1, m) = ` + mod_pow(b, log(k * m, b) + 1n, m), cand.base)
 	                    if(mod_pow(b, log(k * m, b) + 1n, m) < cand.base) {
 	                        cand = {"base": mod_pow(b, log(k * m, b) + 1n, m), "exponent": log(k * m, b) + 1n};
 	                        changed = true;
