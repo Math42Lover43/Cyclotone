@@ -50,12 +50,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	                    if(mod_pow(b, log(k * m, b) + 1n, m) < cand.base) {
 	                        cand = {"base": mod_pow(b, log(k * m, b) + 1n, m), "exponent": log(k * m, b) + 1n};
 	                        changed = true;
-							path = true;
 							if(pool > pools_min) {
 								pools_min = pool;
 							}
 	                    }
 	                }
+					path = true;
 	            }
 	            exp *= cand.exponent;
 	            b = cand.base;
