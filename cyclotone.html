@@ -21,22 +21,24 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var pows = [{"base": b, "exponent": 1n}];
 	    var exp = 1n;
 	    var k = 0n;
-	    var shrimp = 0n;
+	    var shrimp;
 	    var path;
 	    var cand;
 	    var changed;
 		var kicked;
 		var pool;
+		var pools_min = 0;
 	
 	    while(pows.filter(x => x.base ** log(b, x.base) == b).length < 2n) {
+			shrimp = 0n;
 	        while(shrimp == 0n || path) {
 	            shrimp++;
 	            path = false;
 	            k = 1n;
 				kicked = false;
-	            cand = {"base": m, "exponent": -1n};
+	            cand = {"base": b, "exponent": 1n};
 				pool = 0;
-	            while(k == 1n || changed) {
+	            while(pool <= pools_min || changed) {
 	                changed = false;
 					pool++;
 	                for(let i = 0n; i < shrimp; i++) {
@@ -48,9 +50,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	                    if(mod_pow(b, log(k * m, b) + 1n, m) < cand.base) {
 	                        cand = {"base": mod_pow(b, log(k * m, b) + 1n, m), "exponent": log(k * m, b) + 1n};
 	                        changed = true;
+							path = true;
+							if(pool > pools_min) {
+								pools_min = pool;
+							}
 	                    }
 	                }
-	                path = true;
 	            }
 	            exp *= cand.exponent;
 	            b = cand.base;
