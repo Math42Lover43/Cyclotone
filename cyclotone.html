@@ -70,6 +70,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	            if(k > 0n) {
 	                console.log(shrimp, pool - 1, pows[pows.length - 1], log(exp, m));
 	            }
+				if(pows.filter(x => x.base ** log(b, x.base) == b).length >= 2n) {
+					break;
+				}
 	        }
 	    }
 	    console.log(pows.filter(x => x.base ** log(b, x.base) == b));
