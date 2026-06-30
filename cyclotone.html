@@ -28,6 +28,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var kicked;
 		var pool;
 		var pools_min = 0;
+		var multipliers;
 	
 	    while(pows.filter(x => x.base ** log(b, x.base) == b).length < 2n) {
 			shrimp = 0n;
@@ -57,7 +58,17 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	                }
 					path = true;
 	            }
-	            exp *= cand.exponent;
+				exp *= cand.exponent;
+				changed = true;
+				while(changed) {
+					changed = false;
+					multipliers = pows.sort(x => Number(lb((cand.base * x.base) % m)));
+					if(multipliers[0] && (cand.base * multipliers[0].base) % m < cand.base) {
+						cand.base = cand.base * multipliers[0].base % m;
+						exp += multipliers[0].exponent;
+						changed = true;
+					}
+				}
 	            b = cand.base;
 	            pows.push({
 	                "base": b,
