@@ -63,7 +63,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 				while(changed) {
 					changed = false;
 					multipliers = pows.sort(x => Number(lb((cand.base * x.base) % m)));
-					console.log((cand.base * multipliers[0].base) % m, cand.base);
+					console.log((cand.base * multipliers[0].base) % m, cand.base, (cand.base * multipliers[0].base) % m < cand.base);
 					if(multipliers[0] && (cand.base * multipliers[0].base) % m < cand.base) {
 						cand.base = cand.base * multipliers[0].base % m;
 						exp += multipliers[0].exponent;
