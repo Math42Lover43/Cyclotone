@@ -38,7 +38,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	            path = false;
 	            k = 1n;
 				kicked = false;
-	            cand = {"base": m, "exponent": 1n};
+	            cand = {"base": 0n, "exponent": 1n};
 				pool = 0;
 	            while(pool <= pools_min || changed) {
 	                changed = false;
@@ -49,7 +49,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 						} else {
 							kicked = true;
 						}
-	                    if(mod_pow(b, log(k * m, b) + 1n, m) < cand.base) {
+	                    if(mod_pow(b, log(k * m, b) + 1n, m) > cand.base) {
 	                        cand = {"base": mod_pow(b, log(k * m, b) + 1n, m), "exponent": log(k * m, b) + 1n};
 	                        changed = true;
 							if(pool > pools_min) {
@@ -75,7 +75,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 							if(reductions[i].base < cand.base) {
 								cand = reductions[i];
 								changed = true;
-								pools_min++;
 							}
 						}
 					}
