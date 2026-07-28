@@ -85,7 +85,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					// console.log(cand);
 				}
 				exp = lcm(exp, cand.exponent);
-	            b = mod_pow(B, exp);
+	            b = mod_pow(B, exp, m);
 	            pows.push({
 	                "base": b,
 					"progress": b.toString().length,
