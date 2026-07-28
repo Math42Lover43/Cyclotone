@@ -17,6 +17,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 <div id="factorization">
 </div>
 <script>
+	function lcm(a, b) {
+	    return a * b / gcd(a, b);
+	}
 	function unity(b, m) {
 	    var pows = [{"base": b, "exponent": 1n}];
 	    var exp = 1n;
@@ -30,6 +33,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var pools_min = 0;
 		var multipliers;
 		var reductions;
+		var B = b;
 	
 	    while(pows.filter(x => x.base ** log(b, x.base) == b).length < 2n) {
 			shrimp = 0n;
@@ -80,8 +84,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 					}
 					// console.log(cand);
 				}
-	            b = cand.base;
-				exp = cand.exponent;
+				exp = lcm(exp, cand.exponent);
+	            b = mod_pow(B, exp);
 	            pows.push({
 	                "base": b,
 					"progress": b.toString().length,
