@@ -20,6 +20,25 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	function lcm(a, b) {
 	    return a * b / gcd(a, b);
 	}
+	function exp_const_fact(x) {
+		var N = x;
+		var exp = 1n;
+		var old = 1n;
+		var n = 0n;
+		var evaluation;
+		var num = 2n;
+		setInterval(function() {
+		    n++;
+		    num = mod_pow(num, (N - 1n) / n, N);
+		    evaluation = gcd(N, num - 1n);
+		    if(evaluation > 1n) {
+		        console.log(evaluation);
+		        N /= evaluation;
+		        n = 0n;
+		        num = 2n;
+		    }
+		})
+	}
 	function unity(b, m) {
 	    var pows = [{"base": b, "exponent": 1n}];
 	    var exp = 1n;
