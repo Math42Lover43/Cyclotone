@@ -29,6 +29,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var num = 2n;
 		setInterval(function() {
 		    n++;
+			while((N - 1n) % n == 0n && n != 1n) {
+				n++;
+			}
 		    num = mod_pow(num, (N - 1n) / n, N);
 		    evaluation = gcd(N, num - 1n);
 		    if(evaluation > 1n) {
