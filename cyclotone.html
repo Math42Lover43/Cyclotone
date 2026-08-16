@@ -27,7 +27,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		var n = 0n;
 		var evaluation;
 		var num = 2n;
-		setInterval(function() {
+		var parts = [x];
+		var int1 = setInterval(function() {
 		    n++;
 			while((N - 1n) % n == 0n && n != 1n) {
 				n++;
@@ -37,10 +38,19 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		    if(evaluation > 1n) {
 		        console.log(evaluation);
 		        N /= evaluation;
+				parts.pop();
+				parts.push(evaluation, N);
+				parts
 		        n = 0n;
 		        num = 2n;
+				if(mod_pow(2n, N - 1n, N) == 1n) {
+					clearInterval(int1, int2);
+				}
 		    }
 		})
+		var int2 = setInterval(function() {
+			document.getElementById("factorization").innerHTML = `<i>N</i> = ${parts.toString().replaceAll(",", " &times; ")}<hr/>Most recent divisor of <i>N</i> - 1 used in constructed exponent: ${n}`;
+		}, 1000)
 	}
 	function unity(b, m) {
 	    var pows = [{"base": b, "exponent": 1n}];
