@@ -36,7 +36,10 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 			rate = new Date() - old;
 			old = new Date();
 		    n++;
-		    num = mod_pow(num, N - n, N);
+			while((N - 1n) % n == 0n && n != 1n) {
+				n++;
+			}
+		    num = mod_pow(num, (N - 1n) / n * n, N);
 		    evaluation = gcd(N, num - 1n);
 		    if(evaluation > 1n) {
 		        console.log(evaluation);
@@ -52,7 +55,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 		    }
 		})
 		var int2 = setInterval(function() {
-			document.getElementById("factorization").innerHTML = `<i>N</i> = ${parts.toString().replaceAll(",", " &times; ")}<hr/>Most recent subtrahend from <i>N</i>: ${n}<br/>Anticipated time of trial: ${time(rate)}`;
+			document.getElementById("factorization").innerHTML = `<i>N</i> = ${parts.toString().replaceAll(",", " &times; ")}<hr/>Most recent divisor of <i>N</i> - 1 used in constructed exponent: ${n}<br/>Anticipated time of trial: ${time(rate)}`;
 		}, 1000)
 	}
 	function unity(b, m) {
