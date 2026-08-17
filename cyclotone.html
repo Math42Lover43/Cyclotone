@@ -633,13 +633,20 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 		return returner;
 	}
 	function gcd(a, b) {
-	  if (b === 0n) {
-	    return a;
-	  }
-	  if (a === 0n) {
-	    return b;
-	  }
-	  return gcd(b, a % b);
+	    var A = a;
+	    var B = b;
+	    var test;
+	    while(true) {
+	        test = [A % B, B % A];
+	        if(test[0] == 0n) {
+	            return test[1];
+	        }
+	        if(test[1] == 0n) {
+	            return test[0];
+	        }
+	        B = test[0];
+	        A = test[1];
+	    }
 	}
 	function anticoeff(solve,r) {
 		var qcd;
