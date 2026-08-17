@@ -636,6 +636,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="5"/></sup> - 1
 	    var A = a;
 	    var B = b;
 	    var test;
+		if(a == b) {
+			return a;
+		}
 	    while(true) {
 	        test = [A % B, B % A];
 	        if(test[0] == 0n) {
