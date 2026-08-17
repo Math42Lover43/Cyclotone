@@ -52,7 +52,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 		    }
 		})
 		var int2 = setInterval(function() {
-			document.getElementById("factorization").innerHTML = `<i>N</i> = ${parts.toString().replaceAll(",", " &times; ")}<hr/>Most recent divisor of <i>N</i> - 1 used in constructed exponent: ${n}<br/>Anticipated time of trial: ${time(rate)}`;
+			document.getElementById("factorization").innerHTML = `<i>N</i> = ${parts.toString().replaceAll(",", " &times; ")}<hr/>Most recent subtrahend from <i>N</i>: ${n}<br/>Anticipated time of trial: ${time(rate)}`;
 		}, 1000)
 	}
 	function unity(b, m) {
