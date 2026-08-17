@@ -46,7 +46,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 		        N /= evaluation;
 				parts.pop();
 				parts.push(evaluation, N);
-				parts = parts.sort(x => x.toString().length);
+				parts = parts.sort((x, y) => x.toString().length - y.toString().length);;
 				parts
 				num %= N;
 				if(mod_pow(2n, N - 1n, N) == 1n) {
