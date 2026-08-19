@@ -578,7 +578,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	}
 	function mod_pow(b,p,m) {
 	    var c = 1n;
-		var base = 2n + 80000000n / BigInt(b.toString().length);
+		var base = 2n + 8000000n / BigInt(b.toString().length);
 	    var l = baseconv(p, base).reverse();
 	    for(let i = 0n; i < l.length; i++) {
 	        c *= b ** l[i];
