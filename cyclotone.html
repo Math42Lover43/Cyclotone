@@ -39,6 +39,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 			while((N - 1n) % n == 0n && n != 1n) {
 				n++;
 			}
+			console.log("Trial" + n);
 		    num = mod_pow(num, (N - 1n) / n * n, N);
 		    evaluation = gcd(N, num - 1n);
 		    if(evaluation > 1n) {
@@ -578,7 +579,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	}
 	function mod_pow(b,p,m) {
 	    var c = 1n;
-		var base = 3n;
+		var base = 2n;
 		// 2n + 80000000n / BigInt(m.toString().length);
 		console.log(base);
 	    var l = baseconv(p, base).reverse();
@@ -588,6 +589,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	        if(l[i + 1n] != undefined) {
 	            c **= base;
 	        }
+			console.log(i + "/" + l.length);
 	    }
 	    return c;
 	}
