@@ -108,7 +108,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	        }
 	    })
 	    var int2 = setInterval(function() {
-	        document.getElementById("factorization").innerHTML = `<i>N</i> = ${parts.toString().replaceAll(",", " &times; ")}<hr/>Step ${step + 1}. ${status}<hr/><button onclick="clearInterval(int1, int2); localStorage.clear(); document.getElementById("factorization").innerHTML += '<br/>Factorization stopped by user';">Stop</button>`;
+	        document.getElementById("factorization").innerHTML = `<i>N</i> = ${parts.toString().replaceAll(",", " &times; ")}<hr/>Step ${step + 1}. ${status}<hr/><button onclick="clearInterval(int1, int2); localStorage.clear(); document.getElementById('factorization').innerHTML += '<br/>Factorization stopped by user';">Stop</button>`;
 	    }, 1000)
 	}
 	function unity(b, m) {
