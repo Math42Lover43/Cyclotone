@@ -42,6 +42,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	    var int1 = setInterval(function() {
 	        if(step == 0) {
 				localStorage.num = num;
+				localStorage.step = num;
+				localStorage.N = N;
 	            status = "Deciding reasonable exponent";
 	            n++;
 				while((N - 1n) % n == 0n && n != 1n) {
@@ -94,8 +96,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 					parts = parts.sort((x, y) => x.toString().length - y.toString().length);;
 					parts
 					num %= N;
-					localStorage.num = num;
-					localStorage.N = N;
 			    }
 	            if(evaluation == 1n) {
 	                step = 0;
@@ -106,7 +106,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	        		long = lb(N - 1n);
 	            }
 	        }
-			localStorage.step = step;
 	    })
 	    var int2 = setInterval(function() {
 	        document.getElementById("factorization").innerHTML = `<i>N</i> = ${parts.toString().replaceAll(",", " &times; ")}<hr/>Step ${step + 1}. ${status}<hr/><button onclick="clearInterval(int1, int2); localStorage.clear(); document.getElementById("factorization").innerHTML += '<br/>Factorization stopped by user';">Stop</button>`;
