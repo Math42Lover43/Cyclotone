@@ -68,7 +68,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	            }
 	        }
 	        if([2, 5].includes(step)) {
-	            if(i >= BigInt(list.length)) {
+	            if(i >= BigInt(list.length) - 1n) {
 	                step++;
 	                step %= 6;
 	                if(step == 2) {
@@ -83,6 +83,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	    	        if(list[i + 1n] != undefined) {
 	    	            c **= 2n;
 	    	        }
+					console.log(c);
 	                i++;
 	                status = `Modular exponentiation progress${(step == 5) ? " for primality test of remainder" : ""}: ${Number(10000n * i / BigInt(list.length)) / 100}%`;
 	            }
