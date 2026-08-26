@@ -68,7 +68,8 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	            }
 	        }
 	        if([2, 5].includes(step)) {
-	            if(i >= list.length) {
+				console.log(i, BigInt(list.length), i >= BigInt(list.length));
+	            if(i >= BigInt(list.length)) {
 	                step++;
 	                step %= 6;
 	                if(step == 2) {
