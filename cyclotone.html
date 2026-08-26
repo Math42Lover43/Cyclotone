@@ -83,7 +83,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	    	        }
 	                c *= num ** list[i];
 					c %= N;
-					console.log(c);
+					console.log(i, list[i], c);
 	                i++;
 	                status = `Modular exponentiation progress${(step == 5) ? " for primality test of remainder" : ""}: ${Number(10000n * i / BigInt(list.length)) / 100}%`;
 	            }
