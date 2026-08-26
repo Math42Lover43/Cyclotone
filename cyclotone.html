@@ -70,11 +70,11 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	        }
 	        if([2, 5].includes(step)) {
 	            if(i >= BigInt(list.length) - 1n) {
-	                step++;
-	                step %= 6;
-	                if(step == 2) {
+					if(step == 2) {
 						num = c;
 					}
+	                step++;
+	                step %= 6;
 	                if(step == 5 && c == 1n) {
 						clearInterval(int1, int2);
 					}
