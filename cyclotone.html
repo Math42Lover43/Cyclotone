@@ -58,8 +58,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	            if(list[list.length - 1] == 0n) {
 	                step++;
 	                c = 1n;
-	        		base = 2n;
-	                // list = list.reverse();
+	                console.log(list);
 	                i = 0n;
 	            } else {
 	                list.push(list[list.length - 1] / 2n);
@@ -81,7 +80,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	                c *= num ** list[i];
 	    	        c %= N;
 	    	        if(list[i + 1n] != undefined) {
-	    	            c **= 2n;
+	    	            c *= 2n;
 	    	        }
 					console.log(c);
 	                i++;
