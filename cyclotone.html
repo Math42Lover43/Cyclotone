@@ -45,9 +45,9 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 					n++;
 				}
 	            step = 1;
-	    		number = N / n * n;
-	    		list = [N / n * n];
-	    		long = lb(N / n * n);
+	    		number = (N - 1n) / n * n;
+	    		list = [(N - 1n) / n * n];
+	    		long = lb((N - 1n) / n * n);
 	        }
 	        if([1, 4].includes(step)) {
 	            if(list[list.length - 1] == 0n) {
