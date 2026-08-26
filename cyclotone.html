@@ -59,7 +59,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	            } else {
 	                list.push(list[list.length - 1] / 2n);
 	    			list[list.length - 2] = list[list.length - 2] % 2n;
-	                status = `Base-2 conversion progress${(step == 4) ? " for primality test of remainder" : ""}: ${100n * BigInt(list.length - 1) / long}%`;
+	                status = `Base-2 conversion progress${(step == 4) ? " for primality test of remainder" : ""}: ${Number(10000n * BigInt(list.length - 1) / long)) / 100}%`;
 	            }
 	        }
 	        if([2, 5].includes(step)) {
@@ -77,7 +77,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	    	            c **= 2n;
 	    	        }
 	                i++;
-	                status = `Modular exponentiation progress${(step == 5) ? " for primality test of remainder" : ""}: ${100n * i / BigInt(list.length)}%`;
+	                status = `Modular exponentiation progress${(step == 5) ? " for primality test of remainder" : ""}: ${Number(10000n * i / BigInt(list.length)) / 100}%`;
 	            }
 	        }
 	        if(step == 3) {
