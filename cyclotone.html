@@ -23,13 +23,12 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 		return `${Math.floor(sec / 60000)}:${secdisp.slice(1, 3)}.${secdisp.slice(3, 6)}`;
 	}
 	if(localStorage.length) {
-		exp_const_fact(BigInt(localStorage.N), Number(localStorage.step), BigInt(localStorage.num));
+		exp_const_fact(BigInt(localStorage.N), Number(localStorage.step), BigInt(localStorage.num), BigInt(localStorage.n));
 	}
-	function exp_const_fact(x, step = 0, num = 2n) {
+	function exp_const_fact(x, step = 0, num = 2n, n = 0n) {
 	    var N = x;
 	    var exp = 1n;
 	    var old = 1n;
-	    var n = 0n;
 	    var evaluation;
 	    var parts = [x];
 	    var rate = 0;
@@ -44,7 +43,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 				localStorage.num = num;
 				localStorage.step = step;
 				localStorage.N = N;
-				console.log(num);
+				localStorage.n = n;
 	            status = "Deciding reasonable exponent";
 	            n++;
 				while((N - 1n) % n == 0n && n != 1n) {
@@ -60,7 +59,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	                step++;
 	                c = 1n;
 					list = list.reverse();
-	                console.log(number % 17n, list);
 	                i = 0n;
 	            } else {
 	                list.push(list[list.length - 1] / 2n);
@@ -84,7 +82,6 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	    	        }
 	                c *= num ** list[i];
 					c %= N;
-					console.log(i, list[i], c);
 	                i++;
 	                status = `Modular exponentiation progress${(step == 5) ? " for primality test of remainder" : ""}: ${Number(10000n * i / BigInt(list.length)) / 100}%`;
 	            }
