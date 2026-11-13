@@ -103,7 +103,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	        		list = [N - 1n];
 	        		long = lb(N - 1n);
 	            }
-				console.log(evaluation, step);
+				
 	        }
 	    })
 	    var int2 = setInterval(function() {
@@ -172,7 +172,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 							}
 						}
 					}
-					// console.log(cand);
+					// 
 				}
 				exp = lcm(exp, cand.exponent);
 	            b = mod_pow(B, exp, m);
@@ -185,14 +185,14 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	                return exp;
 	            }
 	            if(k > 0n) {
-	                console.log(shrimp, pool - 1, pows[pows.length - 1], log(exp, m));
+	                
 	            }
 				if(pows.filter(x => x.base ** log(b, x.base) == b).length >= 2n) {
 					break;
 				}
 	        }
 	    }
-	    console.log(pows.filter(x => x.base ** log(b, x.base) == b));
+	    
 	    exp = pows[pows.length - 1].exponent - pows.filter(x => x.base ** log(b, x.base) == b)[0].exponent - log(pows[pows.length - 1].base, pows.filter(x => x.base ** log(b, x.base) == b)[0].base) + 1n;
 	    return exp;
 	}
@@ -371,7 +371,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
             x = -y + sqrt(y ** 2n + pro_N);
             diff = ((x + y) ** 2n - y ** 2n);
             if(diff % N == 0n) {
-                console.log(`(${x}, ${y}) at ${new Date() - start}`);
+                
             }
             y++;
             // pro_N -= N;
@@ -385,7 +385,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
             while(old_diff >= diff && y <= k) {
                 iter();
             }
-            console.log(y, diff - old_diff);
+            
         }
     }, 10);
 }
@@ -639,7 +639,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 	        if(l[i + 1n] != undefined) {
 	            c **= base;
 	        }
-			console.log(i + "/" + l.length);
+			
 	    }
 	    return c;
 	}
@@ -942,7 +942,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 		try {
 			pol[term] += times;
 		} catch (error) {
-			console.log(pol[term], times);
+			
 		}
 		pol[term - 1] -= subst * times;
 		return pol;
@@ -1074,7 +1074,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 						}
 						step = -1;
 					}
-					// console.log(roots(polies_old[0], -BigInt(poly.length) * poly[poly.length - 2], BigInt(poly.length) * poly[poly.length - 2]));
+					// 
 				} else if (step == 1) {
 					x++;
 					if(typeof x != "bigint") {
@@ -1102,7 +1102,7 @@ Factorize 10<sup><input type="number" id="config_exp" value="353"/></sup> - 1
 				maxrate = (x - oldx);
 				mrx = x;
 				localStorage.checkpoint = mrx;
-				console.log(localStorage.checkpoint);
+				
 			}
 		    updatestatus(factorizing);
 			oldx = x;
